@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Cambiado desde LineaComandos - Notepad
 Metiendo nueva linea
 Cambiado desde Github
@@ -8,3 +9,8 @@ Desde Github provocando conflicto con Eclipse
 Mezclando de nuevo desde Eclipse
 
 Yeahhhhhhhhhhhhhhhhhhhhhh !!!!!!!!!!!!!!!!!!!!!!!
+=======
+Cambiando en clase, like a boss! :D
+>>>>>>> branch 'master' of https://github.com/Arquisoft/ObservaTerra42.git
+
+Yo también quiero hacer un commit... :(
