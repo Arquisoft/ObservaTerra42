@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 Cambiado desde LineaComandos - Notepad
 Metiendo nueva linea
 Cambiado desde Github
@@ -12,5 +13,13 @@ Yeahhhhhhhhhhhhhhhhhhhhhh !!!!!!!!!!!!!!!!!!!!!!!
 =======
 Cambiando en clase, like a boss! :D
 >>>>>>> branch 'master' of https://github.com/Arquisoft/ObservaTerra42.git
+
+
+=======
+Cambiando en clase, like a boss! :D
+
+quevá ho!
+>>>>>>> branch 'master' of https://github.com/Arquisoft/ObservaTerra42.git
+
 
 Yo también quiero hacer un commit... :(
