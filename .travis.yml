@@ -1,4 +1,4 @@
-language: java
-jdk:
-  - openjdk7
-  - oraclejdk7
+language: scala
+scala:
+   - 2.10.3
+script: sbt test

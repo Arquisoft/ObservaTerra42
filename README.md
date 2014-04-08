@@ -1,5 +1,4 @@
-ObservaTerra42
-=============
+observaTerraPlay
+================
 
-ObservaTerra42
-
+Example of ObservaTerra using PlayFramework
