@@ -35,6 +35,9 @@ DELETE	/api/observation/:country/:indicator	controllers.API.delObservation(count
 
 POST	/api/excel/upload			controllers.API.uploadExcel()
 
+#Prueba para listar todos los usuarios con la API
+GET		/api/users					controllers.API.users()
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
 

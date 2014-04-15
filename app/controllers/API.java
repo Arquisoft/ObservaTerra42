@@ -95,5 +95,11 @@ public class API extends Controller {
     static Form<Country>  	  countryForm     = Form.form(Country.class);
     static Form<Indicator>    indicatorForm   = Form.form(Indicator.class);
     static Form<Observation>  observationForm = Form.form(Observation.class);
+    
+    //Prueba de la API con un Usuario
+    
+    public static Result users() {
+    	return ok(Json.toJson(User.all()));
+    }
 
 }
