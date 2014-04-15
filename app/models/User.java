@@ -48,7 +48,7 @@ public class User extends Model {
 		return find.where().eq("login", login).findUnique();
 	}
 
-	public void remove(String login) {
+	public static void remove(String login) {
 		find.ref(login).delete();
 	}
 

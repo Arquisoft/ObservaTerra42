@@ -28,7 +28,9 @@ public class Global extends GlobalSettings {
 				new Observation("fr","hdi",3.4).save(); 
 				new Observation("it","hdi",3.0).save();
 				
-				new User("Name","Surname","login","password", "type").save();
+				new User("Sergio","González Polán","spolan","spolan", "admin").save();
+				new User("Iván","Zapico Martínez","ivan","ivan", "admin").save();
+
 			}
 		}
 	}
