@@ -13,7 +13,7 @@ import play.libs.Json;
 
 @SuppressWarnings("serial")
 @Entity
-public abstract class Business extends User {
+public abstract class Business extends Users {
 
 	public String nif;
 	public String description;
