@@ -11,6 +11,7 @@ import play.libs.Json;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
+@SuppressWarnings("serial")
 @Entity
 public class Country extends Model {
     
