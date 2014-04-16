@@ -23,6 +23,7 @@ public class Application extends Controller {
         return ok(index.render(Observation.all(),Country.all(),Indicator.all()));
     }
 
+    
     public static Result showCountries() {
     	return ok(country.render(Country.all(),countryForm));
     }
