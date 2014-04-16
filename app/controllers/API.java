@@ -95,24 +95,5 @@ public class API extends Controller {
     static Form<Country>  	  countryForm     = Form.form(Country.class);
     static Form<Indicator>    indicatorForm   = Form.form(Indicator.class);
     static Form<Observation>  observationForm = Form.form(Observation.class);
-    
-    //Prueba de la API con un Usuario
-    
-//    public static Result users() {
-//    	return ok(Json.toJson(User.all()));
-//    }
-//    
-//    public static Result user(String code) {
-//    	return ok(Json.toJson(User.findByLogin(code)));
-//    }
-//    
-//    public static Result addUser() {
-//    	return TODO;
-//    }
-//
-//    public static Result delUser(String login) {
-//    	User.remove(login);
-//    	return redirect(routes.API.users());
-//    }
 
 }

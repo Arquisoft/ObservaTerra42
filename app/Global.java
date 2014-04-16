@@ -2,10 +2,9 @@ import play.*;
 import play.libs.*;
 
 import java.util.*;
-import scala.*;
+
 import com.avaje.ebean.*;
 
-import controllers.Application;
 import models.*;
 
 public class Global extends GlobalSettings {
@@ -28,10 +27,6 @@ public class Global extends GlobalSettings {
 				new Observation("es","hdi",2.3).save();
 				new Observation("fr","hdi",3.4).save(); 
 				new Observation("it","hdi",3.0).save();
-				
-//				new User("Sergio","González Polán","spolan","spolan", "admin").save();
-//				new User("Iván","Zapico Martínez","ivan","ivan", "admin").save();
-
 			}
 		}
 	}
