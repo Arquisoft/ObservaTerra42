@@ -1,9 +1,9 @@
 @(observations: List[Observation], countries: List[Country], indicators: List[Indicator])
-
 @import play.i18n._
 
 @main("ObservaTerra") {
 <h1>@Messages.get("Wellcome")</h1>
+<a href="/login">Iniciar sesion</a>
 <h2>@Messages.get("list.observations")</h2>
 <table>
 <tr>	
