@@ -17,6 +17,9 @@ public class Global extends GlobalSettings {
 		public static void insert(Application app) {
 			if (Country.all().isEmpty()) {
 				
+				
+				
+				
 				@SuppressWarnings("unchecked")
 				Map<String,List<Object>> all =
 						(Map<String,List<Object>>)Yaml.load("initial-data.yml");
