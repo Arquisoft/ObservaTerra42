@@ -19,8 +19,11 @@ public class Application extends Controller {
 
 	public static Result index() {
 		String tipoUser = session("type");
+		if(tipoUser == null)
+			return ok(index.render(Observation.all(), Country.all(),
+					Indicator.all()));
 		if(!tipoUser.equals("admin"))
-		return ok(index.render(Observation.all(), Country.all(),
+			return ok(index.render(Observation.all(), Country.all(),
 				Indicator.all()));
 		else
 			return ok(country.render(Country.all(), countryForm));
