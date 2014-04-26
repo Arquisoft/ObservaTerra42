@@ -13,16 +13,21 @@
    <h1>@Messages.get("signin")</h1>
 
    <p>
-   	<label for="username">@Messages.get("username")</label>
-       <input type="text" name="username" value="@form("username").value">
+   	<label for="lusername">@Messages.get("username")</label>
+       <input type="text" name="username" value="@form("username").value" id="username">
    </p>
    <p>
-      	<label for="password">@Messages.get("password")</label>
-       <input type="password" name="password" >
+      	<label for="lpassword">@Messages.get("password")</label>
+       <input type="password" name="password" id="password">
    </p>
    <p>
        <button type="submit">Login</button>
    </p>
+   @if(form.hasGlobalErrors) {
+    <p class="error">
+        @form.globalError.message
+    </p>
+}
 }
     </body>
 </html>

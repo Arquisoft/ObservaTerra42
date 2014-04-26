@@ -26,6 +26,7 @@ GET		/api/country/:code				controllers.API.country(code: String)
 PUT		/api/country/:code				controllers.API.updateCountry(code: String)
 POST	/api/country					controllers.API.addCountry()
 DELETE	/api/country/:code				controllers.API.delCountry(code: String)
+GET		/api/c							controllers.API.collaborators()
 
 GET		/api/observation						controllers.API.observations()
 GET		/api/observation/indicator/:indicator	controllers.API.observationsByIndicator(indicator: String)

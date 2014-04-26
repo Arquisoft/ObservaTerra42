@@ -10,7 +10,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 
 @SuppressWarnings("serial")
 @Entity
-public abstract class Collaborator extends Users {
+public class Collaborator extends Users {
 
 	public String phone;
 	public String adress;
@@ -42,7 +42,7 @@ public abstract class Collaborator extends Users {
 	}
 
 	public static Collaborator findByLogin(String login) {
-		return find.where().eq("login", login).findUnique();
+		return find.where().eq("id", login).findUnique();
 	}
 
 	public static void remove(String login) {
@@ -57,4 +57,15 @@ public abstract class Collaborator extends Users {
 	public static JsonNode toJson(Collaborator u) {
 		return Json.toJson(u);
 	  }
+
+	public static Object authenticate(String username, String password) {
+		Collaborator c = find.where().eq("id", username).findUnique();
+		System.out.println("----------------------------------------- + " + c.password);
+		if(c.password.equals(password))
+			return c;
+		else
+			return null;
+	}
+	
+	
 }

@@ -42,14 +42,15 @@ public class Application extends Controller {
 	public static Result login() {
 		return ok(login.render(Form.form(Login.class)));
 	}
-	
+
 	public static Result authenticate() {
-	    Form<Login> loginForm = Form.form(Login.class).bindFromRequest();
+		Form<Login> loginForm = Form.form(Login.class).bindFromRequest();
 	    if (loginForm.hasErrors()) {
 	        return badRequest(login.render(loginForm));
 	    } else {
 	        session().clear();
-	        session("email", loginForm.get().username);
+	        session(
+	        session("username", loginForm.get().username);
 	        return redirect(
 	            routes.Application.index()
 	        );
@@ -59,15 +60,17 @@ public class Application extends Controller {
 	static Form<Country> countryForm = Form.form(Country.class);
 	static Form<Indicator> indicatorForm = Form.form(Indicator.class);
 	static Form<Observation> observationForm = Form.form(Observation.class);
-	
+
 	public static class Login {
 
-	    public String username;
-	    public String password;
+		public String username;
+		public String password;
 
-	    public String validate() {
-	        return null;
-	    }
+		public String validate() {
+			if (Collaborator.authenticate(username,password) == null) {
+				return "Invalid user or password";
+			}
+			return null;
+		}
 	}
 }
-

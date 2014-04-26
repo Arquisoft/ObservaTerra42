@@ -23,6 +23,10 @@ public class API extends Controller {
     	return ok(Json.toJson(Country.all()));
     }
     
+    public static Result collaborators() {
+    	return ok(Json.toJson(Collaborator.all()));
+    }
+    
     public static Result country(String code) {
     	return ok(Json.toJson(Country.findByCode(code)));
     }
