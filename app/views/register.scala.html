@@ -1,0 +1,45 @@
+@(form: Form[Application.Register])
+
+@import play.i18n._
+
+<html>
+    <head>
+        <title>Register</title>
+    </head>
+    <body>
+        <header>
+        </header>
+    @helper.form(routes.Application.validate) {
+   <h1>@Messages.get("register")</h1>
+
+   <p>
+   	<label for="lusername">@Messages.get("username")</label>
+       <input type="text" name="username" value="@form("username").value" id="username">
+   </p>
+   <p>
+      	<label for="lpassword">@Messages.get("password")</label>
+       <input type="password" name="password" value="@form("password").value"id="password">
+   </p>
+   <p>
+   	<label for="lname">@Messages.get("name")</label>
+       <input type="text" name="name" value="@form("name").value" id="name">
+   </p>
+   <p>
+      	<label for="email">@Messages.get("email")</label>
+       <input type="email" name="email" value="@form("email").value"id="email">
+   </p>
+   <p>
+      	<label for="type">@Messages.get("type")</label>
+       <input type="type" name="type" value="@form("type").value"id="type">
+   </p>
+   <p>
+       <button type="submit">GO!</button>
+   </p>
+   @if(form.hasGlobalErrors) {
+    <p class="error">
+        @form.globalError.message
+    </p>
+}
+}
+    </body>
+</html>

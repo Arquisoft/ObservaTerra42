@@ -19,9 +19,9 @@ public class Collaborator extends Users {
 
 
 	public Collaborator(String id, String name, String password, String email,
-			String type, boolean active,String phone, String adress, String organization,
+			boolean active,String phone, String adress, String organization,
 			String specialization) {
-		super(id, name, password, email, type, active);
+		super(id, name, password, email, "collaborator", active);
 		this.phone=phone;
 		this.adress = adress;
 		this.organization = organization;
@@ -60,9 +60,12 @@ public class Collaborator extends Users {
 
 	public static Object authenticate(String username, String password) {
 		Collaborator c = find.where().eq("id", username).findUnique();
-		System.out.println("----------------------------------------- + " + c.password);
-		if(c.password.equals(password))
+		//System.out.println("--------------   " + c.password);
+		if(c == null)
+			return null;
+		if(c.password.equals(password)){
 			return c;
+		}
 		else
 			return null;
 	}

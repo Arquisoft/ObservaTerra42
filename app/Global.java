@@ -8,8 +8,7 @@ import com.avaje.ebean.*;
 import models.*;
 
 public class Global extends GlobalSettings {
-	
-	//taca
+
 	public void onStart(Application app) {
 		InitialData.insert(app);
 	}
@@ -31,12 +30,20 @@ public class Global extends GlobalSettings {
 
 			}
 			if (Collaborator.all().isEmpty()) {
-				new Collaborator("spolan", "name", "spolan", "email", "type",
+				new Collaborator("spolan", "name", "spolan", "email",
 						true, "", "", "", "").save();
-				new Collaborator("sandoval", "name", "sandoval", "email",
-						"type", true, "", "", "", "").save();
-				new Collaborator("hector", "name", "hector", "email", "type",
+				new Collaborator("sandoval", "name", "sandoval", "email"
+						, true, "", "", "", "").save();
+				new Collaborator("hector", "name", "hector", "email",
 						true, "", "", "", "").save();
+			}
+			if (Business.all().isEmpty()) {
+				new Business("pepe","pepe","pepe","email",true,"pepe","","","","").save();
+				new Business("manolo","","manolo","email",true,"","","","","").save();
+				new Business("luis","","luis","email",true,"","","","","").save();
+			}
+			if (User.all().isEmpty()) {
+				new User("admin","admin","admin","admin@admin.com","admin",true).save();
 			}
 		}
 	}
