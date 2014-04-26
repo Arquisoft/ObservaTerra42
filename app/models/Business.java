@@ -13,7 +13,7 @@ import play.libs.Json;
 
 @SuppressWarnings("serial")
 @Entity
-public abstract class Business extends Users {
+public class Business extends Users {
 
 	public String nif;
 	public String description;
@@ -22,9 +22,9 @@ public abstract class Business extends Users {
 	public String webSite;
 
 	public Business(String id, String name, String password, String email,
-			String type, boolean active, String nif, String description,
+			boolean active, String nif, String description,
 			String phone, String address, String webSite) {
-		super(id, name, password, email, type, active);
+		super(id, name, password, email, "business", active);
 		this.nif = nif;
 		this.description = description;
 		this.phone = phone;
@@ -60,5 +60,16 @@ public abstract class Business extends Users {
 
 	public static JsonNode toJson(Business u) {
 		return Json.toJson(u);
+	}
+
+	public static Object authenticate(String username, String password) {
+		Business b = find.where().eq("id", username).findUnique();
+		if(b == null)
+			return null;
+		if(b.password.equals(password)){
+			return b;
+		}
+		else
+			return null;
 	}
 }

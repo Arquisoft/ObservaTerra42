@@ -1,32 +1,3 @@
-<<<<<<< HEAD
-@(form: Form[Application.Login])
-
-@import play.i18n._
-
-<html>
-    <head>
-        <title>Login</title>
-    </head>
-    <body>
-        <header>
-        </header>
-    @helper.form(routes.Application.authenticate) {
-   <h1>@Messages.get("signin")</h1>
-
-   <p>
-   	<label for="username">@Messages.get("username")</label>
-       <input type="text" name="username" value="@form("username").value">
-   </p>
-   <p>
-      	<label for="password">@Messages.get("password")</label>
-       <input type="password" name="password" >
-   </p>
-   <p>
-       <button type="submit">Login</button>
-   </p>
-}
-    </body>
-=======
 @(form: Form[Application.Login])
 
 @import play.i18n._
@@ -47,7 +18,7 @@
    </p>
    <p>
       	<label for="lpassword">@Messages.get("password")</label>
-       <input type="password" name="password" id="password">
+       <input type="password" name="password" value="@form("password").value"id="password">
    </p>
    <p>
        <button type="submit">Login</button>
@@ -59,5 +30,4 @@
 }
 }
     </body>
->>>>>>> 93a70ecfddee6cc9062e913e92da8303854ae4d3
 </html>

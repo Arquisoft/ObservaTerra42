@@ -10,9 +10,8 @@ import com.fasterxml.jackson.databind.JsonNode;
 
 @SuppressWarnings("serial")
 @Entity
-public abstract class User extends Users {
+public class User extends Users {
 
-	
 
 	public User(String id, String name, String password, String email,
 			String type, boolean active) {
@@ -48,4 +47,15 @@ public abstract class User extends Users {
 	public static JsonNode toJson(User u) {
 		return Json.toJson(u);
 	  }
+
+	public static User authenticate(String username, String password) {
+		User u = find.where().eq("id", username).findUnique();
+		if(u == null)
+			return null;
+		if(u.password.equals(password)){
+			return u;
+		}
+		else
+			return null;
+	}
 }
