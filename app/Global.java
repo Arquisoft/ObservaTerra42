@@ -8,7 +8,8 @@ import com.avaje.ebean.*;
 import models.*;
 
 public class Global extends GlobalSettings {
-
+	
+	//taca
 	public void onStart(Application app) {
 		InitialData.insert(app);
 	}
