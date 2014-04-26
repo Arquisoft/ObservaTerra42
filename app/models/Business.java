@@ -46,7 +46,7 @@ public class Business extends Users {
 	}
 
 	public static Business findByLogin(String login) {
-		return find.where().eq("login", login).findUnique();
+		return find.where().eq("id", login).findUnique();
 	}
 
 	public static void remove(String login) {

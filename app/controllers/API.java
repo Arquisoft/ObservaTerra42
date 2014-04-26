@@ -27,6 +27,14 @@ public class API extends Controller {
     	return ok(Json.toJson(Collaborator.all()));
     }
     
+    public static Result business() {
+    	return ok(Json.toJson(Business.all()));
+    }
+    
+    public static Result users() {
+    	return ok(Json.toJson(User.all()));
+    }
+    
     public static Result country(String code) {
     	return ok(Json.toJson(Country.findByCode(code)));
     }

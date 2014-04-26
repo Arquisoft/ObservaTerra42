@@ -55,11 +55,43 @@ public class Application extends Controller {
 			return redirect(routes.Application.index());
 		}
 	}
+	
+	public static Result validate() {
+		Form<Register> r = Form.form(Register.class).bindFromRequest();
+		if (r.hasErrors()) {
+			return badRequest(register.render(r));
+		} else {
+			if(r.get().type.equals("admin")){
+				User.create(new User(r.get().username,r.get().name, r.get().password,
+						r.get().email, "admin",false));
+			}else if(r.get().type.equals("business")){
+				Business.create(new Business(r.get().username,r.get().name, r.get().password,
+						r.get().email,false,"","","","",""));
+			}else if(r.get().type.equals("collaborator")){
+				Collaborator.create(new Collaborator(r.get().username,r.get().name, r.get().password,
+						r.get().email,false,"","","",""));
+			}
+			return redirect(routes.Application.index());
+		}
+		
+	}
+	
+	public static Result register() {
+		return ok(register.render(Form.form(Register.class)));
+	}
 
 	static Form<Country> countryForm = Form.form(Country.class);
 	static Form<Indicator> indicatorForm = Form.form(Indicator.class);
 	static Form<Observation> observationForm = Form.form(Observation.class);
 
+	public static class Register{
+		public String username;
+		public String name;
+		public String password;
+		public String email;
+		public String type;
+		
+	}
 	public static class Login {
 
 		public String username;
