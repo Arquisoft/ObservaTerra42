@@ -25,4 +25,7 @@ file.uploaded		= Fichero subido con {0} observaciones
 read.excel.error	= Error al leer fichero Excel
 upload.excel.file	= Cargar fichero Excel
 upload				= Cargar
+signin				= Iniciar sesión
+username			= Usuario
+password			= Contraseña
 

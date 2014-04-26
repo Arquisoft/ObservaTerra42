@@ -6,8 +6,6 @@
 
 # Ignore Play! working directory #
 db
-eclipse
-lib
 log
 logs
 modules
@@ -20,3 +18,5 @@ test-result
 server.pid
 *.iml
 *.eml
+/.target
+/bin
