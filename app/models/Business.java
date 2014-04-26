@@ -1,0 +1,64 @@
+package models;
+
+import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+import com.fasterxml.jackson.databind.JsonNode;
+
+import play.db.ebean.Model;
+import play.db.ebean.Model.Finder;
+import play.libs.Json;
+
+@SuppressWarnings("serial")
+@Entity
+public abstract class Business extends Users {
+
+	public String nif;
+	public String description;
+	public String phone;
+	public String address;
+	public String webSite;
+
+	public Business(String id, String name, String password, String email,
+			String type, boolean active, String nif, String description,
+			String phone, String address, String webSite) {
+		super(id, name, password, email, type, active);
+		this.nif = nif;
+		this.description = description;
+		this.phone = phone;
+		this.address = address;
+		this.webSite = webSite;
+	}
+
+	public static Finder<String, Business> find = new Finder<String, Business>(
+			String.class, Business.class);
+
+	public static List<Business> all() {
+		return find.all();
+	}
+
+	public static void create(Business u) {
+		if (Business.findByLogin(u.id) == null) {
+			u.save();
+		}
+	}
+
+	public static Business findByLogin(String login) {
+		return find.where().eq("login", login).findUnique();
+	}
+
+	public static void remove(String login) {
+		find.ref(login).delete();
+	}
+
+	public static void deleteAll() {
+		for (Business u : all())
+			u.delete();
+	}
+
+	public static JsonNode toJson(Business u) {
+		return Json.toJson(u);
+	}
+}
