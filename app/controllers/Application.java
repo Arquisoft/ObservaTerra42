@@ -10,6 +10,7 @@ import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.bars;
+import views.html.collaborator;
 import views.html.country;
 import views.html.index;
 import views.html.indicator;
@@ -21,12 +22,15 @@ public class Application extends Controller {
 
 	public static Result index() {
 		String tipoUser = session("type");
-		if(tipoUser == null)
+		if (tipoUser == null)
 			return ok(index.render(Observation.all(), Country.all(),
 					Indicator.all()));
-		if(!tipoUser.equals("admin"))
+		if (tipoUser.equals("collaborator"))
+			return ok(collaborator.render(Observation.all(), Country.all(),
+					Indicator.all()));
+		if (!tipoUser.equals("admin"))
 			return ok(index.render(Observation.all(), Country.all(),
-				Indicator.all()));
+					Indicator.all()));
 		else
 			return ok(country.render(Country.all(), countryForm));
 	}
@@ -53,6 +57,7 @@ public class Application extends Controller {
 	}
 
 	public static Result authenticate() {
+
 		Form<Login> loginForm = Form.form(Login.class).bindFromRequest();
 		if (loginForm.hasErrors()) {
 			return badRequest(login.render(loginForm));
@@ -60,27 +65,39 @@ public class Application extends Controller {
 			return redirect(routes.Application.index());
 		}
 	}
-	
+
+	public static Result goCollaborator() {
+		String tipoUser = session("type");
+		if (tipoUser.equals("collaborator"))
+			return ok(collaborator.render(Observation.all(), Country.all(),
+					Indicator.all()));
+		else
+			return ok(index.render(Observation.all(), Country.all(),
+					Indicator.all()));
+	}
+
 	public static Result validate() {
 		Form<Register> r = Form.form(Register.class).bindFromRequest();
 		if (r.hasErrors()) {
 			return badRequest(register.render(r));
 		} else {
-			if(r.get().type.equals("admin")){
-				User.create(new User(r.get().username,r.get().name, r.get().password,
-						r.get().email, "admin",false));
-			}else if(r.get().type.equals("business")){
-				Business.create(new Business(r.get().username,r.get().name, r.get().password,
-						r.get().email,false,"","","","",""));
-			}else if(r.get().type.equals("collaborator")){
-				Collaborator.create(new Collaborator(r.get().username,r.get().name, r.get().password,
-						r.get().email,false,"","","",""));
+			if (r.get().type.equals("admin")) {
+				User.create(new User(r.get().username, r.get().name,
+						r.get().password, r.get().email, "admin", false));
+			} else if (r.get().type.equals("business")) {
+				Business.create(new Business(r.get().username, r.get().name, r
+						.get().password, r.get().email, false, "", "", "", "",
+						""));
+			} else if (r.get().type.equals("collaborator")) {
+				Collaborator.create(new Collaborator(r.get().username,
+						r.get().name, r.get().password, r.get().email, false,
+						"", "", "", ""));
 			}
 			return redirect(routes.Application.index());
 		}
-		
+
 	}
-	
+
 	public static Result register() {
 		return ok(register.render(Form.form(Register.class)));
 	}
@@ -89,14 +106,15 @@ public class Application extends Controller {
 	static Form<Indicator> indicatorForm = Form.form(Indicator.class);
 	static Form<Observation> observationForm = Form.form(Observation.class);
 
-	public static class Register{
+	public static class Register {
 		public String username;
 		public String name;
 		public String password;
 		public String email;
 		public String type;
-		
+
 	}
+
 	public static class Login {
 
 		public String username;
@@ -104,9 +122,9 @@ public class Application extends Controller {
 
 		public String validate() {
 			String a = validarColaborador();
-			if(a != null){
+			if (a != null) {
 				a = validarBusiness();
-				if(a != null){
+				if (a != null) {
 					a = validarUser();
 				}
 			}
@@ -114,15 +132,14 @@ public class Application extends Controller {
 		}
 
 		private String validarUser() {
-			User u = (User) User.authenticate(username,
-					password);
+			User u = (User) User.authenticate(username, password);
 			if (u == null) {
 				return "Invalid user or password";
 			} else {
 				session().clear();
-				session("username",u.id);
-				session("password",u.password);
-				session("type",u.type);
+				session("username", u.id);
+				session("password", u.password);
+				session("type", u.type);
 				return null;
 			}
 		}
@@ -134,23 +151,22 @@ public class Application extends Controller {
 				return "Invalid user or password";
 			} else {
 				session().clear();
-				session("username",c.id);
-				session("password",c.password);
-				session("type",c.type);
+				session("username", c.id);
+				session("password", c.password);
+				session("type", c.type);
 				return null;
 			}
 		}
-		
+
 		private String validarBusiness() {
-			Business b = (Business) Business.authenticate(username,
-					password);
+			Business b = (Business) Business.authenticate(username, password);
 			if (b == null) {
 				return "Invalid user or password";
 			} else {
 				session().clear();
-				session("username",b.id);
-				session("password",b.password);
-				session("type",b.type);
+				session("username", b.id);
+				session("password", b.password);
+				session("type", b.type);
 				return null;
 			}
 		}
