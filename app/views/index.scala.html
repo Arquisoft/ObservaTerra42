@@ -1,9 +1,36 @@
 @(observations: List[Observation], countries: List[Country], indicators: List[Indicator])
+
 @import play.i18n._
 
-@main("ObservaTerra") {
+@main("ObservaTerra")  {
+@(form: Form[Application.Login])
 <h1>@Messages.get("Wellcome")</h1>
-<a href="/login">Iniciar sesion</a>
+<html>
+    <body>
+        <header>
+        </header>
+    @helper.form(routes.Application.authenticate) {
+   <h1>@Messages.get("signin")</h1>
+
+   <p>
+   	<label for="lusername">@Messages.get("username")</label>
+       <input type="text" name="username" value="@form("username").value" id="username">
+   </p>
+   <p>
+      	<label for="lpassword">@Messages.get("password")</label>
+       <input type="password" name="password" value="@form("password").value"id="password">
+   </p>
+   <p>
+       <button type="submit">Login</button>
+   </p>
+   @if(form.hasGlobalErrors) {
+    <p class="error">
+        @form.globalError.message
+    </p>
+}
+}
+    </body>
+</html>
 <a href="/register">Registrarse</a>
 <h2>@Messages.get("list.observations")</h2>
 <table>
