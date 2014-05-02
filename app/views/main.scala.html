@@ -1,6 +1,7 @@
 @(title: String)(content: Html)
 
 @import play.i18n._
+@import controllers.Application.Login
 
 <!DOCTYPE html>
 
@@ -17,8 +18,14 @@
         <a href="/"><img src="@routes.Assets.at("images/observaTerra.png")" alt="ObservaTerraLogo" />
         <h1>ObservaTerra</h1></a>
      </header>
+     @if(session().get("id")==null){
+		<a href="/login">Iniciar sesion</a>
+		<a href="/register">Registrarse</a>
+		} else{
+		<p>Bienvenido @{session().get("id")}</p>
+		<a href="@{Login.logout()}">Log out</a>
+		}
      <h1>@title</h1>    
-
      @content
 
     <footer>
