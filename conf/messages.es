@@ -1,5 +1,4 @@
-name = nombre
-create = Crear
+create 				= Crear
 Wellcome			= Bienvenido al portal ObservaTerra
 Country				= País
 Indicator			= Indicador
@@ -28,4 +27,9 @@ upload				= Cargar
 signin				= Iniciar sesión
 username			= Usuario
 password			= Contraseña
-
+type				= Tipo de usuario
+typeUser			= Usuario
+typeCollaborator	= Colaborador
+typeBusiness		= Organización
+name 				= Nombre
+email				= E-mail

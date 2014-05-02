@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import models.User;
-import scalaz.std.effect.sql.preparedStatement;
 import utils.Jdbc;
 
 public class UserJdbc {
