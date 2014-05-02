@@ -8,8 +8,7 @@ public class Main {
 		con.cerrarConexion();
 
 		
-		
-		
+	
 		conexion con = new conexion();
 		con.connectToAccess();
 		con.ejecutarQuery("Select * from indicator");
