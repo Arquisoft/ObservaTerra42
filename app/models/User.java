@@ -33,8 +33,6 @@ public class User extends Users {
 
 	public static User findByLogin(String login) {
 		User u=find.where().eq("id", login).findUnique();
-		if(u==null)
-		System.out.println("we");
 		return u;
 	}
 
