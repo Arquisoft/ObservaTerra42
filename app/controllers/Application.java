@@ -19,6 +19,9 @@ public class Application extends Controller {
 
 	public static Result index() {
 		String tipoUser = session("type");
+		if(tipoUser == null)
+			return ok(index.render(Observation.all(), Country.all(),
+					Indicator.all()));
 		if(!tipoUser.equals("admin"))
 		return ok(index.render(Observation.all(), Country.all(),
 				Indicator.all()));
@@ -94,8 +97,8 @@ public class Application extends Controller {
 	}
 	public static class Login {
 
-		public String username;
-		public String password;
+		public static String username;
+		public static String password;
 
 		public String validate() {
 			String a = validarColaborador();
