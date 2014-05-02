@@ -32,7 +32,10 @@ public class User extends Users {
 	}
 
 	public static User findByLogin(String login) {
-		return find.where().eq("id", login).findUnique();
+		User u=find.where().eq("id", login).findUnique();
+		if(u==null)
+		System.out.println("we");
+		return u;
 	}
 
 	public static void remove(String login) {
