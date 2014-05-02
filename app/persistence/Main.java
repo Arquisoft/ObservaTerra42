@@ -5,20 +5,21 @@ public class Main {
 		conexion con = new conexion();
 		con.connectToAccess();
 		//indicator
-		con.ejecutarQuery("insert into indicator values ('000','pobreza infantil','nivel de pobreza infantil que presenta dicha zona')");
-		con.ejecutarQuery("insert into indicator values ('001','violencia de genero','indice que violencia de genero que presenta en la zona')");
-		con.ejecutarQuery("insert into indicator values ('002','analfabetismo','Indice de personas analfabetas de la zona')");
+		con.ejecutarQuery("insert into indicator values ('000a','child poverty','level of child poverty in this area')");
+		con.ejecutarQuery("insert into indicator values ('001a','gender violence','index of gender violence that presents the area')");
+		con.ejecutarQuery("insert into indicator values ('002a','illiteracy','index of illiterate people in the area')");
 		//area
-		con.ejecutarQuery("insert into area values ('000','españa','pais españa perteneciente a la union europea','pais')");
-		con.ejecutarQuery("insert into area values ('001','UE','Union Europea, es una comunidad política de Derecho constituida en régimen de organización internacional','zona')");
-		con.ejecutarQuery("insert into area values ('002','Francia','pais francia perteneciente a la union europea','pais')");
+		con.ejecutarQuery("insert into area values ('000a','Spain','country Spain-EU','country')");
+		con.ejecutarQuery("insert into area values ('001a','UE','European union, european union, a political community is built right regimen international organization','area')");
+		con.ejecutarQuery("insert into area values ('002a','France','country France-EU','country')");
 		//users
-		con.ejecutarQuery("insert into users values ('000','polan','000','polan@polan.es','colaborador','true','78945612f','polan estudiante','654120255','alguna 0','a','uniovi','conductor','2014-02-05')");
-		con.ejecutarQuery("insert into users values ('001','diego','001','diego@diego.es','usuario','true','7145875f','diego','654120255','alguna 1','b','uniovi','consultor','2014-02-05')");
-		con.ejecutarQuery("insert into users values ('002','master','002','master@master.es','colaborador','true','7245896f','master tpa','258741025','alguna 2','c','uniovi','director','2014-02-05')");
+		con.ejecutarQuery("insert into users values ('000a','Sergio Polan','000','polan@polan.es','collaborator','true','78945612f','student','654120255','The catalan campus','a','uniovi','informatic engineer','2014-02-05')");
+		con.ejecutarQuery("insert into users values ('001a','Diego ','001','diego@diego.es','user','true','7145875f','student','654120255','The catalan campus','b','uniovi','consultant','2014-02-05')");
+		con.ejecutarQuery("insert into users values ('002a','Master','002','master@master.es','business','true','7245896f','student','258741025','The catalan campus','c','uniovi','director','2014-02-05')");
+		con.ejecutarQuery("insert into users values ('003a','Juan','003','juan@juan.es','admin','true','75862568g','student','75896325','The catalan campus','c','uniovi','director','2014-02-05')");
 		//observation
-		con.ejecutarQuery("insert into observation values ('001','001','001','kg','200','365')");
-		con.ejecutarQuery("insert into observation values ('002','002','002','ml','100','30')");
+		con.ejecutarQuery("insert into observation values ('001a','001a','001a','percent','200','365')");
+		con.ejecutarQuery("insert into observation values ('002a','002a','002a','percent','100','30')");
 		con.cerrarConexion();
 
 	}
