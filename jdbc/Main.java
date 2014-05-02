@@ -7,7 +7,6 @@ public class Main {
 		con.ejecutarQuery("insert into indicator values ('000','alguno','en un lugar de la mancha')");
 		con.cerrarConexion();
 
-		
 	//Como una lonza de queso
 		conexion con = new conexion();
 		con.connectToAccess();
