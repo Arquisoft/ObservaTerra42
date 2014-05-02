@@ -8,7 +8,7 @@ public class Main {
 		con.cerrarConexion();
 
 		
-	
+	//Como una lonza de queso
 		conexion con = new conexion();
 		con.connectToAccess();
 		con.ejecutarQuery("Select * from indicator");
