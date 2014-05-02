@@ -23,21 +23,12 @@ public class Application extends Controller {
 
 	public static Result index() {
 		String tipoUser = session("type");
-<<<<<<< HEAD
-		if(tipoUser == null)
-			return ok(index.render(Observation.all(), Country.all(),
-					Indicator.all()));
-		if(!tipoUser.equals("admin"))
-		return ok(index.render(Observation.all(), Country.all(),
-				Indicator.all()));
-=======
 		if (tipoUser == null)
 			return ok(index.render(Observation.all(), Country.all(),
 					Indicator.all()));
 		if (!tipoUser.equals("admin"))
 			return ok(index.render(Observation.all(), Country.all(),
 					Indicator.all()));
->>>>>>> model_equipo-A
 		else
 			return ok(country.render(Country.all(), countryForm));
 	}
@@ -73,33 +64,12 @@ public class Application extends Controller {
 			return redirect(routes.Application.index());
 		}
 	}
-<<<<<<< HEAD
-	
-=======
 
->>>>>>> model_equipo-A
 	public static Result validate() {
 		Form<Register> r = Form.form(Register.class).bindFromRequest();
 		if (r.hasErrors()) {
 			return badRequest(register.render(r));
 		} else {
-<<<<<<< HEAD
-			if(r.get().type.equals("admin")){
-				User.create(new User(r.get().username,r.get().name, r.get().password,
-						r.get().email, "admin",false));
-			}else if(r.get().type.equals("business")){
-				Business.create(new Business(r.get().username,r.get().name, r.get().password,
-						r.get().email,false,"","","","",""));
-			}else if(r.get().type.equals("collaborator")){
-				Collaborator.create(new Collaborator(r.get().username,r.get().name, r.get().password,
-						r.get().email,false,"","","",""));
-			}
-			return redirect(routes.Application.index());
-		}
-		
-	}
-	
-=======
 			if (r.get().type.equals("admin")) {
 				User.create(new User(r.get().username, r.get().name,
 						r.get().password, r.get().email, "admin", false));
@@ -117,7 +87,6 @@ public class Application extends Controller {
 
 	}
 
->>>>>>> model_equipo-A
 	public static Result register() {
 		return ok(register.render(Form.form(Register.class)));
 	}
@@ -126,20 +95,7 @@ public class Application extends Controller {
 	static Form<Indicator> indicatorForm = Form.form(Indicator.class);
 	static Form<Observation> observationForm = Form.form(Observation.class);
 
-<<<<<<< HEAD
-	public static class Register{
-		public String username;
-		public String name;
-		public String password;
-		public String email;
-		public String type;
-		
-	}
-	public static class Login {
-
-=======
 	public static class Register {
->>>>>>> model_equipo-A
 		public String username;
 		public String name;
 		public String password;
@@ -157,58 +113,6 @@ public class Application extends Controller {
 		 * Limpia la sesión y mete en ésta los datos del usuario si existe
 		 */
 		public String validate() {
-<<<<<<< HEAD
-			String a = validarColaborador();
-			if(a != null){
-				a = validarBusiness();
-				if(a != null){
-					a = validarUser();
-				}
-			}
-			return a;
-		}
-
-		private String validarUser() {
-			User u = (User) User.authenticate(username,
-					password);
-			if (u == null) {
-				return "Invalid user or password";
-			} else {
-				session().clear();
-				session("username",u.id);
-				session("password",u.password);
-				session("type",u.type);
-				return null;
-			}
-		}
-
-		private String validarColaborador() {
-			Collaborator c = (Collaborator) Collaborator.authenticate(username,
-					password);
-			if (c == null) {
-				return "Invalid user or password";
-			} else {
-				session().clear();
-				session("username",c.id);
-				session("password",c.password);
-				session("type",c.type);
-				return null;
-			}
-		}
-		
-		private String validarBusiness() {
-			Business b = (Business) Business.authenticate(username,
-					password);
-			if (b == null) {
-				return "Invalid user or password";
-			} else {
-				session().clear();
-				session("username",b.id);
-				session("password",b.password);
-				session("type",b.type);
-				return null;
-			}
-=======
 			String validado = "Error";
 			if (validarUser())
 				validado = null;
@@ -241,7 +145,6 @@ public class Application extends Controller {
 				return true;
 			}
 			return false;
->>>>>>> model_equipo-A
 		}
 
 		/*
