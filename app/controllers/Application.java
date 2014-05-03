@@ -70,20 +70,24 @@ public class Application extends Controller {
 
 	public static Result goCollaborator() {
 		String tipoUser = session("type");
-		if (tipoUser.equals("collaborator"))
-			return ok(collaborator.render(Observation.all(), Country.all(),
-					Indicator.all()));
-		else
-			return ok(index.render(Observation.all(), Country.all(),
-					Indicator.all()));
+//		if (tipoUser.equals("collaborator"))
+//			return ok(collaborator.render(Observation.all(), Country.all(),
+//					Indicator.all()));
+//		else
+//			return ok(index.render(Observation.all(), Country.all(),
+//					Indicator.all()));
+		return ok(collaborator.render(Observation.all(), Country.all(),
+				Indicator.all()));
 	}
 
 	public static Result goConsultor() {
 		String tipoUser = session("type");
-		// if (tipoUser.equals("consultor"))
-		// return ok(consultor.render(Observation.all(), Country.all(),
-		// Indicator.all()));
-		// else
+//		 if (tipoUser.equals("consultor"))
+//		 return ok(consultor.render(Observation.all(), Country.all(),
+//		 Indicator.all()));
+//		 else
+//		return ok(index.render(Observation.all(), Country.all(),
+//				Indicator.all()));
 		return ok(consultor.render(Observation.all(), Country.all(),
 				Indicator.all()));
 	}

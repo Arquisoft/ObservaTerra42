@@ -30,6 +30,9 @@ signout				= Cerrar sesión
 username			= Usuario
 password			= Contraseña
 
+consultor			= Consultor
+collaborator		= Colaborador
+
 find				= Buscar
 Stadistics			= Estadísticas
 

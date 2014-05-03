@@ -30,5 +30,8 @@ signout				= Sign out
 username			= Username
 password			= Password
 
+consultor			= Consultor
+collaborator		= Collaborator
+
 find				= Find
 Stadistics			= Stadistics

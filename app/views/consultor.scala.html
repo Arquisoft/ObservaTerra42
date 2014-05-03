@@ -3,15 +3,16 @@
 @import play.i18n._
 
 
-<h2>Hola soy un consultor</h2>
+<h2>@Messages.get("consultor")</h2>
 
-<p>@Messages.get("signout")</p>
+<button type="button">@Messages.get("signout")</button>
 
 <h3>Logo</h3>
 
 <p>
 	<label for="finder">@Messages.get("find"):</label>
 	<input type="text" name="finder" id="finder">
+	<button type="button">Find</button>
 </p>
 
 <h2>@Messages.get("list.observations")</h2>
