@@ -12,29 +12,25 @@ public class UserJdbcDao implements UserDao{
 	public UserJdbcDao(){
 		userJdbc=new UserJdbc();
 	}
-	
-	@Override
+
 	public List<User> getAllUsers() {
-		return userJdbc.getAllUsers();
+		// TODO Auto-generated method stub
+		return null;
 	}
 
-	@Override
 	public void insertUser(User user) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public void updateUser(User user) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public void deleteUser(User user) {
 		// TODO Auto-generated method stub
 		
 	}
-
 	
 }

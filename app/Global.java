@@ -1,7 +1,9 @@
 import play.*;
 import play.libs.*;
+import utils.ThreadWebReader;
 import utils.XMLParser;
 
+import java.io.IOException;
 import java.util.*;
 
 import com.avaje.ebean.*;
@@ -17,6 +19,10 @@ public class Global extends GlobalSettings {
 	static class InitialData {
 		public static void insert(Application app) {
 			//XMLParser.main(null);
+			
+//			ThreadWebReader wb = new ThreadWebReader();
+//			new Thread(wb).start();
+			
 			if (Country.all().isEmpty()) {
 
 				@SuppressWarnings("unchecked")

@@ -3,7 +3,9 @@ package utils;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.io.StringReader;
 
 import javax.xml.xpath.XPath;
@@ -17,35 +19,66 @@ import models.Observation;
 import org.xml.sax.InputSource;
 
 public class XMLParser {
-
-	public static void main(String[] args) {
-		try {
-			lectorXML();
+	
+	public static void main(String [ ] args)
+	{
+	      try {
+			lectorXML("app/utils/xml/1.xml");
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
+	
+	private static void writeFile(String name, String value){
+		FileWriter fichero = null;
+        PrintWriter pw = null;
+        try
+        {
+            fichero = new FileWriter(name);
+            fichero.write(value);
 
-	private static String lectorXML() throws IOException {
-		BufferedReader reader = new BufferedReader(new FileReader(
-				"app/utils/xml/health.xml"));
-		String line = null;
-		StringBuilder stringBuilder = new StringBuilder();
-
-		while ((line = reader.readLine()) != null) {
-
-			stringBuilder.append(line);
-		}
-		stringBuilder.delete(stringBuilder.length() - 17,
-				stringBuilder.length());
-		stringBuilder.delete(stringBuilder.length() - stringBuilder.length(),
-				stringBuilder.length() - stringBuilder.length() + 15);
-
-		separadaor(stringBuilder.toString());
-		return stringBuilder.toString();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+           try {
+           if (null != fichero)
+              fichero.close();
+           } catch (Exception e2) {
+              e2.printStackTrace();
+           }
+        }
+	}
+	
+	public static void XMLfromWeb(String URL) {
+		String code = URL;
+		int length = code.length();
+		String result = code.substring(length - length + 17, length - 15);
+		separador(result);
 	}
 
-	private static String separadaor(String code) {
+	public static void lectorXML(String fichero) throws IOException {
+		try {
+			BufferedReader reader = new BufferedReader(new FileReader(fichero));
+			String line = null;
+			StringBuilder stringBuilder = new StringBuilder();
+
+			while ((line = reader.readLine()) != null) {
+				stringBuilder.append(line);
+			}
+			stringBuilder.delete(stringBuilder.length() - 17,
+					stringBuilder.length());
+			stringBuilder.delete(
+					stringBuilder.length() - stringBuilder.length(),
+					stringBuilder.length() - stringBuilder.length() + 1128);
+
+			separador(stringBuilder.toString());
+		} catch (Exception e) {
+			System.out.println("Ocurrio algun problema con el fichero");
+		}
+	}
+
+	private static String separador(String code) {
 
 		String str = code;
 		String[] parts = str.split("</row>");
@@ -102,7 +135,7 @@ public class XMLParser {
 		}
 	}
 
-	public static void addDatos(String name, String abreviacion,
+	private static void addDatos(String name, String abreviacion,
 			String indicador, String valor) {
 
 		System.out.println(name);
