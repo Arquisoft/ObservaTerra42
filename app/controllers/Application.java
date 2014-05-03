@@ -11,12 +11,14 @@ import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.bars;
 import views.html.collaborator;
+import views.html.consultor;
 import views.html.country;
 import views.html.index;
 import views.html.indicator;
 import views.html.login;
 import views.html.observation;
 import views.html.register;
+import views.html.stadistics;
 
 public class Application extends Controller {
 
@@ -74,6 +76,21 @@ public class Application extends Controller {
 		else
 			return ok(index.render(Observation.all(), Country.all(),
 					Indicator.all()));
+	}
+
+	public static Result goConsultor() {
+		String tipoUser = session("type");
+		// if (tipoUser.equals("consultor"))
+		// return ok(consultor.render(Observation.all(), Country.all(),
+		// Indicator.all()));
+		// else
+		return ok(consultor.render(Observation.all(), Country.all(),
+				Indicator.all()));
+	}
+
+	public static Result goStadistics() {
+		return ok(stadistics.render(Observation.all(), Country.all(),
+				Indicator.all()));
 	}
 
 	public static Result validate() {
@@ -170,5 +187,9 @@ public class Application extends Controller {
 				return null;
 			}
 		}
+	}
+
+	public static class Finder {
+		public String words;
 	}
 }

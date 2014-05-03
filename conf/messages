@@ -26,5 +26,9 @@ read.excel.error	= Error reading excel file
 upload.excel.file	= Upload Excel File
 upload				= Upload
 signin				= Sign in
+signout				= Sign out
 username			= Username
 password			= Password
+
+find				= Find
+Stadistics			= Stadistics

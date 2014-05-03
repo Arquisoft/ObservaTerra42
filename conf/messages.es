@@ -26,6 +26,10 @@ read.excel.error	= Error al leer fichero Excel
 upload.excel.file	= Cargar fichero Excel
 upload				= Cargar
 signin				= Iniciar sesión
+signout				= Cerrar sesión
 username			= Usuario
 password			= Contraseña
+
+find				= Buscar
+Stadistics			= Estadísticas
 

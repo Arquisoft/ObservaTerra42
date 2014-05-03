@@ -12,6 +12,8 @@ POST    /login                      controllers.Application.authenticate()
 GET     /register                  	controllers.Application.register()
 POST    /register                   controllers.Application.validate()
 GET 	/collaborator				controllers.Application.goCollaborator()
+GET 	/consultor					controllers.Application.goConsultor()
+GET 	/stadistics					controllers.Application.goStadistics()
 
 POST	/country					controllers.Admin.newCountry()
 POST	/country/delete/:code         controllers.Admin.deleteCountry(code: String)
