@@ -1,4 +1,5 @@
-@(form: Form[Register])
+
+@(typeForm: Form[Register.TypeRegister], form: Form[Register.UserRegister])
 
 @import play.i18n._
 
@@ -9,12 +10,12 @@
     <body>
         <header>
         </header>
-    @helper.form(routes.Register.isValid) {
+    @helper.form(routes.Register.isValid()) {
    <h1>@Messages.get("register")</h1>
 	
 	<div>
 		<label for="type">@Messages.get("type")</label>
-		<select name="type" value="@form("type").value" id="type">
+		<select name="type" value="@typeForm("type").value" id="type">
   			<option value=""></option>
   			<option value="user">@Messages.get("typeUser")</option>
  			<option value="collaborator">@Messages.get("typeCollaborator")</option>
@@ -26,14 +27,14 @@
    <div>
        <button type="submit">@Messages.get("selectRegister")</button>
    </div>
-   @if(form.hasGlobalErrors) {
+   @if(typeForm.hasGlobalErrors) {
     <p class="error">
-        @form.globalError.message
+        @typeForm.globalError.message
     </p>
 }
 }
 @if(session().get("typeRegister")=="user"){
- @helper.form(routes.Register.userRegister) {
+ @helper.form(routes.Register.userRegister()) {
 
 	<div>
 	<label for="lusername">@Messages.get("username")</label>
