@@ -1,33 +1,5 @@
 <response>
 <row>
-<row _id="1" _uuid="6CCAAFCF-ABFB-4740-904F-DEBA5EE571A8" _position="1" _address="http://data.undp.org/resource/wxub-qc5k/1">
-<_2012_hdi_rank>1</_2012_hdi_rank>
-<name>Norway</name>
-<type>Ranked Country</type>
-<abbreviation>NOR</abbreviation>
-<_2012_hdi_value>0.955</_2012_hdi_value>
-<_2012_life_expectancy_at_birth>81.3</_2012_life_expectancy_at_birth>
-<_2010_mean_years_of_schooling>12.6</_2010_mean_years_of_schooling>
-<_2011_expected_years_of_schooling>17.5</_2011_expected_years_of_schooling>
-<_2012_gross_national_income_gni_per_capita>48688</_2012_gross_national_income_gni_per_capita>
-<_2012_gni_per_capita_rank_minus_hdi_rank>4</_2012_gni_per_capita_rank_minus_hdi_rank>
-<_2012_nonincome_hdi_value>0.977</_2012_nonincome_hdi_value>
-</row>
-<row _id="2" _uuid="C15355E9-66F8-48F1-B60F-6009BFD8AE59" _position="2" _address="http://data.undp.org/resource/wxub-qc5k/2">
-<_2012_hdi_rank>2</_2012_hdi_rank>
-<name>Australia</name>
-<type>Ranked Country</type>
-<abbreviation>AUS</abbreviation>
-<_2012_hdi_value>0.938</_2012_hdi_value>
-<_2012_life_expectancy_at_birth>82.0</_2012_life_expectancy_at_birth>
-<_2010_mean_years_of_schooling>12.0</_2010_mean_years_of_schooling>
-<_2010_mean_years_of_schooling_note>c</_2010_mean_years_of_schooling_note>
-<_2011_expected_years_of_schooling>19.6</_2011_expected_years_of_schooling>
-<_2011_expected_years_of_schooling_note>d</_2011_expected_years_of_schooling_note>
-<_2012_gross_national_income_gni_per_capita>34340</_2012_gross_national_income_gni_per_capita>
-<_2012_gni_per_capita_rank_minus_hdi_rank>15</_2012_gni_per_capita_rank_minus_hdi_rank>
-<_2012_nonincome_hdi_value>0.978</_2012_nonincome_hdi_value>
-</row>
 <row _id="3" _uuid="BC39A5FA-F5F6-4CCE-B9FD-B7621216AF84" _position="3" _address="http://data.undp.org/resource/wxub-qc5k/3">
 <_2012_hdi_rank>3</_2012_hdi_rank>
 <name>United States</name>

@@ -1,6 +1,6 @@
 import play.*;
 import play.libs.*;
-import utils.xmlParser;
+import utils.XMLParser;
 
 import java.util.*;
 
@@ -16,7 +16,7 @@ public class Global extends GlobalSettings {
 
 	static class InitialData {
 		public static void insert(Application app) {
-			//xmlParser.main(null);
+			//XMLParser.main(null);
 			if (Country.all().isEmpty()) {
 
 				@SuppressWarnings("unchecked")

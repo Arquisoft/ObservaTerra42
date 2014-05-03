@@ -16,20 +16,19 @@ import models.Observation;
 
 import org.xml.sax.InputSource;
 
-public class xmlParser {
+public class XMLParser {
 
 	public static void main(String[] args) {
 		try {
-			String xml = lectorXML();
+			lectorXML();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		// test1();
 	}
 
 	private static String lectorXML() throws IOException {
 		BufferedReader reader = new BufferedReader(new FileReader(
-				"app/utils/health.xml"));
+				"app/utils/xml/health.xml"));
 		String line = null;
 		StringBuilder stringBuilder = new StringBuilder();
 
@@ -49,22 +48,20 @@ public class xmlParser {
 	private static String separadaor(String code) {
 
 		String str = code;
-		String part = "";
-		int index = 0;
-		int end = 0;
 		String[] parts = str.split("</row>");
-		for(int i = 0; i<parts.length; i++)
-		{
+		for (int i = 0; i < parts.length; i++) {
 			parts[i] += "</row>";
-			test1(parts[i]);
+			analizadorPais(parts[i]);
 		}
 		return code;
 
 	}
 
-	private static void test1(String code) {
+	private static void analizadorPais(String code) {
 		String xml = code;
-		//System.out.println(xml);
+		String[] partes = xml
+				.split("[<_][0123456789][0123456789][0123456789][0123456789]_");
+		String[] indicatorName = xml.split("</");
 
 		XPathFactory xpathFactory = XPathFactory.newInstance();
 		XPath xpath = xpathFactory.newXPath();
@@ -72,42 +69,59 @@ public class xmlParser {
 		InputSource source = new InputSource(new StringReader(xml));
 		InputSource source2 = new InputSource(new StringReader(xml));
 		InputSource source3 = new InputSource(new StringReader(xml));
-		InputSource source4 = new InputSource(new StringReader(xml));
-		InputSource source5 = new InputSource(new StringReader(xml));
 
 		String name = null;
 		String abreviacion = null;
-		String valorIndicacion1 = null;
-		String valorIndicacion2 = null;
-		String valorIndicacion3 = null;
-		String i1 = "hd1 value";
-		String i2 = "life expectancy at birth";
-		String i3 = "mean years of schooling";
+
+		String[] indicador = null;
 		try {
+			int k = 5;
 			name = xpath.evaluate("/row/name", source);
 			abreviacion = xpath.evaluate("/row/abbreviation", source2);
-			valorIndicacion1 = xpath.evaluate("/row/_2012_hdi_value", source3);
-			valorIndicacion2 = xpath.evaluate("/row/_2012_life_expectancy_at_birth", source4);
-			valorIndicacion3 = xpath.evaluate("/row/_2010_mean_years_of_schooling", source5);
-		} catch (XPathExpressionException e) {
-			//e.printStackTrace();
-		}
+			for (int i = 4; i < partes.length - 1; i += 2) {
+				indicador = partes[i].split("><");
 
-		System.out.println("name = " + name + "; " + "abreviacion = " + abreviacion +
-				 " hdi value = " + valorIndicacion1 + " life expectancy at birth = " + valorIndicacion2 +
-				 " mean years of schooling = " + valorIndicacion3);
-		
-		if(Country.findByName(name) == null)
+				for (int x = 0; x < indicador.length; x++) {
+					String fechaza = indicatorName[k++].substring(0, 6);
+					String consulta = fechaza + indicador[x];
+					String indicationTitle = "";
+					String indicationValue = "";
+					String[] aux = indicador[x].split("_");
+					for (int j = 0; j < aux.length; j++) {
+						indicationTitle += aux[j] + " ";
+					}
+					indicationValue = xpath.evaluate("/row/" + consulta,
+							source3);
+					addDatos(name, abreviacion, indicationTitle,
+							indicationValue);
+					source3 = new InputSource(new StringReader(xml));
+				}
+			}
+		} catch (XPathExpressionException e) {
+			// e.printStackTrace();
+		}
+	}
+
+	public static void addDatos(String name, String abreviacion,
+			String indicador, String valor) {
+
+		System.out.println(name);
+		System.out.println(abreviacion);
+		System.out.println(indicador);
+		System.out.println(valor);
+		System.out.println();
+		Double valorFinal;
+		try {
+			valorFinal = Double.parseDouble(valor);
+		} catch (NumberFormatException e) {
+			return;
+		}
+		if (Country.findByName(name) == null)
 			Country.create(new Country(abreviacion, name));
-		if(Indicator.findByCode(i1) == null)
-			Indicator.create(new Indicator(i1, i1));
-		if(Indicator.findByCode(i2) == null)
-			Indicator.create(new Indicator(i2, i2));
-		if(Indicator.findByCode(i3) == null)
-			Indicator.create(new Indicator(i3, i3));
-		Observation.create(abreviacion, i1, Double.parseDouble(valorIndicacion1));
-		Observation.create(abreviacion, i2, Double.parseDouble(valorIndicacion2));
-		Observation.create(abreviacion, i3, Double.parseDouble(valorIndicacion3));
+		if (Indicator.findByCode(indicador) == null)
+			Indicator.create(new Indicator(indicador, indicador));
+		;
+		Observation.create(abreviacion, indicador, valorFinal);
 
 	}
 }
