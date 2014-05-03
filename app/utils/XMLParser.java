@@ -20,13 +20,19 @@ import org.xml.sax.InputSource;
 
 public class XMLParser {
 		
-	private static void writeFile(String name, String value){
+	/**
+	 * Metodo que le pasamos el nombre del fichero y los datos
+	 * que queremos guardar en ese fichero
+	 * @param name
+	 * @param resultado
+	 */
+	private static void writeFile(String name, StringBuilder resultado){
 		FileWriter fichero = null;
         PrintWriter pw = null;
         try
         {
             fichero = new FileWriter(name);
-            fichero.write(value);
+            fichero.write(resultado.toString());
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -40,13 +46,22 @@ public class XMLParser {
         }
 	}
 	
-	public static void XMLfromWeb(String URL) {
-		String code = URL;
+	/**
+	 * Metodo que divide elimina del string, las dos primeras etiquetas
+	 * @param resultado
+	 */
+	public static void XMLfromWeb(StringBuilder resultado) {
+		String code = resultado.toString();
 		int length = code.length();
 		String result = code.substring(length - length + 17, length - 15);
 		separador(result);
 	}
 
+	/**
+	 * Metodo que lee un fichero y quita los dos primeras etiquetas
+	 * @param fichero
+	 * @throws IOException
+	 */
 	public static void lectorXML(String fichero) throws IOException {
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader(fichero));
@@ -68,6 +83,11 @@ public class XMLParser {
 		}
 	}
 
+	/**
+	 * Metodo que divide el XML por paises
+	 * @param code
+	 * @return
+	 */
 	private static String separador(String code) {
 
 		String str = code;
@@ -80,6 +100,11 @@ public class XMLParser {
 
 	}
 
+	/**
+	 * Metodo que parsea el xml del pais, y consulta el nombre, abreviacion y 
+	 * el resto de indicadores que se proporcionen al mismo
+	 * @param code
+	 */
 	private static void analizadorPais(String code) {
 		String xml = code;
 		String[] partes = xml
@@ -125,6 +150,13 @@ public class XMLParser {
 		}
 	}
 
+	/**
+	 * Metodo que añade los datos al modelo
+	 * @param name
+	 * @param abreviacion
+	 * @param indicador
+	 * @param valor
+	 */
 	private static void addDatos(String name, String abreviacion,
 			String indicador, String valor) {
 

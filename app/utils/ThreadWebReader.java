@@ -25,15 +25,19 @@ public class ThreadWebReader implements Runnable{
 	}
 	
 	public void run() {
-
-		saveFile(URL1, 1);
-		saveFile(URL2, 2);
-		saveFile(URL3, 3);
-
-
+		analizeURL(URL1, 1);
+		analizeURL(URL2, 2);
+		analizeURL(URL3, 3);
 	}
 
-	private void saveFile(String URL, int pos) {
+	/**
+	 * Metodo que analiza una URL, mira si existe un fichero con ese nombre,
+	 * si existe lo mira y comprueba si hay cambios, si no hay termina, si los hay
+	 * añade los nuevos
+	 * @param URL
+	 * @param pos
+	 */
+	private void analizeURL(String URL, int pos) {
 		URL oracle;
 		try {
 			oracle = new URL(URL);
@@ -68,6 +72,12 @@ public class ThreadWebReader implements Runnable{
 		}
 	}
 	
+	/**
+	 * Metodo que lee un fichero, y devuelve el String con los datos del mismo
+	 * @param file
+	 * @return
+	 * @throws IOException
+	 */
 	private static String lectorFichero(String file) throws IOException {
 		BufferedReader reader = new BufferedReader(new FileReader(
 				"app/utils/xml/" + file));
@@ -80,6 +90,12 @@ public class ThreadWebReader implements Runnable{
 		return stringBuilder.toString();
 	}
 	
+	/**
+	 * Metodo que le pasamos el nombre del fichero y los datos
+	 * que queremos guardar en ese fichero
+	 * @param name
+	 * @param resultado
+	 */
 	private static void writeFile(String name, StringBuilder resultado){
 		FileWriter fichero = null;
         PrintWriter pw = null;

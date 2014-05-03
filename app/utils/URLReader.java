@@ -9,6 +9,13 @@ import java.net.URLConnection;
 
 public class URLReader {	
 
+	/**
+	 * Metodo que lee un String que se le pasa por parametro, este String es la URL
+	 * de la pagina que queremos analizar. Lee toda la pagina y la almacena
+	 * @param URL
+	 * @throws MalformedURLException
+	 * @throws IOException
+	 */
 	public static void readerFromWeb(String URL) throws MalformedURLException,
 			IOException {
 		URL oracle = new URL(URL);
@@ -16,11 +23,11 @@ public class URLReader {
         BufferedReader in = new BufferedReader(new InputStreamReader(
                                     yc.getInputStream()));
         String inputLine;
-        String resultado = "";
+        StringBuilder resultado = new StringBuilder();
         System.out.println();
         while ((inputLine = in.readLine()) != null){
             System.out.println(inputLine);
-            resultado += inputLine;
+            resultado.append(inputLine);
         }
         in.close();
         if(URL.contains("xml")){
