@@ -19,17 +19,7 @@ import models.Observation;
 import org.xml.sax.InputSource;
 
 public class XMLParser {
-	
-	public static void main(String [ ] args)
-	{
-	      try {
-			lectorXML("app/utils/xml/1.xml");
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	
+		
 	private static void writeFile(String name, String value){
 		FileWriter fichero = null;
         PrintWriter pw = null;

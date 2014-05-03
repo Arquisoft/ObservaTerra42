@@ -9,6 +9,9 @@ import java.io.PrintWriter;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 
 public class ThreadWebReader implements Runnable{
@@ -22,9 +25,11 @@ public class ThreadWebReader implements Runnable{
 	}
 	
 	public void run() {
+
 		saveFile(URL1, 1);
-//		saveFile(URL2, 2);
-//		saveFile(URL3, 3);
+		saveFile(URL2, 2);
+		saveFile(URL3, 3);
+
 
 	}
 
@@ -36,12 +41,15 @@ public class ThreadWebReader implements Runnable{
 	        BufferedReader in = new BufferedReader(new InputStreamReader(
 	                                    yc.getInputStream()));
 	        String inputLine;
-	        String resultado = "";
+	        StringBuilder resultado = new StringBuilder();
 	        System.out.println();
 	        while ((inputLine = in.readLine()) != null){
-	            System.out.println(inputLine);
-	            resultado += inputLine;
+	        	System.out.println(inputLine);
+	            resultado.append(inputLine);
 	        }
+        	String fichero = "app/utils/xml/" + pos +".xml";
+	        writeFile(fichero, resultado);
+	        ;/*
 	        try{
 	        	String resultadoOld = lectorFichero(pos + ".xml");
 	        	if(resultadoOld.equals(resultado))
@@ -49,10 +57,10 @@ public class ThreadWebReader implements Runnable{
 	        	//AHORA HABRIA QUE COMPARARLOS y AÑADIR LO NUEVO
 	        }catch(IOException e){
 	        	String fichero = "app/utils/xml/" + pos +".xml";
-	        	writeFile(fichero, resultado);
+	        	writeFile(fichero, datos);
 	        	XMLParser.lectorXML(fichero);
 	        }
-	        in.close();
+	        in.close();*/
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -72,13 +80,13 @@ public class ThreadWebReader implements Runnable{
 		return stringBuilder.toString();
 	}
 	
-	private static void writeFile(String name, String value){
+	private static void writeFile(String name, StringBuilder resultado){
 		FileWriter fichero = null;
         PrintWriter pw = null;
         try
         {
             fichero = new FileWriter(name);
-            fichero.write(value);
+            fichero.write(resultado.toString());
 
         } catch (Exception e) {
             e.printStackTrace();

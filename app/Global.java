@@ -6,6 +6,8 @@ import utils.XMLParser;
 import java.io.IOException;
 import java.util.*;
 
+import org.joda.time.DateTime;
+
 import com.avaje.ebean.*;
 
 import models.*;
@@ -18,11 +20,15 @@ public class Global extends GlobalSettings {
 
 	static class InitialData {
 		public static void insert(Application app) {
-			//XMLParser.main(null);
-			
-//			ThreadWebReader wb = new ThreadWebReader();
-//			new Thread(wb).start();
-			
+			// XMLParser.main(null);
+
+			DateTime dt = new DateTime(); // current time
+			int hours = dt.getHourOfDay(); // gets hour of day
+			if (hours % 2 == 0) {
+				ThreadWebReader wb = new ThreadWebReader();
+				new Thread(wb).start();
+			}
+
 			if (Country.all().isEmpty()) {
 
 				@SuppressWarnings("unchecked")
@@ -38,20 +44,24 @@ public class Global extends GlobalSettings {
 
 			}
 			if (Collaborator.all().isEmpty()) {
-				new Collaborator("spolan", "name", "spolan", "email",
-						true, "", "", "", "").save();
-				new Collaborator("sandoval", "name", "sandoval", "email"
-						, true, "", "", "", "").save();
-				new Collaborator("hector", "name", "hector", "email",
-						true, "", "", "", "").save();
+				new Collaborator("spolan", "name", "spolan", "email", true, "",
+						"", "", "").save();
+				new Collaborator("sandoval", "name", "sandoval", "email", true,
+						"", "", "", "").save();
+				new Collaborator("hector", "name", "hector", "email", true, "",
+						"", "", "").save();
 			}
 			if (Business.all().isEmpty()) {
-				new Business("pepe","pepe","pepe","email",true,"pepe","","","","").save();
-				new Business("manolo","","manolo","email",true,"","","","","").save();
-				new Business("luis","","luis","email",true,"","","","","").save();
+				new Business("pepe", "pepe", "pepe", "email", true, "pepe", "",
+						"", "", "").save();
+				new Business("manolo", "", "manolo", "email", true, "", "", "",
+						"", "").save();
+				new Business("luis", "", "luis", "email", true, "", "", "", "",
+						"").save();
 			}
 			if (User.all().isEmpty()) {
-				new User("admin","admin","admin","admin@admin.com","admin",true).save();
+				new User("admin", "admin", "admin", "admin@admin.com", "admin",
+						true).save();
 			}
 		}
 	}
