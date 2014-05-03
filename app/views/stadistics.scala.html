@@ -3,3 +3,51 @@
 @import play.i18n._
 
 <h1>@Messages.get("Stadistics")</h1>
+
+<h2>Indicator:</h2> 
+<select>
+  <option value="criminality">Criminality</option>
+  <option value="wealth">Wealth</option>
+  <option value="extension">Extension</option>
+</select>
+
+<h2>Countries</h2>
+<select>
+  <option value="country1">Country 1</option>
+  <option value="country2">Country 2</option>
+  <option value="country3">Country 3</option>
+</select> <button type="button">Add Country</button>
+
+<h2>List of selected countries</h2>
+<table>
+	<tr>	 
+		<th>@Messages.get("Country")</th>
+</tr>
+	<tr> <td>Country 1</td> </tr> 
+	<tr> <td>Country 2</td> </tr>
+</table>
+
+
+<button type="button">Find</button>
+
+<h2>Bars graphic</h2>
+<table>
+	<tr>	 
+		<th>@Messages.get("Country")</th>
+		<th>@Messages.get("Indicator")</th>
+</tr>
+	<tr> 
+		<td>Country 1</td>
+		<td>20</td> 
+	</tr> 
+	<tr> 
+		<td>Country 1</td>
+		<td>50</td> 
+	</tr>
+</table>
+
+<h3>Download this information</h3>
+<button type="button">Download</button>
+
+
+
