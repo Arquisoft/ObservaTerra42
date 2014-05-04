@@ -1,5 +1,5 @@
 
-@(typeForm: Form[Register.TypeRegister], form: Form[Register.UserRegister])
+@(typeForm: Form[Register.TypeRegister], form: Form[Register.UserRegister], businessForm: Form[Register.BusinessRegister], collaboratorForm: Form[Register.CollaboratorRegister])
 
 @import play.i18n._
 
@@ -67,100 +67,100 @@
 }
 
 @if(session().get("typeRegister")=="collaborator"){
-	@helper.form(routes.Register.userRegister()) {
+	@helper.form(routes.Register.collaboratorRegister()) {
 
 	<div>
 		<label for="lusername">@Messages.get("username")</label>
-		<input type="text" name="username" value="@form("username").value" id="username">
+		<input type="text" name="username" value="@collaboratorForm("username").value" id="username">
 	</div>
 	<div>
   		<label for="lpassword">@Messages.get("password")</label>
-   		<input type="password" name="password" value="@form("password").value"id="password">
+   		<input type="password" name="password" value="@collaboratorForm("password").value"id="password">
 	</div>
 	<div>
 		<label for="lname">@Messages.get("name")</label>
-   		<input type="text" name="name" value="@form("name").value" id="name">
+   		<input type="text" name="name" value="@collaboratorForm("name").value" id="name">
 	</div>
 	<div>
   		<label for="email">@Messages.get("email")</label>
-   		<input type="email" name="email" value="@form("email").value"id="email">
+   		<input type="email" name="email" value="@collaboratorForm("email").value"id="email">
 	</div>
 	<div>
   		<label for="phone">@Messages.get("phone")</label>
-   		<input type="number" name="phone" value="@form("phone").value"id="phone">
+   		<input type="number" name="phone" value="@collaboratorForm("phone").value"id="phone">
 	</div>
 	<div>
   		<label for="address">@Messages.get("address")</label>
-   		<input type="text" name="addressl" value="@form("address").value"id="address">
+   		<input type="text" name="addressl" value="@collaboratorForm("address").value"id="address">
 	</div>
    <div>
   		<label for="organization">@Messages.get("organization")</label>
-   		<input type="text" name="organization" value="@form("organization").value"id="organization">
+   		<input type="text" name="organization" value="@collaboratorForm("organization").value"id="organization">
 	</div>
 	<div>
   		<label for="specialization">@Messages.get("specialization")</label>
-   		<input type="text" name="specialization" value="@form("specialization").value"id="specialization">
+   		<input type="text" name="specialization" value="@collaboratorForm("specialization").value"id="specialization">
 	</div>
    
    <div>
        <button type="submit">@Messages.get("register")</button>
    </div>
    
-	@if(form.hasGlobalErrors) {
+	@if(collaboratorForm.hasGlobalErrors) {
 		<p class="error">
-        	@form.globalError.message
+        	@collaboratorForm.globalError.message
     	</p>
 		}
 	}	
 }
 
 @if(session().get("typeRegister")=="business"){
-	@helper.form(routes.Register.userRegister()) {
+	@helper.form(routes.Register.businessRegister()) {
 
 	<div>
 		<label for="lusername">@Messages.get("username")</label>
-		<input type="text" name="username" value="@form("username").value" id="username">
+		<input type="text" name="username" value="@businessForm("username").value" id="username">
 	</div>
 	<div>
   		<label for="lpassword">@Messages.get("password")</label>
-   		<input type="password" name="password" value="@form("password").value"id="password">
+   		<input type="password" name="password" value="@businessForm("password").value"id="password">
 	</div>
 	<div>
 		<label for="lname">@Messages.get("name")</label>
-   		<input type="text" name="name" value="@form("name").value" id="name">
+   		<input type="text" name="name" value="@businessForm("name").value" id="name">
 	</div>
 	<div>
   		<label for="email">@Messages.get("email")</label>
-   		<input type="email" name="email" value="@form("email").value"id="email">
+   		<input type="email" name="email" value="@businessForm("email").value"id="email">
 	</div>
 	<div>
   		<label for="phone">@Messages.get("phone")</label>
-   		<input type="number" name="phone" value="@form("phone").value"id="phone">
+   		<input type="number" name="phone" value="@businessForm("phone").value"id="phone">
 	</div>
 	<div>
   		<label for="address">@Messages.get("address")</label>
-   		<input type="text" name="addressl" value="@form("address").value"id="address">
+   		<input type="text" name="addressl" value="@businessForm("address").value"id="address">
 	</div>
    <div>
   		<label for="description">@Messages.get("description")</label>
-   		<input type="text" name="description" value="@form("description").value"id="description">
+   		<input type="text" name="description" value="@businessForm("description").value"id="description">
 	</div>
 	<div>
   		<label for="webSite">@Messages.get("webSite")</label>
-   		<input type="text" name="webSite" value="@form("webSite").value"id="webSite">
+   		<input type="text" name="webSite" value="@businessForm("webSite").value"id="webSite">
 	</div>
 	<div>
   		<label for="nif">@Messages.get("nif")</label>
-   		<input type="text" name="nif" value="@form("nif").value"id="nif">
+   		<input type="text" name="nif" value="@businessForm("nif").value"id="nif">
 	</div>
 
    <div>
        <button type="submit">@Messages.get("register")</button>
    </div>
    
-	@if(form.hasGlobalErrors) {
+	@if(businessForm.hasGlobalErrors) {
 		<p class="error">
-        	@form.globalError.message
+        	@businessForm.globalError.message
     	</p>
 		}
 	}	

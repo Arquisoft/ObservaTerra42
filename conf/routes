@@ -13,6 +13,8 @@ POST    /login                      controllers.Login.authenticate()
 GET     /register                  	controllers.Register.register()
 POST    /register                   controllers.Register.isValid()
 POST	/register					controllers.Register.userRegister()
+POST	/register					controllers.Register.businessRegister()
+POST	/register					controllers.Register.collaboratorRegister()
 
 GET		/url						controllers.Application.url()
 POST	/url						controllers.Application.analizeURL()
