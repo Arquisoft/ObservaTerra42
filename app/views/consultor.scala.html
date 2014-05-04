@@ -15,10 +15,28 @@
 	<button type="button">Find</button>
 </p>
 
+<h2>Indicator:</h2> 
+<select>
+  <option value="criminality">Criminality</option>
+  <option value="wealth">Wealth</option>
+  <option value="extension">Extension</option>
+</select>
+
+<h2>Areas</h2>
+<select>
+  <option value="country1">Country 1</option>
+  <option value="country2">Country 2</option>
+  <option value="area3">Area 3</option>
+</select> <button type="button">Add Area</button>
+
+Aqui una lista con las areas seleccionadas
+
+<button type="button">Show observations</button>
+
 <h2>@Messages.get("list.observations")</h2>
 <table>
 <tr>	 
-<th>@Messages.get("Country")</th>
+<th>@Messages.get("Area")</th>
 <th>@Messages.get("Indicator")</th>
 <th>@Messages.get("Value")Value</th>
 </tr>
@@ -29,16 +47,6 @@
 		<td>@observation.obsValue</td>
 	</tr> 
 }
-</table>
-
-<h2>@Messages.get("list.countries")</h2>
-<table>
-<tr>	 
-<th>@Messages.get("Country")</th>
-</tr>
-	<tr> <td>Country 1</td> </tr> 
-	<tr> <td>Country 2</td> </tr> 
-	<tr> <td>Country 3</td> </tr> 
 </table>
 
 <h2>@Messages.get("Stadistics")</h2>
