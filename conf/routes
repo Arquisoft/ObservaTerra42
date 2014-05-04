@@ -7,6 +7,15 @@ GET		/country					controllers.Application.showCountries()
 GET		/indicator					controllers.Application.showIndicators()
 GET		/observation				controllers.Application.showObservations()
 GET     /bars/:indicator   			controllers.Application.bars(indicator:String)
+GET     /login                  	controllers.Application.login()
+POST    /login                      controllers.Application.authenticate()
+GET     /register                  	controllers.Application.register()
+POST    /register                   controllers.Application.validate()
+GET 	/collaborator				controllers.Application.goCollaborator()
+GET 	/consultor					controllers.Application.goConsultor()
+GET 	/stadistics					controllers.Application.goStadistics()
+GET 	/admin						controllers.Application.goAdmin()
+GET 	/admin_users				controllers.Application.goAdminUsers()
 
 
 POST	/country					controllers.Admin.newCountry()
@@ -25,6 +34,11 @@ GET		/api/country/:code				controllers.API.country(code: String)
 PUT		/api/country/:code				controllers.API.updateCountry(code: String)
 POST	/api/country					controllers.API.addCountry()
 DELETE	/api/country/:code				controllers.API.delCountry(code: String)
+GET		/api/collaborator				controllers.API.collaborators()
+GET		/api/business					controllers.API.business()
+GET		/api/users						controllers.API.users()
+
+
 
 GET		/api/observation						controllers.API.observations()
 GET		/api/observation/indicator/:indicator	controllers.API.observationsByIndicator(indicator: String)

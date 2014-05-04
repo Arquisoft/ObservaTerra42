@@ -6,6 +6,7 @@ Country				= Country
 Indicator			= Indicator
 Value				= Value
 Bar.chart			= Bar chart
+admin				= Administrator
 Admin				= Admin
 list.countries		= List of Countries
 add.country 		= Add Country
@@ -25,3 +26,15 @@ file.uploaded		= Uploaded file with {0} observations
 read.excel.error	= Error reading excel file
 upload.excel.file	= Upload Excel File
 upload				= Upload
+signin				= Sign in
+signout				= Sign out
+username			= Username
+password			= Password
+
+consultor			= Consultor
+collaborator		= Collaborator
+admin_users			= Administrate users
+user				= User
+
+find				= Find
+Stadistics			= Stadistics

@@ -5,6 +5,7 @@ Country				= País
 Indicator			= Indicador
 Value				= Valor
 Bar.chart			= Gráfico de barras
+admin				= Administrador
 Admin				= Administrar
 countries 			= Países
 list.countries		= Lista de países
@@ -25,4 +26,16 @@ file.uploaded		= Fichero subido con {0} observaciones
 read.excel.error	= Error al leer fichero Excel
 upload.excel.file	= Cargar fichero Excel
 upload				= Cargar
+signin				= Iniciar sesión
+signout				= Cerrar sesión
+username			= Usuario
+password			= Contraseña
+
+consultor			= Consultor
+collaborator		= Colaborador
+admin_users			= Administrar usuarios
+user				= Usuario
+
+find				= Buscar
+Stadistics			= Estadísticas
 
