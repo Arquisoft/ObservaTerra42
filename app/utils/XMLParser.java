@@ -28,7 +28,7 @@ public class XMLParser {
 	 * @param name
 	 * @param resultado
 	 */
-	private static void writeFile(String name, StringBuilder resultado) {
+	static void writeFile(String name, StringBuilder resultado) {
 		FileWriter fichero = null;
 		PrintWriter pw = null;
 		try {
@@ -80,11 +80,9 @@ public class XMLParser {
 					stringBuilder.length() - stringBuilder.length(),
 					stringBuilder.length() - stringBuilder.length() + 1128);
 
-			//System.out.println(stringBuilder);
 			separador(stringBuilder.toString());
 		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("Ocurrio algun problema con el fichero");
+			System.out.println("Hay algun problema con la codificacion de caracteres (Ej. UTF-8)");
 		}
 	}
 
@@ -172,15 +170,7 @@ public class XMLParser {
 	 */
 	private static void addDatos(String name, String abreviacion,
 			String indicador, String valor) {
-
-		System.out.println(name);
-		System.out.println(abreviacion);
-//		if(abreviacion.equals(""))
-//			abreviacion = name.substring(0, 2);
-//		System.out.println(abreviacion);
-//		System.out.println(indicador);
-//		System.out.println(valor);
-//		System.out.println();
+		
 		Double valorFinal;
 		try {
 			valorFinal = Double.parseDouble(valor);

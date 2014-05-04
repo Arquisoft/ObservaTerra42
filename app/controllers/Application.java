@@ -17,6 +17,8 @@ import play.mvc.Http.MultipartFormData.FilePart;
 import play.mvc.Http.Request;
 import play.mvc.Result;
 import utils.ExcelReader;
+import utils.ThreadWebReader;
+import utils.URLReader;
 import play.data.*;
 
 public class Application extends Controller {
@@ -54,6 +56,19 @@ public class Application extends Controller {
 	public static Result login() {
 		return ok(login.render(Form.form(Login.class)));
 	}
+	
+	/**/
+	public static Result url() {
+		return ok(url.render(Form.form(URLform.class)));
+	}
+	
+	public static Result actualizarPaginas(){
+		for (int i = 0; i < 3; i++) {
+			ThreadWebReader wb = new ThreadWebReader();
+			new Thread(wb).start();
+		}
+		return index();	
+		}
 
 	/**/
 	public static Result authenticate() {
@@ -64,6 +79,19 @@ public class Application extends Controller {
 			return redirect(routes.Application.index());
 		}
 	}
+	public static Result analizeURL() {
+		Form<URLform> r = Form.form(URLform.class).bindFromRequest();
+		if (r.hasErrors()) {
+			return badRequest(url.render(r));
+		} else {
+			String url = r.get().urlF;
+			URLReader.readerFromWeb(url);
+			//URLReader.google();
+			return redirect(routes.Application.index());
+		}
+
+	}
+
 
 	public static Result validate() {
 		Form<Register> r = Form.form(Register.class).bindFromRequest();
@@ -102,6 +130,10 @@ public class Application extends Controller {
 		public String email;
 		public String type;
 
+	}
+	
+	public static class URLform {
+		public String urlF;
 	}
 
 	public static class Login {

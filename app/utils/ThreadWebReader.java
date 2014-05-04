@@ -50,7 +50,6 @@ public class ThreadWebReader implements Runnable{
 	                                    yc.getInputStream()));
 	        String inputLine;
 	        StringBuilder resultado = new StringBuilder();
-	        System.out.println();
 	        while ((inputLine = in.readLine()) != null){
 	            resultado.append(inputLine);
 	        }
@@ -62,9 +61,7 @@ public class ThreadWebReader implements Runnable{
 	        		String fichero = "app/utils/xml/" + pos +".xml";
 	        		Path target = Paths.get(fichero);
 	        		Files.deleteIfExists(target);
-	        		System.out.println("SE BORRO");
 		        	writeFile(fichero, resultado);
-		        	System.out.println("SE CREO LA NUEVA");
 		        	XMLParser.lectorXML(fichero);
 	        	}
 	        }catch(IOException e){
