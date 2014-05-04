@@ -2,8 +2,30 @@
 
 @import play.i18n._
 
-@main(Messages.get("list.indicators")) {
-
+<!DOCTYPE html>
+<html>
+    <head>
+         <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+         <link rel="stylesheet" media="screen" href='@routes.Assets.at("stylesheets/bars.css")' >
+             
+                <link rel="stylesheet" media="screen" href='@routes.Assets.at("stylesheets/style.css")' >
+      
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+        <script src="@routes.Assets.at("javascripts/jquery-1.9.0.min.js")" type="text/javascript"></script>
+    </head>
+    <body>
+    <header>
+    <div class="breadcrumbs">
+        <a href="/"><img src="@routes.Assets.at("images/observaTerra.png")" alt="ObservaTerraLogo" />
+        
+      </div>
+     </header>
+         <div class="header">
+<h1 align="center">ObservaTerra</h1></a>
+     </div>  
+<div class="middle">
+    <a href="/"><img src="@routes.Assets.at("images/indicadores.jpg")" alt="IndicadoresLogo" align="center" /></p>
+<p align="center">
 <h1>@Messages.get("indicators")</h1>
 <table>
 @for(ind <- indicators) { 
@@ -19,8 +41,10 @@
    
 }
 </table>
-
-<h2>@{Messages.get("add.indicator")}</h2>
+</div>
+    <nav>
+    <div class="right">
+<h1>@{Messages.get("add.indicator")}</h1>
     
 	@helper.form(action = routes.Admin.newIndicator()) {
 	
@@ -30,5 +54,9 @@
         <input type="submit" value="@{Messages.get("create")}">
         
     }    
-    
-}
+    </div>
+    </nav>
+     <footer>
+    </footer>
+    </body>
+  </html>
