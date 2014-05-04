@@ -13,7 +13,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 public class Collaborator extends Users {
 
 	public String phone;
-	public String adress;
+	public String address;
 	public String organization;
 	public String specialization;
 
@@ -23,7 +23,7 @@ public class Collaborator extends Users {
 			String specialization) {
 		super(id, name, password, email, "collaborator", active);
 		this.phone=phone;
-		this.adress = adress;
+		this.address = adress;
 		this.organization = organization;
 		this.specialization = specialization;
 	}

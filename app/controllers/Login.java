@@ -65,7 +65,7 @@ public class Login extends Controller{
 			session().put("email", colaborador.email);
 			session().put("type", colaborador.id);
 			session().put("phone", colaborador.phone);
-			session().put("adress", colaborador.adress);
+			session().put("adress", colaborador.address);
 			session().put("organization", colaborador.organization);
 			session().put("specialization", colaborador.specialization);
 			return true;

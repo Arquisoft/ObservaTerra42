@@ -22,12 +22,15 @@ public class Global extends GlobalSettings {
 		public static void insert(Application app) {
 			// XMLParser.main(null);
 
-			DateTime dt = new DateTime(); // current time
-			int hours = dt.getHourOfDay(); // gets hour of day
-			if (hours % 2 == 0) {
-				ThreadWebReader wb = new ThreadWebReader();
-				new Thread(wb).start();
-			}
+//			DateTime dt = new DateTime(); // current time
+//			int hours = dt.getHourOfDay(); // gets hour of day
+//			if (hours % 2 == 0) {
+//				ThreadWebReader wb = new ThreadWebReader();
+//				new Thread(wb).start();
+//			}
+			
+			ThreadWebReader wb = new ThreadWebReader();
+			new Thread(wb).start();
 
 			if (Country.all().isEmpty()) {
 

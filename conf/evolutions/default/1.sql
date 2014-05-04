@@ -26,7 +26,7 @@ create table collaborator (
   type                      varchar(255),
   active                    boolean,
   phone                     varchar(255),
-  adress                    varchar(255),
+  address                   varchar(255),
   organization              varchar(255),
   specialization            varchar(255),
   constraint pk_collaborator primary key (id))
