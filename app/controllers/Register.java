@@ -32,7 +32,6 @@ public class Register extends Controller {
 			return badRequest(register.render(regType, regUser));
 		} else {
 			return badRequest(register.render(regType, regUser));
-			// return redirect(routes.Application.index());
 		}
 
 	}
@@ -45,13 +44,11 @@ public class Register extends Controller {
 		} else {
 
 			return badRequest(register.render(regType, regUser));
-			// return redirect(routes.Application.index());
 		}
 
 	}
 
 	public static Result register() {
-		// return ok(register.render(Form.form(Register.class)));
 		regUser = Form.form(UserRegister.class).bindFromRequest();
 		regType = Form.form(TypeRegister.class).bindFromRequest();
 
@@ -65,17 +62,18 @@ public class Register extends Controller {
 		public String email;
 
 		public String validate() {
-			String validado = "Error";
-			if (username != null && username.compareTo("") != 0) {
-				validado = null;
-				session().put("typeRegister", "user");
-			}
+			String validado = "";
 
-			else {
-				validado = "";
+			if (username != null && password != null && name != null
+					&& email != null) {
+				validado = "Usuario Registrado";
+				if (username.compareTo("") == 0 && password.compareTo("") == 0
+						&& name.compareTo("") == 0 && email.compareTo("") == 0)
+					return "Error, todos los campos son obligatorios";
+				//Aqui se añade el usuario
 			}
-			
 			return validado;
+
 		}
 
 		public String getUsername() {
@@ -115,18 +113,26 @@ public class Register extends Controller {
 		public String type;
 
 		public String validate() {
-			String validado = "Error";
-			if (type != null && type.compareTo("") != 0) {
+			String validado = "";
+
+			if (type == null)
+				return null;
+
+			if (session().get("typeRegister") != null
+					&& session().get("typeRegister").compareTo("empty") != 0) {
 				session().put("typeRegister", type);
-				validado = null;
-			} else if (session().get("typeRegister") != null
-					&& session().get("typeRegister").compareTo("") != 0
-					&& session().get("typeRegister").compareTo("user") == 0) {
-				session().put("typeRegister", "");
-			} else {
-				session().put("typeRegister", "");
-				validado="";
+				return null;
 			}
+
+			if (type != null && type.compareTo("empty") != 0) {
+				session().put("typeRegister", type);
+				return null;
+			}
+			if (type != null && type.compareTo("empty") == 0) {
+				session().put("typeRegister", type);
+				return null;
+			}
+
 			return validado;
 		}
 	}

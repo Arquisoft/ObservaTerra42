@@ -46,9 +46,7 @@ public class ThreadWebReader implements Runnable{
 	                                    yc.getInputStream()));
 	        String inputLine;
 	        StringBuilder resultado = new StringBuilder();
-	        System.out.println();
 	        while ((inputLine = in.readLine()) != null){
-	        	System.out.println(inputLine);
 	            resultado.append(inputLine);
 	        }
         	String fichero = "app/utils/xml/" + pos +".xml";
