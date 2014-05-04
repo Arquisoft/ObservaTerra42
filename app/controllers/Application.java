@@ -12,6 +12,7 @@ import play.mvc.Result;
 import views.html.bars;
 import views.html.collaborator;
 import views.html.consultor;
+import views.html.consultor2;
 import views.html.country;
 import views.html.index;
 import views.html.indicator;
@@ -89,6 +90,17 @@ public class Application extends Controller {
 //		return ok(index.render(Observation.all(), Country.all(),
 //				Indicator.all()));
 		return ok(consultor.render(Observation.all(), Country.all(),
+				Indicator.all()));
+	}
+	public static Result goConsultor2() {
+		String tipoUser = session("type");
+//		 if (tipoUser.equals("consultor"))
+//		 return ok(consultor.render(Observation.all(), Country.all(),
+//		 Indicator.all()));
+//		 else
+//		return ok(index.render(Observation.all(), Country.all(),
+//				Indicator.all()));
+		return ok(consultor2.render(Observation.all(), Country.all(),
 				Indicator.all()));
 	}
 
