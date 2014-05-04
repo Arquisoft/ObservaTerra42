@@ -6,6 +6,7 @@ Country				= Country
 Indicator			= Indicator
 Value				= Value
 Bar.chart			= Bar chart
+admin				= Administrator
 Admin				= Admin
 list.countries		= List of Countries
 add.country 		= Add Country
@@ -32,6 +33,8 @@ password			= Password
 
 consultor			= Consultor
 collaborator		= Collaborator
+admin_users			= Administrate users
+user				= User
 
 find				= Find
 Stadistics			= Stadistics

@@ -20,6 +20,9 @@ import views.html.login;
 import views.html.observation;
 import views.html.register;
 import views.html.stadistics;
+import views.html.admin;
+import views.html.admin_users;
+
 
 public class Application extends Controller {
 
@@ -92,6 +95,7 @@ public class Application extends Controller {
 		return ok(consultor.render(Observation.all(), Country.all(),
 				Indicator.all()));
 	}
+	
 	public static Result goConsultor2() {
 		String tipoUser = session("type");
 //		 if (tipoUser.equals("consultor"))
@@ -103,7 +107,31 @@ public class Application extends Controller {
 		return ok(consultor2.render(Observation.all(), Country.all(),
 				Indicator.all()));
 	}
-
+	
+	public static Result goAdmin() {
+		String tipoUser = session("type");
+//		 if (tipoUser.equals("admin"))
+//		 return ok(admin.render(Observation.all(), Country.all(),
+//		 Indicator.all()));
+//		 else
+//		return ok(index.render(Observation.all(), Country.all(),
+//				Indicator.all()));
+		return ok(admin.render(Observation.all(), Country.all(),
+				Indicator.all()));
+	}
+	
+	public static Result goAdminUsers() {
+		String tipoUser = session("type");
+//		 if (tipoUser.equals("admin"))
+//		 return ok(admin_users.render(Observation.all(), Country.all(),
+//		 Indicator.all()));
+//		 else
+//		return ok(index.render(Observation.all(), Country.all(),
+//				Indicator.all()));
+		return ok(admin_users.render(Observation.all(), Country.all(),
+				Indicator.all()));
+	}
+	
 	public static Result goStadistics() {
 		return ok(stadistics.render(Observation.all(), Country.all(),
 				Indicator.all()));

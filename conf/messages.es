@@ -5,6 +5,7 @@ Country				= País
 Indicator			= Indicador
 Value				= Valor
 Bar.chart			= Gráfico de barras
+admin				= Administrador
 Admin				= Administrar
 countries 			= Países
 list.countries		= Lista de países
@@ -32,6 +33,8 @@ password			= Contraseña
 
 consultor			= Consultor
 collaborator		= Colaborador
+admin_users			= Administrar usuarios
+user				= Usuario
 
 find				= Buscar
 Stadistics			= Estadísticas
