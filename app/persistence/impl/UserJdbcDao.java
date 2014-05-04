@@ -14,8 +14,7 @@ public class UserJdbcDao implements UserDao{
 	}
 
 	public List<User> getAllUsers() {
-		// TODO Auto-generated method stub
-		return null;
+		return userJdbc.getAllUsers();
 	}
 
 	public void insertUser(User user) {

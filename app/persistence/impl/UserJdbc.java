@@ -38,9 +38,9 @@ public class UserJdbc {
 			rs = pst.executeQuery();
 
 			while (rs.next()) {
-
-				// User user=new User(rs.getString(1), name, password, email,
-				// type, active);
+//				User user=new User(id, name, password, email, type, active)
+//				 User user=new User(rs.getString(0), rs.getString(1), rs.getString(2), rs.getString(3),
+//				 type, active);
 			}
 		} catch (SQLException e) {
 
