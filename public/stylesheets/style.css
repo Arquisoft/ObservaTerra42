@@ -97,6 +97,9 @@ background: #85ACF7 url('images/hidr.jpg');
 	list-style-type: square;
 	color: #3B6EBF;
 }
+.right p{
+	font-size: 20px;
+}
 
 .middle h2 { color: #3B6EBF; font-size: 16px; margin-bottom: 10px; margin-top: 10px;}
 .right h2 { color: #3B6EBF; font-size: 14px; margin-top: 15px;}
@@ -118,6 +121,7 @@ table {
 	width: 100%;
 	border-collapse: collapse;
 	text-align: center;
+	  font-size: 20px;
 }
 
 table thead th {

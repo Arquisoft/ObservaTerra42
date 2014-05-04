@@ -14,7 +14,6 @@ POST    /register                   controllers.Application.validate()
 GET 	/collaborator				controllers.Application.goCollaborator()
 GET 	/consultor					controllers.Application.goConsultor()
 GET 	/stadistics					controllers.Application.goStadistics()
-GET 	/consultor2					controllers.Application.goConsultor2()
 
 POST	/country					controllers.Admin.newCountry()
 POST	/country/delete/:code         controllers.Admin.deleteCountry(code: String)
