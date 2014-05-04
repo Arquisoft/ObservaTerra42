@@ -1,0 +1,25 @@
+@(observations: List[Observation], countries: List[Country], indicators: List[Indicator])
+
+@import play.i18n._
+
+
+<h2>@Messages.get("admin_users")</h2>
+
+<h3>List of users</h3>
+<table>
+<tr>	 
+	<th>@Messages.get("User")</th>
+	<th>Activated</th>
+	<th>Activate</th>
+</tr>
+	<tr>
+		<td>User 1</td>
+		<td>True</td>
+		<td><button type="button">Activate</button></td>
+	</tr>
+	<tr>
+		<td>User 2</td>
+		<td>False</td>
+		<td><button type="button">Activate</button></td>
+	</tr> 
+</table>

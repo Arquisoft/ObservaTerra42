@@ -43,8 +43,9 @@
    <p>
        <button type="submit"><FONT SIZE=5>Login</FONT></button>
    </p>
+   <a href="/"><img src="@routes.Assets.at("images/login.jpg")" alt="LoginLogo" align="center" /></p>
    @if(form.hasGlobalErrors) {
-    <p class="error">
+    <p class="error"><FONT SIZE="5" COLOR="red"
         @form.globalError.message
     </p>
 }

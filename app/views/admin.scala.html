@@ -1,0 +1,61 @@
+@(observations: List[Observation], countries: List[Country], indicators: List[Indicator])
+
+@import play.i18n._
+
+
+<h2>@Messages.get("admin")</h2>
+
+<button type="button">@Messages.get("signout")</button>
+
+<h3>Logo</h3>
+
+<p>
+	<label for="finder">@Messages.get("find"):</label>
+	<input type="text" name="finder" id="finder">
+	<button type="button">Find</button>
+</p>
+
+<h2>Indicator:</h2> 
+<select>
+  <option value="criminality">Criminality</option>
+  <option value="wealth">Wealth</option>
+  <option value="extension">Extension</option>
+</select>
+
+<h2>Areas</h2>
+<select>
+  <option value="country1">Country 1</option>
+  <option value="country2">Country 2</option>
+  <option value="area3">Area 3</option>
+</select> <button type="button">Add Area</button>
+
+Aqui una lista con las areas seleccionadas
+
+<button type="button">Show observations</button>
+
+<h2>@Messages.get("list.observations")</h2>
+<table>
+<tr>	 
+<th>@Messages.get("Area")</th>
+<th>@Messages.get("Indicator")</th>
+<th>@Messages.get("Value")Value</th>
+</tr>
+@for(observation <- observations) {
+	<tr>
+		<td>@observation.country.name</td>
+		<td>@observation.indicator.name</td>
+		<td>@observation.obsValue</td>
+	</tr> 
+}
+</table>
+
+<h2>@Messages.get("Stadistics")</h2>
+<a href="/stadistics">Estadisticas</a>
+
+
+
+<h2>@Messages.get("Admin")</h2>
+<p>Upload and update documents and information</p>
+<button type="button">@Messages.get("admin_users")</button>
+<a href="/admin_users">@Messages.get("admin_users")</a>
+
