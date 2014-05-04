@@ -68,6 +68,7 @@ public class Register extends Controller {
 			String validado = "Error";
 			if (username != null && username.compareTo("") != 0) {
 				validado = null;
+				session().put("typeRegister", "user");
 			}
 
 			else {
@@ -124,6 +125,7 @@ public class Register extends Controller {
 				session().put("typeRegister", "");
 			} else {
 				session().put("typeRegister", "");
+				validado="";
 			}
 			return validado;
 		}
