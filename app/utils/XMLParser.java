@@ -7,6 +7,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringReader;
+import java.util.List;
 
 import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathExpressionException;
@@ -19,35 +20,36 @@ import models.Observation;
 import org.xml.sax.InputSource;
 
 public class XMLParser {
-		
+
 	/**
-	 * Metodo que le pasamos el nombre del fichero y los datos
-	 * que queremos guardar en ese fichero
+	 * Metodo que le pasamos el nombre del fichero y los datos que queremos
+	 * guardar en ese fichero
+	 * 
 	 * @param name
 	 * @param resultado
 	 */
-	private static void writeFile(String name, StringBuilder resultado){
+	private static void writeFile(String name, StringBuilder resultado) {
 		FileWriter fichero = null;
-        PrintWriter pw = null;
-        try
-        {
-            fichero = new FileWriter(name);
-            fichero.write(resultado.toString());
+		PrintWriter pw = null;
+		try {
+			fichero = new FileWriter(name);
+			fichero.write(resultado.toString());
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-           try {
-           if (null != fichero)
-              fichero.close();
-           } catch (Exception e2) {
-              e2.printStackTrace();
-           }
-        }
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (null != fichero)
+					fichero.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
 	}
-	
+
 	/**
 	 * Metodo que divide elimina del string, las dos primeras etiquetas
+	 * 
 	 * @param resultado
 	 */
 	public static void XMLfromWeb(StringBuilder resultado) {
@@ -59,6 +61,7 @@ public class XMLParser {
 
 	/**
 	 * Metodo que lee un fichero y quita los dos primeras etiquetas
+	 * 
 	 * @param fichero
 	 * @throws IOException
 	 */
@@ -77,14 +80,17 @@ public class XMLParser {
 					stringBuilder.length() - stringBuilder.length(),
 					stringBuilder.length() - stringBuilder.length() + 1128);
 
+			//System.out.println(stringBuilder);
 			separador(stringBuilder.toString());
 		} catch (Exception e) {
+			e.printStackTrace();
 			System.out.println("Ocurrio algun problema con el fichero");
 		}
 	}
 
 	/**
 	 * Metodo que divide el XML por paises
+	 * 
 	 * @param code
 	 * @return
 	 */
@@ -101,8 +107,9 @@ public class XMLParser {
 	}
 
 	/**
-	 * Metodo que parsea el xml del pais, y consulta el nombre, abreviacion y 
-	 * el resto de indicadores que se proporcionen al mismo
+	 * Metodo que parsea el xml del pais, y consulta el nombre, abreviacion y el
+	 * resto de indicadores que se proporcionen al mismo
+	 * 
 	 * @param code
 	 */
 	private static void analizadorPais(String code) {
@@ -126,6 +133,11 @@ public class XMLParser {
 			int k = 5;
 			name = xpath.evaluate("/row/name", source);
 			abreviacion = xpath.evaluate("/row/abbreviation", source2);
+			if(abreviacion.equals(""))
+			{
+				source2 = new InputSource(new StringReader(xml));
+				abreviacion = xpath.evaluate("/row/country_code", source2);
+			}
 			for (int i = 4; i < partes.length - 1; i += 2) {
 				indicador = partes[i].split("><");
 
@@ -152,6 +164,7 @@ public class XMLParser {
 
 	/**
 	 * Metodo que añade los datos al modelo
+	 * 
 	 * @param name
 	 * @param abreviacion
 	 * @param indicador
@@ -162,9 +175,12 @@ public class XMLParser {
 
 		System.out.println(name);
 		System.out.println(abreviacion);
-		System.out.println(indicador);
-		System.out.println(valor);
-		System.out.println();
+//		if(abreviacion.equals(""))
+//			abreviacion = name.substring(0, 2);
+//		System.out.println(abreviacion);
+//		System.out.println(indicador);
+//		System.out.println(valor);
+//		System.out.println();
 		Double valorFinal;
 		try {
 			valorFinal = Double.parseDouble(valor);
@@ -176,6 +192,17 @@ public class XMLParser {
 		if (Indicator.findByCode(indicador) == null)
 			Indicator.create(new Indicator(indicador, indicador));
 		;
+		List<Observation> o = Observation.findByIndicatorName(indicador);
+		if (o != null) {
+			for (Observation ob : o) {
+				if (ob.country.name.equals(name)) {
+					if (ob.obsValue != valorFinal) {
+						ob.obsValue = valorFinal;
+						return;
+					}
+				}
+			}
+		}
 		Observation.create(abreviacion, indicador, valorFinal);
 
 	}
