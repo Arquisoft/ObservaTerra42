@@ -27,44 +27,10 @@
 <div class="middle">
 <p align="center">
 <a href="/"><img src="@routes.Assets.at("images/estadistica.jpg")" alt="EstadisticaLogo" align="center" /></p>
-<h1>Indicator:</h1> 
-<br>
-<select>
-  <option value="criminality">Criminality</option>
-  <option value="wealth">Wealth</option>
-  <option value="extension">Extension</option>
-</select>
-<br>
-<br>
-<h1>Areas:</h1>
-<br>
-<select>
-  <option value="country1">Country 1</option>
-  <option value="country2">Country 2</option>
-  <option value="area3">Area 3</option>
-</select> <button type="button"><font size="4">Add Area</font></button>
-<br>
-<br>
-<h1>List of selected areas</h1>
-<br>
-<br>
-<table>
-	<tr>	 
-		<th>@Messages.get("Country")</th>
-</tr>
-	<tr> <td>Country 1</td> </tr> 
-	<tr> <td>Country 2</td> </tr>
-	<tr> <td>Area 3</td> </tr>
-</table>
-<br>
-<button type="button"><font size="4">Find</font></button>
 
-
-</div>
-<nav>
-    <div class="right">
-    <h1>Bars graphic</h1>
-    
+<h1>Bars graphic</h1>
+<br>
+<br>
 <table>
 	<tr>	 
 		<th>@Messages.get("Country")</th>
@@ -85,6 +51,41 @@
 <button type="button"><font size="4">Download</font></button>
 	</div>
     </nav>
+
+</div>
+<nav>
+    <div class="right">
+    <h1>Indicator:</h1> 
+<br>
+<select>
+  <option value="criminality">Criminality</option>
+  <option value="wealth">Wealth</option>
+  <option value="extension">Extension</option>
+</select>
+<br>
+<br>
+<h1>Areas:</h1>
+<br>
+<select>
+  <option value="country1">Country 1</option>
+  <option value="country2">Country 2</option>
+  <option value="area3">Area 3</option>
+</select> <button type="button"><font size="4">Add Area</font></button>
+<br>
+<br>
+<h1>List of selected areas</h1>
+<br>
+<table>
+	<tr>	 
+		<th>@Messages.get("Country")</th>
+</tr>
+	<tr> <td>Country 1</td> </tr> 
+	<tr> <td>Country 2</td> </tr>
+	<tr> <td>Area 3</td> </tr>
+</table>
+
+<button type="button"><font size="4">Find</font></button>
+    
     
      <footer>
     </footer>
