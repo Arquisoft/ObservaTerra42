@@ -16,7 +16,18 @@ a {
 a:hover {
 	text-decoration: underline;
 }
-
+#underline {
+  background: #EEE;
+}
+h1.underline {
+  background: url(URL_h1-underline.png) bottom left no-repeat;
+  font-family: georgia, "times new roman", times, serif;
+  font-weight: lighter;
+}
+#underline p {
+  font-family: "trebuchet ms", verdana, sans-serif;
+  font-size: 0.9em;
+}
 
 #wrap {
 margin: 20px auto;
@@ -42,19 +53,22 @@ height: 30px;
 
 
 .header {
+	  font-size: 80px;
 height: 100px;
 background: #85ACF7 url('images/hidr.jpg');
 }
 
-.header h1 { padding-left: 17px; padding-top: 22px; font-size: 22px; color: #FFF; }
-.header h1 a { font-size: 22px; color: #FFF; text-decoration: none;}
+.header h1 { padding-left: 17px; padding-top: 22px; font-size: 80px; color: #FFF; }
+.header h1 a { font-size: 80px; color: #FFF; text-decoration: none;}
 .header h2 { padding-left: 17px; padding-top: 0px; font-size: 17px; color: #FFF; }
 
 .breadcrumbs { 
 	align: center;
-    background: #FFF; 
+    background: #85ACF7 url('images/hidr.jpg');
 	border-bottom: 1px solid #E1E1E1; 
 	padding: 5px;
+	
+	
 }
 	
 .middle {
