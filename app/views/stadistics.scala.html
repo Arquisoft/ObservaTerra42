@@ -3,22 +3,51 @@
 @import play.i18n._
 
 <h1>@Messages.get("Stadistics")</h1>
-
-<h2>Indicator:</h2> 
+<!DOCTYPE html>
+<html>
+    <head>
+         <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+         <link rel="stylesheet" media="screen" href='@routes.Assets.at("stylesheets/bars.css")' >
+             
+                <link rel="stylesheet" media="screen" href='@routes.Assets.at("stylesheets/style.css")' >
+      
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+        <script src="@routes.Assets.at("javascripts/jquery-1.9.0.min.js")" type="text/javascript"></script>
+    </head>
+    <body>
+    <header>
+    <div class="breadcrumbs">
+        <a href="/"><img src="@routes.Assets.at("images/observaTerra.png")" alt="ObservaTerraLogo" />
+        
+      </div>
+     </header>
+         <div class="header">
+<h1 align="center">ObservaTerra</h1></a>
+     </div>  
+<div class="middle">
+<p align="center">
+<a href="/"><img src="@routes.Assets.at("images/estadistica.jpg")" alt="EstadisticaLogo" align="center" /></p>
+<h1>Indicator:</h1> 
+<br>
 <select>
   <option value="criminality">Criminality</option>
   <option value="wealth">Wealth</option>
   <option value="extension">Extension</option>
 </select>
-
-<h2>Areas</h2>
+<br>
+<br>
+<h1>Areas:</h1>
+<br>
 <select>
   <option value="country1">Country 1</option>
   <option value="country2">Country 2</option>
   <option value="area3">Area 3</option>
-</select> <button type="button">Add Area</button>
-
-<h3>List of selected areas</h3>
+</select> <button type="button"><font size="4">Add Area</font></button>
+<br>
+<br>
+<h1>List of selected areas</h1>
+<br>
+<br>
 <table>
 	<tr>	 
 		<th>@Messages.get("Country")</th>
@@ -27,11 +56,14 @@
 	<tr> <td>Country 2</td> </tr>
 	<tr> <td>Area 3</td> </tr>
 </table>
+<br>
+<button type="button"><font size="4">Find</font></button>
 
 
-<button type="button">Find</button>
-
-<h2>Bars graphic</h2>
+</div>
+<nav>
+    <div class="right">
+    <h1>Bars graphic</h1>
 <table>
 	<tr>	 
 		<th>@Messages.get("Country")</th>
@@ -47,8 +79,16 @@
 	</tr>
 </table>
 
-<h3>Download this information</h3>
-<button type="button">Download</button>
+<h1>Download this information</h1>
+<br>
+<button type="button"><font size="4">Download</font></button>
+	</div>
+    </nav>
+    
+     <footer>
+    </footer>
+    </body>
+  </html>
 
 
 

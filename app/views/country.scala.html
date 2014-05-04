@@ -3,7 +3,31 @@
 @import play.i18n._
 @import helper._
 
-@main(Messages.get("list.countries")) {
+<!DOCTYPE html>
+<html>
+    <head>
+         <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+         <link rel="stylesheet" media="screen" href='@routes.Assets.at("stylesheets/bars.css")' >
+             
+                <link rel="stylesheet" media="screen" href='@routes.Assets.at("stylesheets/style.css")' >
+      
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+        <script src="@routes.Assets.at("javascripts/jquery-1.9.0.min.js")" type="text/javascript"></script>
+    </head>
+    <body>
+    <header>
+    <div class="breadcrumbs">
+        <a href="/"><img src="@routes.Assets.at("images/observaTerra.png")" alt="ObservaTerraLogo" />
+        
+      </div>
+     </header>
+         <div class="header">
+<h1 align="center">ObservaTerra</h1></a>
+     </div>  
+<div class="middle">
+
+<p align="center">
+<a href="/"><img src="@routes.Assets.at("images/paises.png")" alt="PaisesLogo" align="center" /></p>
 
 <h1>@Messages.get("countries")</h1>
 <table>
@@ -17,19 +41,31 @@
          }
       </td>
   </tr>
-   
 }
 </table>
 
-<h2>@{Messages.get("add.country")}</h2>
-    
+
+
+</div>
+    <nav>
+    <div class="right">
+    <h1>@{Messages.get("add.country")}</h1>
+    <br>
+    <FONT SIZE="4">
 	@form(action = routes.Admin.newCountry()) {
 	
         @inputText(countryForm("code")) 
         @inputText(countryForm("name")) 
-        
-        <input type="submit" value="@{Messages.get("create")}">
+        <br>
+        <input type="submit" value="@{Messages.get("create")}" font-size="3">
         
     }    
-    
-}
+    </p>
+   </FONT>
+	</div>
+    </nav>
+     <footer>
+    </footer>
+    </body>
+  </html>
+
