@@ -13,22 +13,26 @@ import com.avaje.ebean.*;
 import models.*;
 
 public class Global extends GlobalSettings {
-
+	
 	public void onStart(Application app) {
 		InitialData.insert(app);
 	}
 
 	static class InitialData {
+		/**
+		 * Al arrancar la aplicacion leemos varias veces unas paginas por defecto,
+		 * y cada 2 horas leemos de nuevo las paginas 
+		 * @param app
+		 */
 		public static void insert(Application app) {
-			// XMLParser.main(null);
 
 			DateTime dt = new DateTime(); // current time
 			int hours = dt.getHourOfDay(); // gets hour of day
-			if (hours % 2 == 0) {
+			if (hours % 2 == 0 && dt.getMinuteOfHour() < 1) {
 				ThreadWebReader wb = new ThreadWebReader();
 				new Thread(wb).start();
+				System.out.println("Escaneando porque es la hora" + dt);
 			}
-
 			if (Country.all().isEmpty()) {
 
 				@SuppressWarnings("unchecked")

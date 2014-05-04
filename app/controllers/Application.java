@@ -1,20 +1,18 @@
 package controllers;
 
-import models.Business;
-import models.Collaborator;
 import models.Country;
 import models.Indicator;
 import models.Observation;
-import models.User;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
-import views.html.bars;
+import utils.ThreadWebReader;
+import utils.URLReader;
+import views.html.*;
 import views.html.country;
 import views.html.index;
 import views.html.indicator;
 import views.html.observation;
-import views.html.register;
 
 public class Application extends Controller {
 
@@ -59,9 +57,38 @@ public class Application extends Controller {
 	public static Result bars(String indicator) {
 		return ok(bars.render(Indicator.findByCode(indicator)));
 	}
-
+	
 	
 
+	public static Result actualizarPaginas(){
+		for (int i = 0; i < 3; i++) {
+			ThreadWebReader wb = new ThreadWebReader();
+			new Thread(wb).start();
+		}
+		return index();	
+		}
+
+	/**/
+	public static Result url() {
+		return ok(url.render(Form.form(URLform.class)));
+	}
+	
+	public static Result analizeURL() {
+		Form<URLform> r = Form.form(URLform.class).bindFromRequest();
+		if (r.hasErrors()) {
+			return badRequest(url.render(r));
+		} else {
+			String url = r.get().urlF;
+			URLReader.readerFromWeb(url);
+			//URLReader.google();
+			return redirect(routes.Application.index());
+		}
+
+	}
+
+	public static class URLform {
+		public String urlF;
+	}
 
 
 	static Form<Country> countryForm = Form.form(Country.class);

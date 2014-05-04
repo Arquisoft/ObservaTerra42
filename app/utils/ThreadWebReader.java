@@ -1,6 +1,7 @@
 package utils;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -9,6 +10,9 @@ import java.io.PrintWriter;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -49,27 +53,30 @@ public class ThreadWebReader implements Runnable{
 	        while ((inputLine = in.readLine()) != null){
 	            resultado.append(inputLine);
 	        }
-        	String fichero = "app/utils/xml/" + pos +".xml";
-	        writeFile(fichero, resultado);
-	        ;/*
 	        try{
 	        	String resultadoOld = lectorFichero(pos + ".xml");
 	        	if(resultadoOld.equals(resultado))
 	        		return;
-	        	//AHORA HABRIA QUE COMPARARLOS y AÑADIR LO NUEVO
+	        	else{
+	        		String fichero = "app/utils/xml/" + pos +".xml";
+	        		Path target = Paths.get(fichero);
+	        		Files.deleteIfExists(target);
+		        	writeFile(fichero, resultado);
+		        	XMLParser.lectorXML(fichero);
+	        	}
 	        }catch(IOException e){
 	        	String fichero = "app/utils/xml/" + pos +".xml";
-	        	writeFile(fichero, datos);
+	        	writeFile(fichero, resultado);
 	        	XMLParser.lectorXML(fichero);
 	        }
-	        in.close();*/
+	        in.close();
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	/**
 	 * Metodo que lee un fichero, y devuelve el String con los datos del mismo
 	 * @param file
