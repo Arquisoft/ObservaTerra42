@@ -27,19 +27,6 @@ public class Application extends Controller {
 		else
 			return ok(country.render(Country.all(), countryForm));
 	}
-	
-	public static Result register() {
-		String tipoUser = session("typeRegister");
-		if (tipoUser == null)
-			return ok(index.render(Observation.all(), Country.all(),
-					Indicator.all()));
-		if (!tipoUser.equals("admin"))
-			return ok(index.render(Observation.all(), Country.all(),
-					Indicator.all()));
-		else
-			return ok(country.render(Country.all(), countryForm));
-	}
-
 
 	public static Result showCountries() {
 		return ok(country.render(Country.all(), countryForm));
