@@ -1,4 +1,5 @@
-@(form: Form[Application.Register])
+
+@(typeForm: Form[Register.TypeRegister], form: Form[Register.UserRegister])
 
 @import play.i18n._
 
@@ -9,37 +10,161 @@
     <body>
         <header>
         </header>
-    @helper.form(routes.Application.validate) {
-   <h1>@Messages.get("register")</h1>
+@helper.form(routes.Register.isValid()) {
+	<h1>@Messages.get("register")</h1>
+	
+	<div>
+		<label for="type">@Messages.get("type")</label>
+		<select name="type" value="@typeForm("type").value" id="type">
+  			<option value="empty"></option>
+  			<option value="user">@Messages.get("typeUser")</option>
+ 			<option value="collaborator">@Messages.get("typeCollaborator")</option>
+ 			<option value="business">@Messages.get("typeBusiness")</option>
+		</select>
+	</div>
+   
+	<div>
+		<button type="submit">@Messages.get("selectRegister")</button>
+	</div>
+	
+	@if(typeForm.hasGlobalErrors) {
+    	<p class="error">
+    	    @typeForm.globalError.message
+   		</p>
+		}
+}
 
-   <p>
-   	<label for="lusername">@Messages.get("username")</label>
-       <input type="text" name="username" value="@form("username").value" id="username">
-   </p>
-   <p>
-      	<label for="lpassword">@Messages.get("password")</label>
-       <input type="password" name="password" value="@form("password").value"id="password">
-   </p>
-   <p>
-   	<label for="lname">@Messages.get("name")</label>
-       <input type="text" name="name" value="@form("name").value" id="name">
-   </p>
-   <p>
-      	<label for="email">@Messages.get("email")</label>
-       <input type="email" name="email" value="@form("email").value"id="email">
-   </p>
-   <p>
-      	<label for="type">@Messages.get("type")</label>
-       <input type="type" name="type" value="@form("type").value"id="type">
-   </p>
-   <p>
-       <button type="submit">GO!</button>
-   </p>
-   @if(form.hasGlobalErrors) {
-    <p class="error">
-        @form.globalError.message
-    </p>
+@if(session().get("typeRegister")=="user"){
+	@helper.form(routes.Register.userRegister()) {
+
+	<div>
+		<label for="lusername">@Messages.get("username")</label>
+		<input type="text" name="username" value="@form("username").value" id="username">
+	</div>
+	<div>
+  		<label for="lpassword">@Messages.get("password")</label>
+   		<input type="password" name="password" value="@form("password").value"id="password">
+	</div>
+	<div>
+		<label for="lname">@Messages.get("name")</label>
+   		<input type="text" name="name" value="@form("name").value" id="name">
+	</div>
+	<div>
+  		<label for="email">@Messages.get("email")</label>
+   		<input type="email" name="email" value="@form("email").value"id="email">
+	</div>
+   
+   <div>
+       <button type="submit">@Messages.get("register")</button>
+   </div>
+   
+	@if(form.hasGlobalErrors) {
+		<p class="error">
+        	@form.globalError.message
+    	</p>
+		}
+	}	
 }
+
+@if(session().get("typeRegister")=="collaborator"){
+	@helper.form(routes.Register.userRegister()) {
+
+	<div>
+		<label for="lusername">@Messages.get("username")</label>
+		<input type="text" name="username" value="@form("username").value" id="username">
+	</div>
+	<div>
+  		<label for="lpassword">@Messages.get("password")</label>
+   		<input type="password" name="password" value="@form("password").value"id="password">
+	</div>
+	<div>
+		<label for="lname">@Messages.get("name")</label>
+   		<input type="text" name="name" value="@form("name").value" id="name">
+	</div>
+	<div>
+  		<label for="email">@Messages.get("email")</label>
+   		<input type="email" name="email" value="@form("email").value"id="email">
+	</div>
+	<div>
+  		<label for="phone">@Messages.get("phone")</label>
+   		<input type="number" name="phone" value="@form("phone").value"id="phone">
+	</div>
+	<div>
+  		<label for="address">@Messages.get("address")</label>
+   		<input type="text" name="addressl" value="@form("address").value"id="address">
+	</div>
+   <div>
+  		<label for="organization">@Messages.get("organization")</label>
+   		<input type="text" name="organization" value="@form("organization").value"id="organization">
+	</div>
+	<div>
+  		<label for="specialization">@Messages.get("specialization")</label>
+   		<input type="text" name="specialization" value="@form("specialization").value"id="specialization">
+	</div>
+   
+   <div>
+       <button type="submit">@Messages.get("register")</button>
+   </div>
+   
+	@if(form.hasGlobalErrors) {
+		<p class="error">
+        	@form.globalError.message
+    	</p>
+		}
+	}	
 }
+
+@if(session().get("typeRegister")=="business"){
+	@helper.form(routes.Register.userRegister()) {
+
+	<div>
+		<label for="lusername">@Messages.get("username")</label>
+		<input type="text" name="username" value="@form("username").value" id="username">
+	</div>
+	<div>
+  		<label for="lpassword">@Messages.get("password")</label>
+   		<input type="password" name="password" value="@form("password").value"id="password">
+	</div>
+	<div>
+		<label for="lname">@Messages.get("name")</label>
+   		<input type="text" name="name" value="@form("name").value" id="name">
+	</div>
+	<div>
+  		<label for="email">@Messages.get("email")</label>
+   		<input type="email" name="email" value="@form("email").value"id="email">
+	</div>
+	<div>
+  		<label for="phone">@Messages.get("phone")</label>
+   		<input type="number" name="phone" value="@form("phone").value"id="phone">
+	</div>
+	<div>
+  		<label for="address">@Messages.get("address")</label>
+   		<input type="text" name="addressl" value="@form("address").value"id="address">
+	</div>
+   <div>
+  		<label for="description">@Messages.get("description")</label>
+   		<input type="text" name="description" value="@form("description").value"id="description">
+	</div>
+	<div>
+  		<label for="webSite">@Messages.get("webSite")</label>
+   		<input type="text" name="webSite" value="@form("webSite").value"id="webSite">
+	</div>
+	<div>
+  		<label for="nif">@Messages.get("nif")</label>
+   		<input type="text" name="nif" value="@form("nif").value"id="nif">
+	</div>
+
+   <div>
+       <button type="submit">@Messages.get("register")</button>
+   </div>
+   
+	@if(form.hasGlobalErrors) {
+		<p class="error">
+        	@form.globalError.message
+    	</p>
+		}
+	}	
+}
+
     </body>
 </html>

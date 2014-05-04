@@ -1,5 +1,4 @@
-name = name
-create = Create
+create 				= Create
 Wellcome			= Wellcome to ObservaTerra
 countries 			= Countries
 Country				= Country
@@ -28,3 +27,10 @@ upload				= Upload
 signin				= Sign in
 username			= Username
 password			= Password
+type				= Type of user
+typeUser			= User
+typeCollaborator	= Collaborator
+typeBusiness		= Business
+name 				= Name
+email				= Email
+register			= Register
