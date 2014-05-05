@@ -2,13 +2,13 @@ package models;
 
 import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 import play.db.ebean.Model;
 import play.libs.Json;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.node.ObjectNode;
 
 @SuppressWarnings("serial")
 @Entity
@@ -23,7 +23,7 @@ public class Country extends Model {
 	  this.name = name;
   }
    
-  public static Finder<String,Country> find = new Finder(String.class, Country.class);
+  public static Finder<String,Country> find = new Finder<String, Country>(String.class, Country.class);
   
   public static List<Country> all() {
     return find.all();

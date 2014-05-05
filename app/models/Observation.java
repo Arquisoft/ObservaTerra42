@@ -11,6 +11,7 @@ import play.data.validation.Constraints.Required;
 import play.db.ebean.Model;
 
 
+@SuppressWarnings("serial")
 @Entity
 public class Observation extends Model {
     
@@ -26,7 +27,7 @@ public class Observation extends Model {
   @ManyToOne
   public Indicator indicator;
   
-  public static Finder<Long,Observation> find = new Finder(Long.class, Observation.class);
+  public static Finder<Long,Observation> find = new Finder<Long, Observation>(Long.class, Observation.class);
 
   public Observation(Country country, Indicator indicator, Double value) {
 	  this.country = country;

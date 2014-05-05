@@ -27,8 +27,9 @@ public class Login extends Controller{
 		return validado;
 	}
 	
-	public static void logout(){
+	public static Result logout(){
 		session().clear();
+		return redirect(routes.Application.index());
 	}
 
 	/*
@@ -44,7 +45,7 @@ public class Login extends Controller{
 			session().put("name", user.name);
 			session().put("password", user.password);
 			session().put("email", user.email);
-			session().put("type", user.id);
+			session().put("type", user.type);
 			return true;
 		}
 		return false;
@@ -63,7 +64,7 @@ public class Login extends Controller{
 			session().put("name", colaborador.name);
 			session().put("password", colaborador.password);
 			session().put("email", colaborador.email);
-			session().put("type", colaborador.id);
+			session().put("type", colaborador.type);
 			session().put("phone", colaborador.phone);
 			session().put("adress", colaborador.address);
 			session().put("organization", colaborador.organization);
@@ -86,7 +87,7 @@ public class Login extends Controller{
 			session().put("name", business.name);
 			session().put("password", business.password);
 			session().put("email", business.email);
-			session().put("type", business.id);
+			session().put("type", business.type);
 			session().put("nif", business.nif);
 			session().put("description", business.id);
 			session().put("phone", business.phone);

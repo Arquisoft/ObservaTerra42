@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import models.User;
-import scala.*;
 import utils.Jdbc;
 
 public class UserJdbc {
@@ -33,14 +32,13 @@ public class UserJdbc {
 		ResultSet rs = null;
 
 		try {
-			pst = c.prepareStatement("GET_USERS");
-
+			pst = c.prepareStatement(GET_USERS);
 			rs = pst.executeQuery();
-
 			while (rs.next()) {
-//				User user=new User(id, name, password, email, type, active)
-//				 User user=new User(rs.getString(0), rs.getString(1), rs.getString(2), rs.getString(3),
-//				 type, active);
+				User user = new User(rs.getString(1), rs.getString(2),
+						rs.getString(3), rs.getString(4), rs.getString(5),
+						rs.getBoolean(6));
+				users.add(user);
 			}
 		} catch (SQLException e) {
 

@@ -1,21 +1,16 @@
 package utils;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.PrintWriter;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 
 public class ThreadWebReader implements Runnable{
@@ -84,6 +79,7 @@ public class ThreadWebReader implements Runnable{
 	 * @throws IOException
 	 */
 	private static String lectorFichero(String file) throws IOException {
+		@SuppressWarnings("resource")
 		BufferedReader reader = new BufferedReader(new FileReader(
 				"app/utils/xml/" + file));
 		String line = null;
@@ -103,7 +99,7 @@ public class ThreadWebReader implements Runnable{
 	 */
 	private static void writeFile(String name, StringBuilder resultado){
 		FileWriter fichero = null;
-        PrintWriter pw = null;
+//        PrintWriter pw = null;
         try
         {
             fichero = new FileWriter(name);

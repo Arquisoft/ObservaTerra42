@@ -1,22 +1,35 @@
 package api;
 
-import static org.assertj.core.api.Assertions.*;
-import static org.junit.Assert.*;
-import static play.test.Helpers.*;
-import gherkin.deps.com.google.gson.JsonArray;
-import play.Logger;
-import play.mvc.*;
-import play.mvc.Results.Redirect;
-import play.test.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertEquals;
+import static play.mvc.Http.HeaderNames.LOCATION;
+import static play.mvc.Http.Status.OK;
+import static play.mvc.Http.Status.SEE_OTHER;
+import static play.test.Helpers.GET;
+import static play.test.Helpers.callAction;
+import static play.test.Helpers.contentAsString;
+import static play.test.Helpers.contentType;
+import static play.test.Helpers.fakeApplication;
+import static play.test.Helpers.fakeRequest;
+import static play.test.Helpers.header;
+import static play.test.Helpers.inMemoryDatabase;
+import static play.test.Helpers.routeAndCall;
+import static play.test.Helpers.status;
+import models.Country;
+import models.Indicator;
+import models.Observation;
 
-import org.junit.*;
+import org.junit.Before;
+import org.junit.Test;
+
+import play.mvc.Result;
+import play.test.FakeRequest;
+import play.test.WithApplication;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
-
-import models.*;
 
 
 
@@ -74,6 +87,7 @@ public class CountryTest extends WithApplication {
 		assertEquals(expected, returned);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Test
 	public void addCountry() throws Exception {
 		
@@ -82,6 +96,7 @@ public class CountryTest extends WithApplication {
 		Country spain = new Country("es","Spain");
 		JsonNode jsonSpain = Country.toJson(spain);
 		
+		@SuppressWarnings("unused")
 		FakeRequest request = fakeRequest("POST", "/api/country").withJsonBody(jsonSpain);
 
 		Result result = callAction(controllers.routes.ref.API.addCountry(), 

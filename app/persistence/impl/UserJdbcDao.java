@@ -18,17 +18,17 @@ public class UserJdbcDao implements UserDao{
 	}
 
 	public void insertUser(User user) {
-		// TODO Auto-generated method stub
+		// TODO Llamada a insert user JDBC
 		
 	}
 
 	public void updateUser(User user) {
-		// TODO Auto-generated method stub
+		// TODO Llamada a update user JDCB
 		
 	}
 
 	public void deleteUser(User user) {
-		// TODO Auto-generated method stub
+		// TODO Llamada a delete user JDBC
 		
 	}
 	

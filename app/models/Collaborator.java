@@ -19,11 +19,11 @@ public class Collaborator extends Users {
 
 
 	public Collaborator(String id, String name, String password, String email,
-			boolean active,String phone, String adress, String organization,
+			boolean active,String phone, String address, String organization,
 			String specialization) {
 		super(id, name, password, email, "collaborator", active);
 		this.phone=phone;
-		this.address = adress;
+		this.address = address;
 		this.organization = organization;
 		this.specialization = specialization;
 	}

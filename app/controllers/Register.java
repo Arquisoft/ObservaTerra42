@@ -1,21 +1,20 @@
 package controllers;
 
-import org.omg.CORBA.Current;
-
 import models.Business;
 import models.Collaborator;
 import models.User;
-import views.html.register;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
+import views.html.register;
 
 public class Register extends Controller {
 
 	static Form<UserRegister> regUser = Form.form(UserRegister.class);
 	static Form<TypeRegister> regType = Form.form(TypeRegister.class);
 	static Form<BusinessRegister> regBus = Form.form(BusinessRegister.class);
-	static Form<CollaboratorRegister> regCol = Form.form(CollaboratorRegister.class);
+	static Form<CollaboratorRegister> regCol = Form
+			.form(CollaboratorRegister.class);
 
 	public String type;
 
@@ -33,9 +32,9 @@ public class Register extends Controller {
 		regBus = Form.form(BusinessRegister.class).bindFromRequest();
 		regCol = Form.form(CollaboratorRegister.class).bindFromRequest();
 		if (regType.hasErrors()) {
-			return badRequest(register.render(regType, regUser,regBus,regCol));
+			return badRequest(register.render(regType, regUser, regBus, regCol));
 		} else {
-			return badRequest(register.render(regType, regUser,regBus,regCol));
+			return badRequest(register.render(regType, regUser, regBus, regCol));
 		}
 
 	}
@@ -46,43 +45,42 @@ public class Register extends Controller {
 		regBus = Form.form(BusinessRegister.class).bindFromRequest();
 		regCol = Form.form(CollaboratorRegister.class).bindFromRequest();
 		if (regUser.hasErrors()) {
-			return badRequest(register.render(regType, regUser,regBus,regCol));
+			return badRequest(register.render(regType, regUser, regBus, regCol));
 		} else {
 
-			return badRequest(register.render(regType, regUser,regBus,regCol));
+			return badRequest(register.render(regType, regUser, regBus, regCol));
 		}
 
 	}
-	
+
 	public static Result collaboratorRegister() {
 		regUser = Form.form(UserRegister.class).bindFromRequest();
 		regType = Form.form(TypeRegister.class).bindFromRequest();
 		regBus = Form.form(BusinessRegister.class).bindFromRequest();
 		regCol = Form.form(CollaboratorRegister.class).bindFromRequest();
 		if (regCol.hasErrors()) {
-			return badRequest(register.render(regType, regUser,regBus,regCol));
+			return badRequest(register.render(regType, regUser, regBus, regCol));
 		} else {
 
-			return badRequest(register.render(regType, regUser,regBus,regCol));
+			return badRequest(register.render(regType, regUser, regBus, regCol));
 		}
 
 	}
-	
+
 	public static Result businessRegister() {
 		regUser = Form.form(UserRegister.class).bindFromRequest();
 		regType = Form.form(TypeRegister.class).bindFromRequest();
 		regBus = Form.form(BusinessRegister.class).bindFromRequest();
 		regCol = Form.form(CollaboratorRegister.class).bindFromRequest();
-		
+
 		if (regBus.hasErrors()) {
-			return badRequest(register.render(regType, regUser, regBus,regCol));
+			return badRequest(register.render(regType, regUser, regBus, regCol));
 		} else {
 
-			return badRequest(register.render(regType, regUser,regBus,regCol));
+			return badRequest(register.render(regType, regUser, regBus, regCol));
 		}
 
 	}
-
 
 	public static Result register() {
 		regUser = Form.form(UserRegister.class).bindFromRequest();
@@ -90,7 +88,7 @@ public class Register extends Controller {
 		regBus = Form.form(BusinessRegister.class).bindFromRequest();
 		regCol = Form.form(CollaboratorRegister.class).bindFromRequest();
 
-		return ok(register.render(regType, regUser,regBus,regCol));
+		return ok(register.render(regType, regUser, regBus, regCol));
 	}
 
 	public static class CollaboratorRegister {
@@ -107,12 +105,18 @@ public class Register extends Controller {
 			String validado = "";
 
 			if (username != null && password != null && name != null
-					&& email != null) {
-				validado = "Usuario Registrado";
-				if (username.compareTo("") == 0 && password.compareTo("") == 0
-						&& name.compareTo("") == 0 && email.compareTo("") == 0)
+					&& email != null && phone != null && address != null
+					&& organization != null && specialization != null) {
+				if (username.compareTo("") == 0 || password.compareTo("") == 0
+						|| name.compareTo("") == 0 || email.compareTo("") == 0
+						|| phone.compareTo("") == 0
+						|| address.compareTo("") == 0
+						|| organization.compareTo("") == 0
+						|| specialization.compareTo("") == 0)
 					return "Error, todos los campos son obligatorios";
-				//Aqui se añade el usuario
+				// Aqui se añade el usuario
+				new Collaborator(username, name, password, email, false, phone,
+						address, organization, specialization).save();
 			}
 			return validado;
 
@@ -182,7 +186,7 @@ public class Register extends Controller {
 			this.email = email;
 		}
 	}
-	
+
 	public static class UserRegister {
 		public String username;
 		public String password;
@@ -195,10 +199,11 @@ public class Register extends Controller {
 			if (username != null && password != null && name != null
 					&& email != null) {
 				validado = "Usuario Registrado";
-				if (username.compareTo("") == 0 && password.compareTo("") == 0
-						&& name.compareTo("") == 0 && email.compareTo("") == 0)
+				if (username.compareTo("") == 0 || password.compareTo("") == 0
+						|| name.compareTo("") == 0 || email.compareTo("") == 0)
 					return "Error, todos los campos son obligatorios";
-				//Aqui se añade el usuario
+				// TODO Aqui se añade el usuario a la base de datos
+				new User(username, name, password, email, "user", false).save();
 			}
 			return validado;
 
@@ -236,7 +241,7 @@ public class Register extends Controller {
 			this.email = email;
 		}
 	}
-	
+
 	public static class BusinessRegister {
 		public String username;
 		public String password;
@@ -247,6 +252,28 @@ public class Register extends Controller {
 		public String phone;
 		public String address;
 		public String webSite;
+
+		public String validate() {
+			String validado = "";
+
+			if (username != null && password != null && name != null
+					&& email != null && nif != null && description != null
+					&& phone != null && address != null && webSite != null) {
+				validado = "Organización Registrado";
+				if (username.compareTo("") == 0 || password.compareTo("") == 0
+						|| name.compareTo("") == 0 || email.compareTo("") == 0
+						|| description.compareTo("") == 0
+						|| phone.compareTo("") == 0
+						|| address.compareTo("") == 0
+						|| webSite.compareTo("") == 0)
+					return "Error, todos los campos son obligatorios";
+				// TODO Aqui se añade el usuario a la base de datos
+				new Business(username, name, password, email, false, nif,
+						description, phone, address, webSite).save();
+			}
+			return validado;
+
+		}
 
 		public String getNif() {
 			return nif;
@@ -286,21 +313,6 @@ public class Register extends Controller {
 
 		public void setWebSite(String webSite) {
 			this.webSite = webSite;
-		}
-
-		public String validate() {
-			String validado = "";
-
-			if (username != null && password != null && name != null
-					&& email != null) {
-				validado = "Usuario Registrado";
-				if (username.compareTo("") == 0 && password.compareTo("") == 0
-						&& name.compareTo("") == 0 && email.compareTo("") == 0)
-					return "Error, todos los campos son obligatorios";
-				//Aqui se añade el usuario
-			}
-			return validado;
-
 		}
 
 		public String getUsername() {

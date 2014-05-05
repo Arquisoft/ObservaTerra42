@@ -1,11 +1,9 @@
 package utils;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.io.StringReader;
 import java.util.List;
 
@@ -30,7 +28,7 @@ public class XMLParser {
 	 */
 	static void writeFile(String name, StringBuilder resultado) {
 		FileWriter fichero = null;
-		PrintWriter pw = null;
+		//PrintWriter pw = null;
 		try {
 			fichero = new FileWriter(name);
 			fichero.write(resultado.toString());
@@ -67,6 +65,7 @@ public class XMLParser {
 	 */
 	public static void lectorXML(String fichero) throws IOException {
 		try {
+			@SuppressWarnings("resource")
 			BufferedReader reader = new BufferedReader(new FileReader(fichero));
 			String line = null;
 			StringBuilder stringBuilder = new StringBuilder();
@@ -82,7 +81,8 @@ public class XMLParser {
 
 			separador(stringBuilder.toString());
 		} catch (Exception e) {
-			System.out.println("Hay algun problema con la codificacion de caracteres (Ej. UTF-8)");
+			System.out
+					.println("Hay algun problema con la codificacion de caracteres (Ej. UTF-8)");
 		}
 	}
 
@@ -131,8 +131,7 @@ public class XMLParser {
 			int k = 5;
 			name = xpath.evaluate("/row/name", source);
 			abreviacion = xpath.evaluate("/row/abbreviation", source2);
-			if(abreviacion.equals(""))
-			{
+			if (abreviacion.equals("")) {
 				source2 = new InputSource(new StringReader(xml));
 				abreviacion = xpath.evaluate("/row/country_code", source2);
 			}
@@ -177,23 +176,27 @@ public class XMLParser {
 		} catch (NumberFormatException e) {
 			return;
 		}
-		if (Country.findByName(name) == null)
+		if (Country.findByName(name) == null) {
 			Country.create(new Country(abreviacion, name));
-		if (Indicator.findByCode(indicador) == null)
+			//TODO JDBC insert country 
+		}
+		if (Indicator.findByCode(indicador) == null) {
 			Indicator.create(new Indicator(indicador, indicador));
-		;
+			//TODO JDBC insert indicator
+		};
 		List<Observation> o = Observation.findByIndicatorName(indicador);
 		if (o != null) {
 			for (Observation ob : o) {
 				if (ob.country.name.equals(name)) {
 					if (ob.obsValue != valorFinal) {
 						ob.obsValue = valorFinal;
+						//TODO JDBC update observation
 						return;
 					}
 				}
 			}
 		}
 		Observation.create(abreviacion, indicador, valorFinal);
-
+		//TODO JDCB insert observation
 	}
 }

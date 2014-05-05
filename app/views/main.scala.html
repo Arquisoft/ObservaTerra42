@@ -18,27 +18,29 @@
         <a href="/"><img src="@routes.Assets.at("images/observaTerra.png")" alt="ObservaTerraLogo" />
         <h1>ObservaTerra</h1></a>
      </header>
-     @if(session().get("id")==null){
-		<a href="/login">Iniciar sesion</a>
-		<a href="/register">Registrarse</a>
-		} else{
-		<p>Bienvenido @{session().get("id")}</p>
-		<a href="@{Login.logout()}">Log out</a>
-		<a href=/url>Escanear pagina</a>
-		<a href="/actualizarPaginas ">Actualizar datos</a>
-		}
-     <h1>@title</h1>    
-     @content
-
-    <footer>
-    <nav>
-    @Messages.get("Admin")
+     <nav>
     <ul>
     <li><a href="@routes.Application.showCountries">Countries</a>
 	<li><a href="@routes.Application.showIndicators">Indicators</a>
 	<li><a href="@routes.Application.showObservations">Observations</a>
 	</ul>
     </nav>
+    <div id="session">
+     @if(session().get("id")==null){
+			<a href="/login">Iniciar sesion</a>
+			<a href="/register">Registrarse</a>
+		} else{
+			<p>Bienvenido @{session().get("id")}</p>
+			<a href="/logout">Log out</a>
+			<a href=/url>Escanear pagina</a>
+			<a href="/actualizarPaginas ">Actualizar datos</a>
+		}
+	</div>
+     <h1>@title</h1>    
+     @content
+
+    <footer>
+    <p>All rights reserved</p>
     </footer>
     </body>
 </html>

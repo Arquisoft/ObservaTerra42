@@ -8,6 +8,7 @@ GET		/indicator					controllers.Application.showIndicators()
 GET		/observation				controllers.Application.showObservations()
 GET     /bars/:indicator   			controllers.Application.bars(indicator:String)
 
+GET		/logout						controllers.Login.logout()
 GET     /login                  	controllers.Login.login()
 POST    /login                      controllers.Login.authenticate()
 GET     /register                  	controllers.Register.register()
@@ -53,8 +54,3 @@ POST	/api/excel/upload			controllers.API.uploadExcel()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
-
-# Ejemplos 
-GET		/proxy						controllers.Pruebas.proxy(url: String)
-GET		/ajax						controllers.Pruebas.ajax()
-GET		/parallel					controllers.Pruebas.parallel()

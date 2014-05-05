@@ -2,12 +2,14 @@ package models;
 
 import java.util.List;
 
-import play.db.ebean.*;
-import play.data.validation.Constraints.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
-import javax.persistence.*;
+import play.data.validation.Constraints.Required;
+import play.db.ebean.Model;
 
 
+@SuppressWarnings("serial")
 @Entity
 public class Indicator extends Model {
     
@@ -22,7 +24,7 @@ public class Indicator extends Model {
 	  this.name = name;
   }
    
-  public static Finder<String,Indicator> find = new Finder(String.class, Indicator.class);
+  public static Finder<String,Indicator> find = new Finder<String, Indicator>(String.class, Indicator.class);
   
   public static List<Indicator> all() {
     return find.all();
