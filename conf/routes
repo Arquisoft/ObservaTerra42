@@ -8,6 +8,18 @@ GET		/indicator					controllers.Application.showIndicators()
 GET		/observation				controllers.Application.showObservations()
 GET     /bars/:indicator   			controllers.Application.bars(indicator:String)
 
+GET		/logout						controllers.Login.logout()
+GET     /login                  	controllers.Login.login()
+POST    /login                      controllers.Login.authenticate()
+GET     /register                  	controllers.Register.register()
+POST    /register                   controllers.Register.isValid()
+POST	/register					controllers.Register.userRegister()
+POST	/register					controllers.Register.businessRegister()
+POST	/register					controllers.Register.collaboratorRegister()
+
+GET		/url						controllers.Application.url()
+POST	/url						controllers.Application.analizeURL()
+GET     /actualizarPaginas          controllers.Application.actualizarPaginas()
 
 POST	/country					controllers.Admin.newCountry()
 POST	/country/delete/:code         controllers.Admin.deleteCountry(code: String)
@@ -25,6 +37,11 @@ GET		/api/country/:code				controllers.API.country(code: String)
 PUT		/api/country/:code				controllers.API.updateCountry(code: String)
 POST	/api/country					controllers.API.addCountry()
 DELETE	/api/country/:code				controllers.API.delCountry(code: String)
+GET		/api/collaborator				controllers.API.collaborators()
+GET		/api/business					controllers.API.business()
+GET		/api/users						controllers.API.users()
+
+
 
 GET		/api/observation						controllers.API.observations()
 GET		/api/observation/indicator/:indicator	controllers.API.observationsByIndicator(indicator: String)
@@ -37,8 +54,3 @@ POST	/api/excel/upload			controllers.API.uploadExcel()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
-
-# Ejemplos 
-GET		/proxy						controllers.Pruebas.proxy(url: String)
-GET		/ajax						controllers.Pruebas.ajax()
-GET		/parallel					controllers.Pruebas.parallel()

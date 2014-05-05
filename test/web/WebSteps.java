@@ -5,7 +5,6 @@ import play.test.TestBrowser;
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
 import cucumber.api.java.es.Entonces;

@@ -1,0 +1,22 @@
+@(form: Form[Application.URLform])
+
+@import play.i18n._
+
+<html>
+    <head>
+        <title>Web Analizer</title>
+    </head>
+    <body>
+    @helper.form(routes.Application.analizeURL) {
+   <h1>@Messages.get("analizadorweb")</h1>
+
+   <p>
+   	<label for="lurl">@Messages.get("url")</label>
+       <input type="text" name="urlF" value="@form("urlF").value" id="urlF">
+   </p>
+   <p>
+       <button type="submit">GO!</button>
+   </p>
+}
+    </body>
+</html>

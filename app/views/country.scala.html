@@ -10,17 +10,19 @@
 @for(country <- countries) { 
   <tr><td>@country.name</td>
       <td>
+      @if(session().get("type")=="admin"){
       <td>@helper.form(routes.Admin.deleteCountry(country.code)) {
                <input type="image" 
                       src="@{routes.Assets.at("images/delete.gif")}" 
                       alt='@{Messages.get("delete.country")}'>
          }
       </td>
+      }
   </tr>
    
 }
 </table>
-
+@if(session().get("type")=="admin"||session().get("type"=="collaborator"||session().get("type"=="business"))){
 <h2>@{Messages.get("add.country")}</h2>
     
 	@form(action = routes.Admin.newCountry()) {
@@ -31,5 +33,5 @@
         <input type="submit" value="@{Messages.get("create")}">
         
     }    
-    
+    }
 }

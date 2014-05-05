@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Extracted from https://github.com/ulrich/macaron-factory/blob/master/.gitignore
 # Ignore all dotfiles...
 .*
@@ -6,8 +7,6 @@
 
 # Ignore Play! working directory #
 db
-eclipse
-lib
 log
 logs
 modules
@@ -20,3 +19,29 @@ test-result
 server.pid
 *.iml
 *.eml
+/.target
+/bin
+=======
+# Extracted from https://github.com/ulrich/macaron-factory/blob/master/.gitignore
+# Ignore all dotfiles...
+.*
+# except for .gitignore
+!.gitignore
+
+# Ignore Play! working directory #
+db
+log
+logs
+modules
+precompiled
+project/project
+project/target
+target
+tmp
+test-result
+server.pid
+*.iml
+*.eml
+/.target
+/bin
+>>>>>>> model_equipo-A

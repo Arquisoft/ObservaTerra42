@@ -1,5 +1,4 @@
-name = nombre
-create = Crear
+create 				= Crear
 Wellcome			= Bienvenido al portal ObservaTerra
 Country				= País
 Indicator			= Indicador
@@ -25,4 +24,13 @@ file.uploaded		= Fichero subido con {0} observaciones
 read.excel.error	= Error al leer fichero Excel
 upload.excel.file	= Cargar fichero Excel
 upload				= Cargar
-
+signin				= Iniciar sesión
+username			= Usuario
+password			= Contraseña
+type				= Tipo de usuario
+typeUser			= Usuario
+typeCollaborator	= Colaborador
+typeBusiness		= Organización
+name 				= Nombre
+email				= E-mail
+register			= Registro

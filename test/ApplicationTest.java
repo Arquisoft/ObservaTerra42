@@ -1,33 +1,23 @@
 import static org.fest.assertions.Assertions.assertThat;
+import static org.mockito.Mockito.mock;
 import static play.test.Helpers.contentAsString;
 import static play.test.Helpers.contentType;
+import static play.test.Helpers.fakeApplication;
+import static play.test.Helpers.inMemoryDatabase;
 
 import java.util.Collections;
 import java.util.Map;
 
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
+import models.Country;
+import models.Indicator;
+import models.Observation;
+
+import org.junit.Before;
 import org.junit.Test;
 
 import play.mvc.Content;
 import play.mvc.Http;
-import play.mvc.Http.Request;
-import play.test.FakeApplication;
-import play.test.Helpers;
-
-import java.util.Map;
-import java.util.Collections;
-import org.junit.*;
-import static org.mockito.Mockito.*;
-import play.mvc.*;
-import play.test.*;
-import play.mvc.Http;
-import play.mvc.Http.Context;
-import play.api.mvc.RequestHeader;
-import static play.test.Helpers.*;
-import static org.fest.assertions.Assertions.*;
 import play.test.WithApplication;
-import models.*;
 
 /**
 *

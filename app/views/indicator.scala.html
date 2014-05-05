@@ -9,26 +9,28 @@
 @for(ind <- indicators) { 
   <tr><td>@ind.name</td>
       <td>
+      @if(session().get("type")=="admin"||session().get("type"=="business")){
       <td>@helper.form(routes.Admin.deleteCountry(ind.code)) {
                <input type="image" 
                       src="@{routes.Assets.at("images/delete.gif")}" 
                       alt='@{Messages.get("delete.indicator")}'>
-         }
+		  }
       </td>
+      }
   </tr>
    
 }
 </table>
 
+@if(session().get("type")=="admin"||session().get("type"=="business")){
 <h2>@{Messages.get("add.indicator")}</h2>
-    
-	@helper.form(action = routes.Admin.newIndicator()) {
+    	@helper.form(action = routes.Admin.newIndicator()) {
 	
-	    @helper.inputText(form("code")) 
-	    @helper.inputText(form("name")) 
+	    	@helper.inputText(form("code")) 
+	    	@helper.inputText(form("name")) 
         
-        <input type="submit" value="@{Messages.get("create")}">
+        	<input type="submit" value="@{Messages.get("create")}">
         
-    }    
-    
+   		}    
+    }
 }
