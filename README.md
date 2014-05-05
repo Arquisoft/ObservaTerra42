@@ -10,7 +10,7 @@ Jose Antonio Benito - UO213487
 
 Héctor Martínez Gómez - UO215168
 
-Diego Díaz Sandoval - UO213604
+Diego Díaz Sandoval - UO217020
 
 Edinson Dario Reyes Fajardo - UO206808
 
