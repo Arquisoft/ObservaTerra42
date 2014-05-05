@@ -1,2 +1,127 @@
-/*C6*/SET SCHEMA PUBLIC
+/*C2*/SET SCHEMA PUBLIC
+drop table if exists business
+drop table if exists collaborator
+\u000adrop sequence if exists business_seq
+drop sequence if exists collaborator_seq
+drop sequence if exists area_seq
+drop sequence if exists indicator_seq
+drop sequence if exists observation_seq
+drop sequence if exists user_seq
+drop sequence if exists users_seq
+drop table if exists observation
+drop table if exists business
+drop table if exists collaborator
+drop table if exists area
+drop table if exists indicator
+drop table if exists user
+drop table if exists users
+create table business (\u000a  id                        varchar(255) not null,\u000a  name                      varchar(255),\u000a  password                  varchar(255),\u000a  email                     varchar(255),\u000a  type                      varchar(255),\u000a  active                    boolean,\u000a  nif                       varchar(255),\u000a  description               varchar(255),\u000a  phone                     varchar(255),\u000a  address                   varchar(255),\u000a  web_site                  varchar(255),\u000a  constraint pk_business primary key (id))\u000a
+create table collaborator (\u000a  id                        varchar(255) not null,\u000a  name                      varchar(255),\u000a  password                  varchar(255),\u000a  email                     varchar(255),\u000a  type                      varchar(255),\u000a  active                    boolean,\u000a  phone                     varchar(255),\u000a  adress                    varchar(255),\u000a  organization              varchar(255),\u000a  specialization            varchar(255),\u000a  constraint pk_collaborator primary key (id))\u000a
+create table area (\u000a  code                      varchar(255) not null,\u000a  name                      varchar(255),\u000a  constraint pk_area primary key (code))\u000a
+create table indicator (\u000a  code                      varchar(255) not null,\u000a  name                      varchar(255),\u000a  constraint pk_indicator primary key (code))\u000a
+create table observation (\u000a  id                        bigint not null,\u000a  obs_value                 double,\u000a  area_code              varchar(255),\u000a  indicator_code            varchar(255),\u000a  PRIMARY KEY (id),\u000a  FOREIGN KEY (indicator_code) REFERENCES indicator(code),\u000a  FOREIGN KEY (area_code) REFERENCES area(code))\u000a
+create table user (\u000a  id                        varchar(255) not null,\u000a  name                      varchar(255),\u000a  password                  varchar(255),\u000a  email                     varchar(255),\u000a  type                      varchar(255),\u000a  active                    boolean,\u000a  constraint pk_user primary key (id))\u000a
+create table users (\u000a  id                        varchar(255) not null,\u000a  name                      varchar(255),\u000a  password                  varchar(255),\u000a  email                     varchar(255),\u000a  type                      varchar(255),\u000a  active                    boolean,\u000a  constraint pk_users primary key (id))\u000a
+/*C3*/SET SCHEMA PUBLIC
+INSERT INTO BUSINESS VALUES('juanG','Juan Garcia','123','juan@juan.com','business',TRUE,'9365778M','business','684596320','catalans campus','a')
+COMMIT
+INSERT INTO BUSINESS VALUES('AnaRosa','Ana Rosa','123','anarosa@hotmail.com','business',TRUE,'47896527k','business','789654123','Ramiro I','')
+COMMIT
+INSERT INTO COLLABORATOR VALUES('AdrianR','Adrian Robles','123','adrian@hotmail.com','collaborator',TRUE,'7458962002','catalans campus','uniovi','student')
+COMMIT
+INSERT INTO COLLABORATOR VALUES('josell','Jose Magollan','123','jose@gmail.es','collaborator',TRUE,'478521999','Milans campus','uniovi','student')
+COMMIT
+INSERT INTO USER VALUES('joseRua','Josefina Rua','123','josefa@gmail.com','user',TRUE)
+COMMIT
+INSERT INTO USER VALUES('cortez','Jose Cortez','123','jocortez@hotmail.com','user',TRUE)
+COMMIT
+INSERT INTO AREA VALUES('ES','Espa\u00f1a')
+COMMIT
+INSERT INTO AREA VALUES('FR','Francia')
+COMMIT
+INSERT INTO INDICATOR VALUES('pov','poverty')
+COMMIT
+INSERT INTO INDICATOR VALUES('ill','illiteracy')
+COMMIT
+INSERT INTO OBSERVATION VALUES(1,70.0E0,'ES','pov')
+COMMIT
+INSERT INTO OBSERVATION VALUES(2,100.0E0,'FR','ill')
+COMMIT
 DISCONNECT
+/*C2*/drop table observation
+drop table if exists business
+drop table if exists collaborator
+drop table if exists area
+drop table if exists indicator
+drop table if exists user
+drop table if exists users
+create table business (\u000a  id                        varchar(255) not null,\u000a  name                      varchar(255),\u000a  password                  varchar(255),\u000a  email                     varchar(255),\u000a  type                      varchar(255),\u000a  active                    boolean,\u000a  nif                       varchar(255),\u000a  description               varchar(255),\u000a  phone                     varchar(255),\u000a  address                   varchar(255),\u000a  web_site                  varchar(255),\u000a PRIMARY KEY (id))\u000a
+create table collaborator (\u000a  id                        varchar(255) not null,\u000a  name                      varchar(255),\u000a  password                  varchar(255),\u000a  email                     varchar(255),\u000a  type                      varchar(255),\u000a  active                    boolean,\u000a  phone                     varchar(255),\u000a  adress                    varchar(255),\u000a  organization              varchar(255),\u000a  specialization            varchar(255),\u000a  PRIMARY KEY (id))\u000a
+create table area (\u000a  code                      varchar(255) not null,\u000a  name                      varchar(255),\u000a  PRIMARY KEY (code))\u000a
+create table indicator (\u000a  code                      varchar(255) not null,\u000a  name                      varchar(255),\u000a  PRIMARY KEY (code))\u000a
+create table observation (\u000a  id                        bigint not null,\u000a  obs_value                 double,\u000a  area_code              varchar(255),\u000a  indicator_code            varchar(255),\u000a  PRIMARY KEY (id),\u000a  FOREIGN KEY (indicator_code) REFERENCES indicator(code),\u000a  FOREIGN KEY (area_code) REFERENCES area(code))\u000a
+create table user (\u000a  id                        varchar(255) not null,\u000a  name                      varchar(255),\u000a  password                  varchar(255),\u000a  email                     varchar(255),\u000a  type                      varchar(255),\u000a  active                    boolean,\u000a  PRIMARY KEY (id))\u000a
+create table users (\u000a  id                        varchar(255) not null,\u000a  name                      varchar(255),\u000a  password                  varchar(255),\u000a  email                     varchar(255),\u000a  type                      varchar(255),\u000a  active                    boolean,\u000a  PRIMARY KEY (id))\u000a
+create sequence business_seq
+create sequence collaborator_seq
+create sequence area_seq
+create sequence indicator_seq
+create sequence observation_seq
+create sequence user_seq
+create sequence users_seq
+drop table observation
+drop table if exists business
+drop table if exists collaborator
+drop table if exists area
+drop table if exists indicator
+drop table if exists observation
+drop table if exists user
+drop table if exists users
+create table business (\u000a  id                        varchar(255) not null,\u000a  name                      varchar(255),\u000a  password                  varchar(255),\u000a  email                     varchar(255),\u000a  type                      varchar(255),\u000a  active                    boolean,\u000a  nif                       varchar(255),\u000a  description               varchar(255),\u000a  phone                     varchar(255),\u000a  address                   varchar(255),\u000a  web_site                  varchar(255),\u000a  primary key (id))\u000a
+create table collaborator (\u000a  id                        varchar(255) not null,\u000a  name                      varchar(255),\u000a  password                  varchar(255),\u000a  email                     varchar(255),\u000a  type                      varchar(255),\u000a  active                    boolean,\u000a  phone                     varchar(255),\u000a  adress                    varchar(255),\u000a  organization              varchar(255),\u000a  specialization            varchar(255),\u000a  primary key (id))\u000a
+create table area (\u000a  code                      varchar(255) not null,\u000a  name                      varchar(255),\u000a  primary key (code))\u000a
+create table indicator (\u000a  code                      varchar(255) not null,\u000a  name                      varchar(255),\u000a  primary key (code))\u000a
+create table observation (\u000a  id                        bigint not null,\u000a  obs_value                 double,\u000a  area_code              varchar(255),\u000a  indicator_code            varchar(255),\u000a  primary key (id),\u000a  FOREIGN KEY (indicator_code) REFERENCES indicator(code),\u000a  FOREIGN KEY (area_code) REFERENCES area(code))\u000a
+create table user (\u000a  id                        varchar(255) not null,\u000a  name                      varchar(255),\u000a  password                  varchar(255),\u000a  email                     varchar(255),\u000a  type                      varchar(255),\u000a  active                    boolean,\u000a  primary key (id))\u000a
+create table users (\u000a  id                        varchar(255) not null,\u000a  name                      varchar(255),\u000a  password                  varchar(255),\u000a  email                     varchar(255),\u000a  type                      varchar(255),\u000a  active                    boolean,\u000a  primary key (id))\u000a
+drop sequence if exists business_seq
+drop sequence if exists collaborator_seq
+drop sequence if exists area_seq
+drop sequence if exists indicator_seq
+drop sequence if exists observation_seq
+drop sequence if exists user_seq
+drop sequence if exists users_seq
+create sequence business_seq
+create sequence collaborator_seq
+create sequence area_seq
+create sequence indicator_seq
+create sequence observation_seq
+create sequence user_seq
+create sequence users_seq
+/*C4*/SET SCHEMA PUBLIC
+INSERT INTO BUSINESS VALUES('juanG','Juan Garcia','123','juan@juan.com','business',TRUE,'9365778M','business','684596320','catalans campus','a')
+COMMIT
+INSERT INTO BUSINESS VALUES('AnaRosa','Ana Rosa','123','anarosa@hotmail.com','business',TRUE,'47896527k','business','789654123','Ramiro I','')
+COMMIT
+INSERT INTO COLLABORATOR VALUES('AdrianR','Adrian Robles','123','adrian@hotmail.com','collaborator',TRUE,'7458962002','catalans campus','uniovi','student')
+COMMIT
+INSERT INTO COLLABORATOR VALUES('josell','Jose Magollan','123','jose@gmail.es','collaborator',TRUE,'478521999','Milans campus','uniovi','student')
+COMMIT
+INSERT INTO USER VALUES('joseRua','Josefina Rua','123','josefa@gmail.com','user',TRUE)
+COMMIT
+INSERT INTO USER VALUES('cortez','Jose Cortez','123','jocortez@hotmail.com','user',TRUE)
+COMMIT
+INSERT INTO AREA VALUES('ES','Espa\u00f1a')
+COMMIT
+INSERT INTO AREA VALUES('FR','Francia')
+COMMIT
+INSERT INTO INDICATOR VALUES('pov','poverty')
+COMMIT
+INSERT INTO INDICATOR VALUES('ill','illiteracy')
+COMMIT
+INSERT INTO OBSERVATION VALUES(1,70.0E0,'ES','pov')
+COMMIT
+INSERT INTO OBSERVATION VALUES(2,100.0E0,'FR','ill')
+COMMIT
+DISCONNECT
+/*C2*/DISCONNECT
