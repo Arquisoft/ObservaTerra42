@@ -5,8 +5,7 @@ ObservaTerra es un portal que servirá como punto de unión entre la informació
 
 Este proyecto está desarrollado por:
 
-Jose Antonio Benito - UO213487
-Héctor Martínez Gómez - UO215168
+Jose Antonio Benito - UO213487Héctor Martínez Gómez - UO215168
 Diego Díaz Sandoval - UO213604
 Edinson Dario Reyes Fajardo - UO206808
 Iván Zapico Martínez - UO213604
