@@ -8,24 +8,24 @@
 <html>
     <head>
         <title>@title</title>
-        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+       <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")'>
         <link rel="stylesheet" media="screen" href='@routes.Assets.at("stylesheets/bars.css")' >
+       <link rel="stylesheet" media="screen" href='@routes.Assets.at("stylesheets/style.css")' >       
         <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
         <script src="@routes.Assets.at("javascripts/jquery-1.9.0.min.js")" type="text/javascript"></script>
     </head>
     <body>
+    <div class="breadcrumbs">
     <header>
+    
         <a href="/"><img src="@routes.Assets.at("images/observaTerra.png")" alt="ObservaTerraLogo" />
         <h1>ObservaTerra</h1></a>
+       
      </header>
-     <nav>
-    <ul>
-    <li><a href="@routes.Application.showCountries">Countries</a>
-	<li><a href="@routes.Application.showIndicators">Indicators</a>
-	<li><a href="@routes.Application.showObservations">Observations</a>
-	</ul>
-    </nav>
-    <div id="session">
+      </div>
+      
+     <div class="header">
+   <div id="session">
      @if(session().get("id")==null){
 			<a href="/login">Iniciar sesion</a>
 			<a href="/register">Registrarse</a>
@@ -36,11 +36,26 @@
 			<a href="/actualizarPaginas ">Actualizar datos</a>
 		}
 	</div>
+	</div>
+	<div class="middle">
      <h1>@title</h1>    
      @content
+</div>
+<div class="right">
+     <nav>
+   
+    <ul>
+    <li><a href="@routes.Application.showCountries">Countries</a>
+	<li><a href="@routes.Application.showIndicators">Indicators</a>
+	<li><a href="@routes.Application.showObservations">Observations</a>
+	</ul>
+	
+    </nav>
+    </div>
 
     <footer>
     <p>All rights reserved</p>
     </footer>
+    
     </body>
 </html>
