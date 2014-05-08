@@ -23,3 +23,9 @@ C:\Users\spolan\Documents\asw_c#\commit5\ClienteObservaterra42\ClienteObservater
 C:\Users\spolan\Documents\asw_c#\commit5\ClienteObservaterra42\ClienteObservaterra42\bin\Debug\ClienteObservaterra42.exe
 C:\Users\spolan\Documents\asw_c#\commit5\ClienteObservaterra42\ClienteObservaterra42\bin\Debug\ClienteObservaterra42.pdb
 C:\Users\spolan\Documents\asw_c#\commit5\ClienteObservaterra42\ClienteObservaterra42\obj\Debug\ClienteObservaterra42.csprojResolveAssemblyReference.cache
+C:\Users\spolan\Documents\ObservaTerra\ClienteC#\ClienteObservaterra42\bin\Debug\ClienteObservaterra42.exe.config
+C:\Users\spolan\Documents\ObservaTerra\ClienteC#\ClienteObservaterra42\obj\Debug\ClienteObservaterra42.exe
+C:\Users\spolan\Documents\ObservaTerra\ClienteC#\ClienteObservaterra42\obj\Debug\ClienteObservaterra42.pdb
+C:\Users\spolan\Documents\ObservaTerra\ClienteC#\ClienteObservaterra42\bin\Debug\ClienteObservaterra42.exe
+C:\Users\spolan\Documents\ObservaTerra\ClienteC#\ClienteObservaterra42\bin\Debug\ClienteObservaterra42.pdb
+C:\Users\spolan\Documents\ObservaTerra\ClienteC#\ClienteObservaterra42\obj\Debug\ClienteObservaterra42.csprojResolveAssemblyReference.cache

@@ -1,18 +1,22 @@
 package controllers;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+
 import models.Country;
 import models.Indicator;
 import models.Observation;
 import play.data.Form;
 import play.mvc.Controller;
+import play.mvc.Http.MultipartFormData;
+import play.mvc.Http.MultipartFormData.FilePart;
 import play.mvc.Result;
+import scala.util.Random;
 import utils.ThreadWebReader;
 import utils.URLReader;
 import views.html.*;
-import views.html.country;
-import views.html.index;
-import views.html.indicator;
-import views.html.observation;
+import play.*;
 
 public class Application extends Controller {
 
@@ -26,6 +30,36 @@ public class Application extends Controller {
 					Indicator.all()));
 		else
 			return ok(country.render(Country.all(), countryForm));
+	}
+	
+	public static Result subirArchivo(){
+		return ok(upload.render());
+	}
+	
+	public static Result guardarArchivo() {
+		MultipartFormData body = request().body().asMultipartFormData();
+		FilePart fichero = body.getFile("archivo");
+		
+		String nombreFichero = fichero.getFilename();
+		int indice = nombreFichero.lastIndexOf(".");
+		String type = nombreFichero.substring(indice + 1, nombreFichero.length());
+		
+		if(indice != -1)
+			nombreFichero = nombreFichero.substring(0,indice);
+		
+		String tipo = fichero.getContentType();
+
+		File file = fichero.getFile();
+		int random = new Random().nextInt(100);
+		File newfile = new File("public/data/" + nombreFichero + "."+ type);
+		try {
+			newfile.createNewFile();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		return index();
+		
 	}
 
 	public static Result showCountries() {

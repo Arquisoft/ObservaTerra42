@@ -20,6 +20,9 @@ POST	/register					controllers.Register.collaboratorRegister()
 GET		/url						controllers.Application.url()
 POST	/url						controllers.Application.analizeURL()
 GET     /actualizarPaginas          controllers.Application.actualizarPaginas()
+GET		/subirArchivo				controllers.Application.subirArchivo()
+POST	/subirArchivo				controllers.Application.guardarArchivo()
+
 
 POST	/country					controllers.Admin.newCountry()
 POST	/country/delete/:code         controllers.Admin.deleteCountry(code: String)
