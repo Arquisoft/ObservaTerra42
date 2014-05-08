@@ -2,15 +2,13 @@
 
 @import play.i18n._
 
-<html>
+@main("") {
     <head>
         <title>Login</title>
     </head>
-    <body>
-        <header>
-        </header>
+    
     @helper.form(routes.Login.authenticate) {
-   <h1>@Messages.get("signin")</h1>
+   <h2>@Messages.get("signin")</h2>
 
    <p>
    	<label for="lusername">@Messages.get("username")</label>
@@ -32,5 +30,5 @@
 
 
 <div><a href="/">@Messages.get("back")</a></div>
-    </body>
-</html>
+   
+}

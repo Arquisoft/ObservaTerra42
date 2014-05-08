@@ -1,0 +1,18 @@
+@(users: List[User])
+
+@import play.i18n._
+@import helper._
+
+@main(Messages.get("list.countries")) {
+
+<h1>@Messages.get("admin")</h1>
+<table>
+@for(user <- users) { 
+  <tr>
+  	<td>@user.id</td>
+      
+  </tr>
+}
+</table>
+
+}

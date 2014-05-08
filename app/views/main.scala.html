@@ -34,6 +34,9 @@
 			<a href="/logout">Log out</a>
 			<a href=/url>Escanear pagina</a>
 			<a href="/actualizarPaginas ">Actualizar datos</a>
+			@if(session().get("type")=="admin"){
+			 	<a href="/admin ">Administrar</a>
+			}
 		}
 	</div>
      <h1>@title</h1>    

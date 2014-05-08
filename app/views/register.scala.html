@@ -3,13 +3,11 @@
 
 @import play.i18n._
 
-<html>
+@main("") {
     <head>
         <title>Register</title>
     </head>
-    <body>
-        <header>
-        </header>
+   
 @helper.form(routes.Register.isValid()) {
 	<h1>@Messages.get("register")</h1>
 	
@@ -167,5 +165,4 @@
 }
 
 <div><a href="/">@Messages.get("back")</a></div>
-    </body>
-</html>
+}

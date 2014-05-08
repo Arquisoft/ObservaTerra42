@@ -4,6 +4,8 @@ import models.*;
 import play.data.*;
 import play.mvc.Controller;
 import play.mvc.Result;
+import views.html.country;
+import views.html.admin;
 
 public class Admin extends Controller {
 
@@ -59,6 +61,12 @@ public class Admin extends Controller {
         return redirect(routes.Application.showObservations());
     }
     
+    public static Result showUsers() {
+		return ok(admin.render(User.all()));
+	}
+    
+
+    static Form<User>  	  usersForm     = Form.form(User.class);
     static Form<Country>  	  countryForm     = Form.form(Country.class);
     static Form<Indicator>    indicatorForm   = Form.form(Indicator.class);
     static Form<Observation>  observationForm = Form.form(Observation.class);
