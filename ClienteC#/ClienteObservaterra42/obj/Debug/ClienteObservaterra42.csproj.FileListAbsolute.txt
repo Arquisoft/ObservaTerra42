@@ -1,0 +1,2 @@
+C:\Users\spolan\Desktop\TPP_SEGUNDO_EXAMEN\asw_c#\commit1\ClienteObservaterra42\ClienteObservaterra42\bin\Debug\ClienteObservaterra42.exe.config
+C:\Users\spolan\Documents\ObservaTerra42\ClienteC#\ClienteObservaterra42\bin\Debug\ClienteObservaterra42.exe.config
