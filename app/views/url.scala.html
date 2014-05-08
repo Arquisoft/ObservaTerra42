@@ -2,11 +2,7 @@
 
 @import play.i18n._
 
-<html>
-    <head>
-        <title>Web Analizer</title>
-    </head>
-    <body>
+@main("") {
     @helper.form(routes.Application.analizeURL) {
    <h1>@Messages.get("analizadorweb")</h1>
 
@@ -15,8 +11,7 @@
        <input type="text" name="urlF" value="@form("urlF").value" id="urlF">
    </p>
    <p>
-       <button type="submit">GO!</button>
+       <button type="submit">@Messages.get("analize")</button>
    </p>
 }
-    </body>
-</html>
+}

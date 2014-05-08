@@ -3,16 +3,20 @@
 @import play.i18n._
 @import helper._
 
-@main(Messages.get("list.countries")) {
+@main(Messages.get("")) {
 
-<h1>@Messages.get("admin")</h1>
-<table>
-@for(user <- users) { 
-  <tr>
-  	<td>@user.id</td>
-      
-  </tr>
-}
-</table>
+<h1>@Messages.get("administer")</h1>
 
+<div>
+	<table>
+		@for(user <- users) { 
+			<tr>
+				<th>@Messages.get("id")</th>
+			</tr>
+			<tr>
+  				<td>@user.id</td>
+    		</tr>
+		}
+	</table>
+</div>
 }

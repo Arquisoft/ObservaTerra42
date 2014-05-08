@@ -14,11 +14,11 @@ public class UserJdbc {
 
 	private static Connection c;
 
-	private static final String GET_USERS = "SELECT * FROM USER";
-	private static final String GET_USER = "SELECT * FROM USER WHERE ID = ?";
+	private static final String GET_USERS = "SELECT * FROM USER WHERE TYPE = 'user'";
+	private static final String GET_USER = "SELECT * FROM USER WHERE ID = ? AND TYPE = 'user'";
 	private static final String ADD_USER = "INSERT INTO USER ( \"ID\", \"NAME\", \"PASSWORD\", \"EMAIL\", \"TYPE\", \"ACTIVE\" ) VALUES ( ?, ?, ?, ?, 'user', false)";
 	private static final String UPDATE_USER = "UPDATE USER NAME = ?, PASSWORD = ?, EMAIL = ?, ACTIVE = ? WHERE ID = ?";
-	private static final String DELETE_USER = "DELETE FROM USER WHERE ID = ?";
+	private static final String DELETE_USER = "DELETE FROM USER WHERE ID = ? AND TYPE = 'user'";
 
 	private static void createConnection() {
 		try {
