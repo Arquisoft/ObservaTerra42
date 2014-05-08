@@ -1,9 +1,10 @@
 @(observations: List[Observation], countries: List[Country], indicators: List[Indicator])
 @import play.i18n._
 
-@main("ObservaTerra") {
-<h1>@Messages.get("Wellcome")</h1>
-<h2>@Messages.get("list.observations")</h2>
+@main("") {
+<div class="content">
+<h2>@Messages.get("Wellcome")</h2>
+<h3>@Messages.get("list.observations")</h3>
 <table>
 <tr>	
 <th>@Messages.get("Country")</th>
@@ -29,4 +30,5 @@
 			}
 		</ul>
 	}
+	</div>
 }

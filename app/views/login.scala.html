@@ -8,6 +8,7 @@
     </head>
     
     @helper.form(routes.Login.authenticate) {
+<div class="content">
    <h2>@Messages.get("signin")</h2>
 
    <p>
@@ -30,5 +31,5 @@
 
 
 <div><a href="/">@Messages.get("back")</a></div>
-   
+</div>
 }
