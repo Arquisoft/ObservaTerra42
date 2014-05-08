@@ -1,8 +1,11 @@
 package controllers;
 
+import java.sql.SQLException;
+
 import models.Business;
 import models.Collaborator;
 import models.User;
+import persistence.impl.UserJdbcDao;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -10,6 +13,8 @@ import views.html.register;
 
 public class Register extends Controller {
 
+	
+	
 	static Form<UserRegister> regUser = Form.form(UserRegister.class);
 	static Form<TypeRegister> regType = Form.form(TypeRegister.class);
 	static Form<BusinessRegister> regBus = Form.form(BusinessRegister.class);
@@ -192,6 +197,8 @@ public class Register extends Controller {
 		public String password;
 		public String name;
 		public String email;
+		
+		UserJdbcDao userDao = new UserJdbcDao();
 
 		public String validate() {
 			String validado = "";
@@ -202,8 +209,13 @@ public class Register extends Controller {
 				if (username.compareTo("") == 0 || password.compareTo("") == 0
 						|| name.compareTo("") == 0 || email.compareTo("") == 0)
 					return "Error, todos los campos son obligatorios";
-				// TODO Aqui se añade el usuario a la base de datos
-				new User(username, name, password, email, "user", false).save();
+				User user=new User(username, name, password, email, "user", false);
+				try {
+					userDao.insertUser(user);
+				} catch (SQLException e) {
+					return "Error interno de persistencia";
+				}
+				user.save();
 			}
 			return validado;
 

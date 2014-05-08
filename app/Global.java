@@ -1,3 +1,4 @@
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -77,7 +78,11 @@ public class Global extends GlobalSettings {
 			}
 			if (User.all().isEmpty()) {
 				List<User> users = new ArrayList<User>();
-				users=userDao.getAllUsers();
+				try {
+					users=userDao.getAllUsers();
+				} catch (SQLException e) {
+					System.err.println("Error al iniciar la aplicación al cargar datos");
+				}
 				for (User user : users) {
 					new User(user.id, user.name, user.password, user.email,
 							user.type, user.active).save();

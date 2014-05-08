@@ -1,5 +1,6 @@
 package persistence.impl;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import models.User;
@@ -13,26 +14,26 @@ public class UserJdbcDao implements UserDao{
 		userJdbc=new UserJdbc();
 	}
 
-	public List<User> getAllUsers() {
+	public List<User> getAllUsers() throws SQLException {
 		return userJdbc.getAllUsers();
 	}
 
-	public int insertUser(User user) {
+	public int insertUser(User user) throws SQLException {
 		return userJdbc.insertUser(user);
 		
 	}
 
-	public int updateUser(User user) {
+	public int updateUser(User user) throws SQLException {
 		return userJdbc.updateUser(user);
 		
 	}
 
-	public int deleteUser(String idUser) {
+	public int deleteUser(String idUser) throws SQLException {
 		return userJdbc.deleteUser(idUser);
 	}
 
 	@Override
-	public User getUser(String idUser) {
+	public User getUser(String idUser) throws SQLException {
 		return userJdbc.getUser(idUser);
 	}
 	
