@@ -17,19 +17,23 @@ public class UserJdbcDao implements UserDao{
 		return userJdbc.getAllUsers();
 	}
 
-	public void insertUser(User user) {
-		// TODO Llamada a insert user JDBC
+	public int insertUser(User user) {
+		return userJdbc.insertUser(user);
 		
 	}
 
-	public void updateUser(User user) {
-		// TODO Llamada a update user JDCB
+	public int updateUser(User user) {
+		return userJdbc.updateUser(user);
 		
 	}
 
-	public void deleteUser(User user) {
-		// TODO Llamada a delete user JDBC
-		
+	public int deleteUser(String idUser) {
+		return userJdbc.deleteUser(idUser);
+	}
+
+	@Override
+	public User getUser(String idUser) {
+		return userJdbc.getUser(idUser);
 	}
 	
 }

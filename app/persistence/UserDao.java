@@ -6,10 +6,12 @@ import models.User;
 
 public interface UserDao {
 	List<User> getAllUsers();
-
-	void insertUser(User user);
-
-	void updateUser(User user);
 	
-	void deleteUser(User user);
+	User getUser(String idUser);
+
+	int insertUser(User user);
+
+	int updateUser(User user);
+	
+	int deleteUser(String idUser);
 }
