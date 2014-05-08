@@ -36,5 +36,15 @@ namespace ClienteAPI
             return wc.DownloadString("http://localhost:9000/api/observation/" + observacion);
         }
 
+        public String showIndicator()
+        {
+            return wc.DownloadString("http://localhost:9000/api/indication");
+        }
+
+        public String showIndicator(String indicacion)
+        {
+            return wc.DownloadString("http://localhost:9000/api/indication/" + indicacion);
+        }
+
     }
 }
