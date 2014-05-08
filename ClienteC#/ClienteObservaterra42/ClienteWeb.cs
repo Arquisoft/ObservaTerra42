@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Net;
+using System.Collections.Specialized;
+using System.IO;
 
 namespace ClienteAPI
 {
@@ -16,34 +18,114 @@ namespace ClienteAPI
             wc = new WebClient();
         }
 
-        public String showCountry()
+        public bool Conexion()
         {
-            return wc.DownloadString("http://localhost:9000/api/country");
+            try
+            {
+                var Req = (System.Net.HttpWebRequest)System.Net.WebRequest.Create("https://www.google.es");
+                var res = (System.Net.HttpWebResponse)Req.GetResponse();
+
+                Req.Abort();
+
+                if (res.StatusCode == System.Net.HttpStatusCode.OK)
+                    return true;
+                else
+                    return false;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
-        public String showCountry(String pais)
+        public void showCountry()
         {
-            return wc.DownloadString("http://localhost:9000/api/country/" + pais);
+            String s = wc.DownloadString("http://localhost:9000/api/country");
+            parseString(s);
         }
 
-        public String showObservation()
+        public void showCountry(String pais)
         {
-            return wc.DownloadString("http://localhost:9000/api/observation");
+            try
+            {
+                String s = wc.DownloadString("http://localhost:9000/api/country/" + pais);
+                parseString(s);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("El codigo introducido no es correcto");
+            }
+
         }
 
-        public String showObservation(String observacion)
+        public void showObservation()
         {
-            return wc.DownloadString("http://localhost:9000/api/observation/" + observacion);
+            String s = wc.DownloadString("http://localhost:9000/api/observation");
+            parseString(s);
         }
 
-        public String showIndicator()
+        public void showObservation(String observacion)
         {
-            return wc.DownloadString("http://localhost:9000/api/indication");
+            try
+            {
+                String s = wc.DownloadString("http://localhost:9000/api/observation/" + observacion);
+                parseString(s);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("El codigo introducido no es correcto");
+            }
         }
 
-        public String showIndicator(String indicacion)
+        public void showIndicator()
         {
-            return wc.DownloadString("http://localhost:9000/api/indication/" + indicacion);
+            String s = wc.DownloadString("http://localhost:9000/api/indication");
+            parseString(s);
+        }
+
+        public void showIndicator(String indicacion)
+        {
+            try
+            {
+                String s = wc.DownloadString("http://localhost:9000/api/indication/" + indicacion);
+                parseString(s);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("El codigo introducido no es correcto");
+            }
+        }
+
+        public void parseString(String s)
+        {
+            foreach (var x in s)
+            {
+                Console.Write(x);
+                if (x.Equals('}'))
+                {
+                    Console.WriteLine();
+                }
+            }
+        }
+
+        
+        public Boolean login(String username, String password)
+        {
+            string formUrl = "localhost:9000/login?controllers.Application.authenticate()"; // NOTE: This is the URL the form POSTs to, not the URL of the form (you can find this in the "action" attribute of the HTML's form tag
+            string formParams = string.Format("username={0}&password={1}", username,  password);
+            string cookieHeader;
+            WebRequest req = WebRequest.Create(formUrl);
+            req.ContentType = "application/x-www-form-urlencoded";
+            req.Method = "POST";
+            byte[] bytes = Encoding.ASCII.GetBytes(formParams);
+            req.ContentLength = bytes.Length;
+            using (Stream os = req.GetRequestStream())
+            {
+                os.Write(bytes, 0, bytes.Length);
+            }
+            WebResponse resp = req.GetResponse();
+            cookieHeader = resp.Headers["Set-cookie"];
+            return true;
         }
 
     }

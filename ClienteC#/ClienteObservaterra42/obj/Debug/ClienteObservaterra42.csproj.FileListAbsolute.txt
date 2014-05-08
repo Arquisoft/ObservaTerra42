@@ -11,3 +11,15 @@ C:\Users\spolan\Desktop\TPP_SEGUNDO_EXAMEN\asw_c#\commit3\ClienteObservaterra42\
 C:\Users\spolan\Desktop\TPP_SEGUNDO_EXAMEN\asw_c#\commit3\ClienteObservaterra42\ClienteObservaterra42\bin\Debug\ClienteObservaterra42.exe
 C:\Users\spolan\Desktop\TPP_SEGUNDO_EXAMEN\asw_c#\commit3\ClienteObservaterra42\ClienteObservaterra42\bin\Debug\ClienteObservaterra42.pdb
 C:\Users\spolan\Desktop\TPP_SEGUNDO_EXAMEN\asw_c#\commit3\ClienteObservaterra42\ClienteObservaterra42\obj\Debug\ClienteObservaterra42.csprojResolveAssemblyReference.cache
+C:\Users\spolan\Desktop\TPP_SEGUNDO_EXAMEN\asw_c#\commit4\ClienteObservaterra42\ClienteObservaterra42\bin\Debug\ClienteObservaterra42.exe.config
+C:\Users\spolan\Desktop\TPP_SEGUNDO_EXAMEN\asw_c#\commit4\ClienteObservaterra42\ClienteObservaterra42\obj\Debug\ClienteObservaterra42.exe
+C:\Users\spolan\Desktop\TPP_SEGUNDO_EXAMEN\asw_c#\commit4\ClienteObservaterra42\ClienteObservaterra42\obj\Debug\ClienteObservaterra42.pdb
+C:\Users\spolan\Documents\asw_c#\commit4\ClienteObservaterra42\ClienteObservaterra42\bin\Debug\ClienteObservaterra42.exe.config
+C:\Users\spolan\Documents\asw_c#\commit4\ClienteObservaterra42\ClienteObservaterra42\obj\Debug\ClienteObservaterra42.exe
+C:\Users\spolan\Documents\asw_c#\commit4\ClienteObservaterra42\ClienteObservaterra42\obj\Debug\ClienteObservaterra42.pdb
+C:\Users\spolan\Documents\asw_c#\commit5\ClienteObservaterra42\ClienteObservaterra42\bin\Debug\ClienteObservaterra42.exe.config
+C:\Users\spolan\Documents\asw_c#\commit5\ClienteObservaterra42\ClienteObservaterra42\obj\Debug\ClienteObservaterra42.exe
+C:\Users\spolan\Documents\asw_c#\commit5\ClienteObservaterra42\ClienteObservaterra42\obj\Debug\ClienteObservaterra42.pdb
+C:\Users\spolan\Documents\asw_c#\commit5\ClienteObservaterra42\ClienteObservaterra42\bin\Debug\ClienteObservaterra42.exe
+C:\Users\spolan\Documents\asw_c#\commit5\ClienteObservaterra42\ClienteObservaterra42\bin\Debug\ClienteObservaterra42.pdb
+C:\Users\spolan\Documents\asw_c#\commit5\ClienteObservaterra42\ClienteObservaterra42\obj\Debug\ClienteObservaterra42.csprojResolveAssemblyReference.cache
