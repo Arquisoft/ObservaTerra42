@@ -1,2 +1,9 @@
-/*C6*/SET SCHEMA PUBLIC
+/*C3*/SET SCHEMA PUBLIC
+DELETE FROM USER WHERE ID='cortez'
+INSERT INTO USER VALUES('cortez','Jose Cortez','1','jocortez@hotmail.com','user',FALSE)
+COMMIT
+INSERT INTO USER VALUES('bu','fafa','dsdf','fasdfa','user',TRUE)
+COMMIT
+DELETE FROM USER WHERE ID='bu'
+COMMIT
 DISCONNECT
