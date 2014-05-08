@@ -15,7 +15,12 @@ import views.html.indicator;
 import views.html.observation;
 
 public class Application extends Controller {
-
+	public static Result changeLanguage() {
+		String url = request().getHeader("referer");
+		String code = Form.form().bindFromRequest().get("language");
+		changeLang(code);
+		return redirect(url);
+	}
 	public static Result index() {
 		String tipoUser = session("type");
 		if (tipoUser == null)
@@ -70,12 +75,13 @@ public class Application extends Controller {
 			//URLReader.google();
 			return redirect(routes.Application.index());
 		}
-
+		
 	}
 
 	public static class URLform {
 		public String urlF;
 	}
+	
 
 
 	static Form<Country> countryForm = Form.form(Country.class);

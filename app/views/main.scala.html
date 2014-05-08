@@ -3,7 +3,7 @@
 
 @import play.i18n._
 @import controllers.Login
-
+@import helper._
 <!DOCTYPE html>
 
 <html>
@@ -27,13 +27,15 @@
 	</ul>
     </nav>
     
-   <form>
+   <div>
+   						@helper.form(routes.Application.changeLanguage){
+   
 							<label>@Messages.get("elegir"):</label>
 							<select onchange="this.form.submit()" name="language" >	
 								<option value="es" @(if(Languaje.language().equals("es")) "selected" else "")>@Messages.get("spanish")</option>
 								<option value="en" @(if(Languaje.language().equals("en")) "selected" else "")>@Messages.get("english")</option>
 							</select>
-							</form>
+							}</div>
     <div id="session">
      @if(session().get("id")==null){
 			<a href="/login">@Messages.get("signin")</a>
