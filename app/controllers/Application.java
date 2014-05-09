@@ -88,6 +88,12 @@ public class Application extends Controller {
 
     }
 
+    public static Result docs() {
+    	final String dir = System.getProperty("user.dir");
+        String archivos = dir + "/public/data/Práctica2_Entorno_Exportacion.pdf";
+    	  return ok(new java.io.File(archivos));
+    	}
+    
     public static List<Data> verTodosArchivos(){
         final String dir = System.getProperty("user.dir");
         String archivos = dir + "/public/data/";
