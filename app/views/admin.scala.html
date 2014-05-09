@@ -4,20 +4,24 @@
 @import helper._
 
 @main(Messages.get("")) {
-<div class="content">
+
+@if(session().get("type")=="admin"){
 <h2>@Messages.get("administer")</h2>
 
 <div>
 	<table>
+		<tr>
+			<th>@Messages.get("id")</th>
+		</tr>
 		@for(user <- users) { 
-			<tr>
-				<th>@Messages.get("id")</th>
-			</tr>
+			
 			<tr>
   				<td>@user.id</td>
     		</tr>
 		}
 	</table>
 </div>
-</div>
+} else{
+	<p>Error de acceso</p>
+}
 }

@@ -30,7 +30,7 @@
     <li><a href="/about">About</a></li>
 	</ul>
     </nav>
-    <div id="session">
+    <div id="session" class="session">
      @if(session().get("id")==null){
 			<a href="/login">Iniciar sesion</a>
 			<a href="/register">Registrarse</a>
@@ -44,9 +44,10 @@
 			}
 		}
 	</div>
-     <h1>@title</h1>    
+     <h1>@title</h1>   
+     <div class="content"> 
      @content
-
+	</div>
     <footer>
     <p>All rights reserved</p>
     </footer>

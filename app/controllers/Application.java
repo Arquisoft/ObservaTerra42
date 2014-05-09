@@ -40,6 +40,9 @@ public class Application extends Controller {
 		return ok(bars.render(Indicator.findByCode(indicator)));
 	}
 	
+	public static Result about() {
+		return ok(about.render());
+	}
 	
 
 	public static Result actualizarPaginas(){

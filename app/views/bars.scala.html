@@ -3,7 +3,6 @@
 @import play.i18n._
 
 @main("ObservaTerra") {
-<div class="content">
 <h2>@Messages.get("Bar.chart") - @indicator.name</h2>
 <svg class="chart"></svg>
 
@@ -14,5 +13,4 @@
 <script type="text/javascript">
  bars("@routes.API.observationsByIndicator(indicator.code)",600)
 </script>
-</div>
 }

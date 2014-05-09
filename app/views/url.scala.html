@@ -4,14 +4,17 @@
 
 @main("") {
     @helper.form(routes.Application.analizeURL) {
-   <h1>@Messages.get("analizadorweb")</h1>
+    	
+   <div class="formulario">
+   <h2>@Messages.get("analizadorweb")</h2>
 
-   <p>
+   <div class="campo">
    	<label for="lurl">@Messages.get("url")</label>
        <input type="text" name="urlF" value="@form("urlF").value" id="urlF">
-   </p>
-   <p>
+  </div>
+      <div class="boton">
        <button type="submit">@Messages.get("analize")</button>
-   </p>
+  </div>
+   </div>
 }
 }
