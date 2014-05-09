@@ -2,9 +2,8 @@
 
 @import play.i18n._
 
-@main(Messages.get("list.indicators")) {
-
-<h1>@Messages.get("indicators")</h1>
+@main(Messages.get("")) {
+<h2>@Messages.get("list.indicators")</h2>
 <table>
 @for(ind <- indicators) { 
   <tr><td>@ind.name</td>

@@ -3,6 +3,9 @@ package controllers;
 import models.Business;
 import models.Collaborator;
 import models.User;
+import persistence.impl.BusinessJdbcDao;
+import persistence.impl.CollaboratorJdbcDao;
+import persistence.impl.UserJdbcDao;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -27,14 +30,15 @@ public class Register extends Controller {
 	}
 
 	public static Result isValid() {
-		regUser = Form.form(UserRegister.class).bindFromRequest();
-		regType = Form.form(TypeRegister.class).bindFromRequest();
+
 		regBus = Form.form(BusinessRegister.class).bindFromRequest();
 		regCol = Form.form(CollaboratorRegister.class).bindFromRequest();
+		regUser = Form.form(UserRegister.class).bindFromRequest();
+		regType = Form.form(TypeRegister.class).bindFromRequest();
 		if (regType.hasErrors()) {
-			return badRequest(register.render(regType, regUser, regBus, regCol));
+			return badRequest(register.render(regType, regBus, regCol,regUser));
 		} else {
-			return badRequest(register.render(regType, regUser, regBus, regCol));
+			return badRequest(register.render(regType, regBus, regCol,regUser));
 		}
 
 	}
@@ -45,39 +49,39 @@ public class Register extends Controller {
 		regBus = Form.form(BusinessRegister.class).bindFromRequest();
 		regCol = Form.form(CollaboratorRegister.class).bindFromRequest();
 		if (regUser.hasErrors()) {
-			return badRequest(register.render(regType, regUser, regBus, regCol));
+			return badRequest(register.render(regType, regBus, regCol,regUser));
 		} else {
 
-			return badRequest(register.render(regType, regUser, regBus, regCol));
+			return badRequest(register.render(regType, regBus, regCol,regUser));
 		}
 
 	}
 
 	public static Result collaboratorRegister() {
-		regUser = Form.form(UserRegister.class).bindFromRequest();
-		regType = Form.form(TypeRegister.class).bindFromRequest();
-		regBus = Form.form(BusinessRegister.class).bindFromRequest();
 		regCol = Form.form(CollaboratorRegister.class).bindFromRequest();
+		regType = Form.form(TypeRegister.class).bindFromRequest();
+		regUser = Form.form(UserRegister.class).bindFromRequest();
+		regBus = Form.form(BusinessRegister.class).bindFromRequest();
 		if (regCol.hasErrors()) {
-			return badRequest(register.render(regType, regUser, regBus, regCol));
+			return badRequest(register.render(regType, regBus, regCol,regUser));
 		} else {
 
-			return badRequest(register.render(regType, regUser, regBus, regCol));
+			return badRequest(register.render(regType, regBus, regCol,regUser));
 		}
 
 	}
 
 	public static Result businessRegister() {
-		regUser = Form.form(UserRegister.class).bindFromRequest();
-		regType = Form.form(TypeRegister.class).bindFromRequest();
 		regBus = Form.form(BusinessRegister.class).bindFromRequest();
+		regType = Form.form(TypeRegister.class).bindFromRequest();
 		regCol = Form.form(CollaboratorRegister.class).bindFromRequest();
+		regUser = Form.form(UserRegister.class).bindFromRequest();
 
 		if (regBus.hasErrors()) {
-			return badRequest(register.render(regType, regUser, regBus, regCol));
+			return badRequest(register.render(regType, regBus, regCol,regUser));
 		} else {
 
-			return badRequest(register.render(regType, regUser, regBus, regCol));
+			return badRequest(register.render(regType, regBus, regCol,regUser));
 		}
 
 	}
@@ -88,7 +92,7 @@ public class Register extends Controller {
 		regBus = Form.form(BusinessRegister.class).bindFromRequest();
 		regCol = Form.form(CollaboratorRegister.class).bindFromRequest();
 
-		return ok(register.render(regType, regUser, regBus, regCol));
+		return ok(register.render(regType, regBus, regCol,regUser));
 	}
 
 	public static class CollaboratorRegister {
@@ -100,6 +104,8 @@ public class Register extends Controller {
 		public String address;
 		public String organization;
 		public String specialization;
+
+		CollaboratorJdbcDao collaboratorDao = new CollaboratorJdbcDao();
 
 		public String validate() {
 			String validado = "";
@@ -115,8 +121,15 @@ public class Register extends Controller {
 						|| specialization.compareTo("") == 0)
 					return "Error, todos los campos son obligatorios";
 				// Aqui se añade el usuario
-				new Collaborator(username, name, password, email, false, phone,
-						address, organization, specialization).save();
+				Collaborator collaborator = new Collaborator(username, name,
+						password, email, "collaborator", true, phone, address,
+						organization, specialization);
+//				try {
+//					collaboratorDao.insertCollaborator(collaborator);
+//				} catch (SQLException e) {
+//					return "Error interno de persistencia";
+//				}
+				collaborator.save();
 			}
 			return validado;
 
@@ -193,6 +206,8 @@ public class Register extends Controller {
 		public String name;
 		public String email;
 
+		UserJdbcDao userDao = new UserJdbcDao();
+
 		public String validate() {
 			String validado = "";
 
@@ -202,8 +217,14 @@ public class Register extends Controller {
 				if (username.compareTo("") == 0 || password.compareTo("") == 0
 						|| name.compareTo("") == 0 || email.compareTo("") == 0)
 					return "Error, todos los campos son obligatorios";
-				// TODO Aqui se añade el usuario a la base de datos
-				new User(username, name, password, email, "user", false).save();
+				User user = new User(username, name, password, email, "user",
+						true);
+//				try {
+//					userDao.insertUser(user);
+//				} catch (SQLException e) {
+//					return "Error interno de persistencia";
+//				}
+				user.save();
 			}
 			return validado;
 
@@ -253,6 +274,8 @@ public class Register extends Controller {
 		public String address;
 		public String webSite;
 
+		BusinessJdbcDao businessDao = new BusinessJdbcDao();
+
 		public String validate() {
 			String validado = "";
 
@@ -267,9 +290,16 @@ public class Register extends Controller {
 						|| address.compareTo("") == 0
 						|| webSite.compareTo("") == 0)
 					return "Error, todos los campos son obligatorios";
-				// TODO Aqui se añade el usuario a la base de datos
-				new Business(username, name, password, email, false, nif,
-						description, phone, address, webSite).save();
+				Business business = new Business(username, name, password,
+						email, "business", true, nif, description, phone,
+						address, webSite);
+
+//				try {
+//					businessDao.insertBusiness(business);
+//				} catch (SQLException e) {
+//					return "Error interno de persistencia";
+//				}
+				business.save();
 			}
 			return validado;
 
