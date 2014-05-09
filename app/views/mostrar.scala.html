@@ -1,0 +1,14 @@
+@(archivos: List[Data])
+@import play.i18n._
+@import helper._
+
+<h1>@Messages.get("mostrarArchivos")</h1>
+
+@for(archivo <- archivos) { 
+  <tr>
+  <td><a href = @archivo.direccion >@archivo.nombre</a></td>
+  </tr>
+   
+}
+
+<br>

@@ -32,7 +32,6 @@ public class UserJdbcDao implements UserDao{
 		return userJdbc.deleteUser(idUser);
 	}
 
-	@Override
 	public User getUser(String idUser) throws SQLException {
 		return userJdbc.getUser(idUser);
 	}
