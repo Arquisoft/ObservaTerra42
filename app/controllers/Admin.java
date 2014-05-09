@@ -82,7 +82,7 @@ public class Admin extends Controller {
 	}
 
 	public static Result showUsers() {
-		return ok(admin.render(User.all()));
+		return ok(admin.render(User.all(), Business.all(), Collaborator.all()));
 	}
 
 	static Form<User> usersForm = Form.form(User.class);
