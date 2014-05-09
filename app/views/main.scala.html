@@ -43,7 +43,7 @@
 		} else{
 			<p>@Messages.get("Wellcome") </p>
 			<p>@{session().get("id")}</p>
-			<a href="/logout">Log out</a>
+			<a href="/logout">@Message.get("logout")</a>
 			<a href=/url>@Messages.get("escanear")</a>
 			<a href="/actualizarPaginas ">@Messages.get("actualizar")</a>
 		}

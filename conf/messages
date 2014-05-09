@@ -37,3 +37,4 @@ register			= Register
 escanear			= scan data
 actualizar			= Update
 reserva 			= All rights reserved
+logout				=Log Out

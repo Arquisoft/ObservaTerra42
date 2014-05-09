@@ -37,3 +37,4 @@ register			= Registro
 escanear			= Escanear datos
 actualizar			= Actualizar datos
 reserva 			= Reservados todos los derechos
+logout				=Cerrar sesion
