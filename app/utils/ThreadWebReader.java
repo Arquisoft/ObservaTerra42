@@ -26,7 +26,6 @@ public class ThreadWebReader implements Runnable{
 	
 	public void run() {
 		String internet = conexionInternet();
-		System.out.println(internet);
 		if(internet != null && internet.equals("desactivado")){
 			System.out.println("Se encuentra sin conexion a internet en este momento");
 			return;
