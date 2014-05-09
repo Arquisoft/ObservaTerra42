@@ -40,6 +40,8 @@ public class Global extends GlobalSettings {
 			BusinessJdbcDao businessDao = new BusinessJdbcDao();
 			CollaboratorJdbcDao collaboratorDao = new CollaboratorJdbcDao();
 
+			Collaborator.deleteAll();
+			
 			DateTime dt = new DateTime(); // current time
 			int hours = dt.getHourOfDay(); // gets hour of day
 			if (hours % 2 == 0 && dt.getMinuteOfHour() < 1) {
@@ -64,59 +66,33 @@ public class Global extends GlobalSettings {
 			}
 			if (Collaborator.all().isEmpty()) {
 				
-				new Collaborator("spolan", "name", "spolan", "email","collaborator", true, "",
+				new Collaborator("polan", "Sergio", "polan", "polan@observaterra.es","collaborator", true, "",
 						"", "", "").save();
-				new Collaborator("sandoval", "name", "sandoval", "email","collaborator", true,
+				new Collaborator("ivan", "Ivan", "ivan", "ivan@observaterra.es","collaborator", true,
 						"", "", "", "").save();
-				new Collaborator("hector", "name", "hector", "email","collaborator", true, "",
+				new Collaborator("hector", "Hector", "hector", "hector@observaterra.es","collaborator", true, "",
 						"", "", "").save();
-				List<Collaborator> collaborators = new ArrayList<Collaborator>();
-				try {
-					collaborators=collaboratorDao.getAllCollaborators();
-				} catch (SQLException e) {
-					System.err.println("Error al iniciar la aplicación al cargar datos");
-				}
-				
-				for (Collaborator business : collaborators) {
-					new Collaborator(business.id, business.name,
-								business.password, business.email, business.type,
-								business.active, business.phone,business.address,
-								business.organization, business.specialization);
-				}
+				new Collaborator("diego", "Diego", "diego", "diego@observaterra.es","collaborator", true, "",
+						"", "", "").save();
+				new Collaborator("benito", "Jose Antonio", "beni", "beni@observaterra.es","collaborator", true,
+						"", "", "", "").save();
+				new Collaborator("edin", "Edinson", "edin", "edin@observaterra.es","collaborator", true, "",
+						"", "", "").save();
+
 			}
 			if (Business.all().isEmpty()) {
-				new Business("pepe", "pepe", "pepe", "email", "business", true, "pepe", "",
+				new Business("labra", "labra", "labra", "labra@uniovi.es", "business", true, "", "",
 						"", "", "").save();
-				new Business("manolo", "", "manolo", "email", "business", true, "", "", "",
+				new Business("aquilino", "aquilino", "aquilino", "aquilino@uniovi.es", "business", true, "", "", "",
 						"", "").save();
-				new Business("luis", "", "luis", "email", "business", true, "", "", "", "",
+				new Business("crispe", "crispe", "crispe", "crispe@uniovi.es", "business", true, "", "", "", "",
 						"").save();
-				
-				List<Business> businesses = new ArrayList<Business>();
-				try {
-					businesses=businessDao.getAllBusinesses();
-				} catch (SQLException e) {
-					System.err.println("Error al iniciar la aplicación al cargar datos");
-				}
-				for (Business business : businesses) {
-					new Business(business.id, business.name,
-								business.password, business.email, business.type,
-								business.active, business.nif,business.description,
-								business.phone, business.address, business.webSite);
-				}
 			}
-			if (User.all().isEmpty()) {
-				List<User> users = new ArrayList<User>();
-				try {
-					users=userDao.getAllUsers();
-				} catch (SQLException e) {
-					System.err.println("Error al iniciar la aplicación al cargar datos");
-				}
-				for (User user : users) {
-					new User(user.id, user.name, user.password, user.email,
-							user.type, user.active).save();
-				}
+			if(User.all().isEmpty())
+			{
+				new User("admin","admin","admin","admin@observaterra.es","admin",true).save();
 			}
+			
 		}
 	}
 }
