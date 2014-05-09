@@ -22,7 +22,12 @@ import views.html.*;
 import play.*;
 
 public class Application extends Controller {
-
+	public static Result changeLanguage() {
+		String url = request().getHeader("referer");
+		String code = Form.form().bindFromRequest().get("language");
+		changeLang(code);
+		return redirect(url);
+	}
 	public static Result index() {
 //		String tipoUser = session("type");
 			return ok(index.render(Observation.all(), Country.all(),
@@ -131,12 +136,13 @@ public class Application extends Controller {
 			URLReader.readerFromWeb(url);
 			return redirect(routes.Application.index());
 		}
-
+		
 	}
 
 	public static class URLform {
 		public String urlF;
 	}
+	
 
 
 	static Form<Country> countryForm = Form.form(Country.class);

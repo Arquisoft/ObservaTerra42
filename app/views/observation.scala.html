@@ -11,12 +11,12 @@
 
 <table>
 <tr>
-<th>Id</th>
-<th>Country</th>
-<th>Indicator</th>
-<th>Value</th>
+<th>@Messages.get("Id")</th>
+<th>@Messages.get("countries")</th>
+<th>@Messages.get("indicators")</th>
+<th>@Messages.get("Value")</th>
 @if(session().get("type")=="admin"||session().get("type"=="collaborator")){
-	<th>Remove</th>
+	<th>@Messages.get("remove")</th>
 }
 </tr>
 @for(obs <- observations) { 
@@ -47,14 +47,14 @@
 		<div class="campo">
         	@helper.inputText(form("value"))
 </div><div class="campo">
-<label>country</label>
+<label>@Messages.get("Country")</label>
          	<select name="countryId">
          	@for( country <- countries) {
          		<option value="@country.code">@country.name</option>
          	}
         	</select></div>
         <div class="campo">
-        <label>observation</label>
+        <label>@Messages.get("Indicator")</label>
         	<select name="indicatorId">
          		@for( indicator <- indicators) {
          			<option value="@indicator.code">@indicator.name</option>

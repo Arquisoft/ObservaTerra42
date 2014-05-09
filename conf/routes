@@ -8,6 +8,8 @@ GET		/indicator					controllers.Application.showIndicators()
 GET		/observation				controllers.Application.showObservations()
 GET     /bars/:indicator   			controllers.Application.bars(indicator:String)
 
+
+GET		/language					controllers.Application.changeLanguage()
 GET		/admin						controllers.Admin.showUsers()
 
 GET		/about						controllers.Application.about()
