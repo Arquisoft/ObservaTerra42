@@ -6,9 +6,8 @@
 @import play.i18n._
 @import helper.twitterBootstrap._
 
-@main(Messages.get("list.observations")) {
-
-<h1>@Messages.get("observations")</h1>
+@main(Messages.get("")) {
+<h2>@Messages.get("list.observations")</h2>
 
 <table>
 <tr>
@@ -40,38 +39,46 @@
 </table>
 
 @if(session().get("type")=="admin"||session().get("type"=="collaborator")){
-<h2>@{Messages.get("add.observation")}</h2>
 	
 		@helper.form(action = routes.Admin.newObservation()) {
-	
+		<div class="formulario">
+		
+<h2>@{Messages.get("add.observation")}</h2>
+		<div class="campo">
         	@helper.inputText(form("value"))
-
+</div><div class="campo">
+<label>country</label>
          	<select name="countryId">
          	@for( country <- countries) {
          		<option value="@country.code">@country.name</option>
          	}
-        	</select>
-        
+        	</select></div>
+        <div class="campo">
+        <label>observation</label>
         	<select name="indicatorId">
          		@for( indicator <- indicators) {
          			<option value="@indicator.code">@indicator.name</option>
          		}
         	</select> 
-
+</div>
+<div class="boton">
         	<input type="submit" value="@{Messages.get("create")}">
+        	</div>
+        	</div>
     }    
-    
-<h2>@Messages.get("upload.excel.file")</h2>
 
 		@helper.form(action = routes.API.uploadExcel, 
 	  	'enctype -> "multipart/form-data") {
+    <div class="formulario">
     
+    
+<h2>@Messages.get("upload.excel.file")</h2>
     	<input type="file" name="excel">
     
     	<p>
         	<input type="submit">
     	</p>
-    
+    </div>
 		}
 	}
 }
