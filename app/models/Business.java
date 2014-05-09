@@ -18,10 +18,10 @@ public class Business extends Users {
 	public String address;
 	public String webSite;
 
-	public Business(String id, String name, String password, String email,
+	public Business(String id, String name, String password, String email, String type,
 			boolean active, String nif, String description,
 			String phone, String address, String webSite) {
-		super(id, name, password, email, "business", active);
+		super(id, name, password, email, type, active);
 		this.nif = nif;
 		this.description = description;
 		this.phone = phone;

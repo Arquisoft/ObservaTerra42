@@ -1,5 +1,5 @@
 
-@(typeForm: Form[Register.TypeRegister], form: Form[Register.UserRegister], businessForm: Form[Register.BusinessRegister], collaboratorForm: Form[Register.CollaboratorRegister])
+@(typeForm: Form[Register.TypeRegister], businessForm: Form[Register.BusinessRegister], collaboratorForm: Form[Register.CollaboratorRegister] ,form: Form[Register.UserRegister])
 
 @import play.i18n._
 
@@ -54,7 +54,7 @@
    		<input type="email" name="email" value="@form("email").value"id="email">
 	</div>
    
-   <div class="botton">
+   <div class="boton">
        <button type="submit">@Messages.get("register")</button>
    </div>
    </div>
@@ -87,7 +87,7 @@
 	</div>
 	<div class="campo">
   		<label for="phone">@Messages.get("phone")</label>
-   		<input type="number" name="phone" value="@collaboratorForm("phone").value"id="phone">
+   		<input type="text" name="phone" value="@collaboratorForm("phone").value"id="phone">
 	</div>
 	<div class="campo">
   		<label for="address">@Messages.get("address")</label>
@@ -135,7 +135,7 @@
 	</div>
 	<div class="campo">
   		<label for="phone">@Messages.get("phone")</label>
-   		<input type="number" name="phone" value="@businessForm("phone").value"id="phone">
+   		<input type="text" name="phone" value="@businessForm("phone").value"id="phone">
 	</div>
 	<div class="campo">
   		<label for="address">@Messages.get("address")</label>
