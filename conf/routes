@@ -8,7 +8,10 @@ GET		/indicator					controllers.Application.showIndicators()
 GET		/observation				controllers.Application.showObservations()
 GET     /bars/:indicator   			controllers.Application.bars(indicator:String)
 
-GET		/language				controllers.Application.changeLanguage()
+
+GET		/language					controllers.Application.changeLanguage()
+GET		/admin						controllers.Admin.showUsers()
+GET		/about						controllers.Application.about()
 GET		/logout						controllers.Login.logout()
 GET     /login                  	controllers.Login.login()
 POST    /login                      controllers.Login.authenticate()

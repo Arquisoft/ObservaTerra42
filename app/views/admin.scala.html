@@ -1,0 +1,27 @@
+@(users: List[User])
+
+@import play.i18n._
+@import helper._
+
+@main(Messages.get("")) {
+
+@if(session().get("type")=="admin"){
+<h2>@Messages.get("administer")</h2>
+
+<div>
+	<table>
+		<tr>
+			<th>@Messages.get("id")</th>
+		</tr>
+		@for(user <- users) { 
+			
+			<tr>
+  				<td>@user.id</td>
+    		</tr>
+		}
+	</table>
+</div>
+} else{
+	<p>Error de acceso</p>
+}
+}

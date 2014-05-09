@@ -9,48 +9,63 @@
 <html>
     <head>
         <title>@title</title>
-        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")"
         <link rel="stylesheet" media="screen" href='@routes.Assets.at("stylesheets/bars.css")' >
         <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
         <script src="@routes.Assets.at("javascripts/jquery-1.9.0.min.js")" type="text/javascript"></script>
     </head>
     <body>
     <header>
+
+    <div id="title">
         <a href="/"><img src="@routes.Assets.at("images/observaTerra.png")" alt="ObservaTerraLogo" />
         <h1>ObservaTerra</h1></a>
+    </div>
      </header>
-     <nav>
-    <ul>
+     <nav class="main">
+    <ul class="menu">
+    
+    <li><a href="/">Home</a></li>
     <li><a href="@routes.Application.showCountries">@Messages.get("countries")</a>
 	<li><a href="@routes.Application.showIndicators">@Messages.get("indicators")</a>
 	<li><a href="@routes.Application.showObservations">@Messages.get("observations")</a>
+    <li><a href="/about">About</a></li>
 	</ul>
     </nav>
     
-   <div>
-   						@helper.form(routes.Application.changeLanguage){
+    <div>
+   		@helper.form(routes.Application.changeLanguage){
    
-							<label>@Messages.get("elegir"):</label>
-							<select onchange="this.form.submit()" name="language" >	
-								<option value="es" @(if(Languaje.language().equals("es")) "selected" else "")>@Messages.get("spanish")</option>
-								<option value="en" @(if(Languaje.language().equals("en")) "selected" else "")>@Messages.get("english")</option>
-							</select>
-							}</div>
-    <div id="session">
+			<label>@Messages.get("elegir"):</label>
+				<select onchange="this.form.submit()" name="language" >	
+					<option value="es" @(if(Languaje.language().equals("es")) "selected" else "")>@Messages.get("spanish")</option>
+					<option value="en" @(if(Languaje.language().equals("en")) "selected" else "")>@Messages.get("english")</option>
+				</select>
+	}</div>
+							
+    <div id="session" class="session">
+    
      @if(session().get("id")==null){
 			<a href="/login">@Messages.get("signin")</a>
 			<a href="/register">@Messages.get("register")</a>
 		} else{
+		
 			<p>@Messages.get("Wellcome") </p>
 			<p>@{session().get("id")}</p>
 			<a href="/logout">@Message.get("logout")</a>
 			<a href=/url>@Messages.get("escanear")</a>
 			<a href="/actualizarPaginas ">@Messages.get("actualizar")</a>
+			
+			@if(session().get("type")=="admin"){
+			 	<a href="/admin ">Administrar</a>
+			}
 		}
 	</div>
-     <h1>@title</h1>    
+     <h1>@title</h1>   
+     <div class="content"> 
      @content
-
+	</div>
+	
     <footer>
     <p>@Messages.get("reserva")</p>
     </footer>
