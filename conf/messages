@@ -6,9 +6,13 @@ Indicator			= Indicator
 Value				= Value
 Bar.chart			= Bar chart
 Admin				= Admin
+
 list.countries		= List of Countries
 add.country 		= Add Country
 delete.country 		= Delete Country
+list.areas			= List of Areas
+add.area			= Add Area
+delete.area 		= Delete Area
 
 indicators			= Indicators
 list.indicators		= List of Indicators
@@ -45,3 +49,7 @@ desarrolladores				=Developers of ObservaTerra42
 about						= About
 home						=Home
 elegir                      =Choose
+remove				= Remove
+area				= Area
+areas				= Areas
+observation 		= Observation

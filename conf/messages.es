@@ -6,9 +6,13 @@ Value				= Valor
 Bar.chart			= Gráfico de barras
 Admin				= Administrar
 countries 			= Países
+
 list.countries		= Lista de países
 add.country 		= Añadir país
 delete.country 		= Borrar país
+list.areas			= Lista de áreas
+add.area			= Añadir área
+delete.area 		= Borrar área
 
 indicators			= Indicadores
 list.indicators		= Lista de indicadores
@@ -45,3 +49,7 @@ desarrolladores				=Desarrolladores de ObservaTerra42
 about						= Acerca de
 home						=Inicio
 elegir                      =Elegir
+remove				= Eliminar
+area				= Área
+areas				= Áreas
+observation 		= Observaciín
