@@ -14,30 +14,25 @@ public class CollaboratorJdbcDao implements CollaboratorDao{
 		collaboratorJdbc=new CollaboratorJdbc();
 	}
 
-	@Override
 	public List<Collaborator> getAllCollaborators() throws SQLException {
 		return collaboratorJdbc.getAllCollaboratores();
 	}
 
-	@Override
 	public Collaborator getCollaborator(String idCollaborator)
 			throws SQLException {
 		return collaboratorJdbc.getCollaborator(idCollaborator);
 	}
 
-	@Override
 	public int insertCollaborator(Collaborator collaborator)
 			throws SQLException {
 		return collaboratorJdbc.insertCollaborator(collaborator);
 	}
 
-	@Override
 	public int updateCollaborator(Collaborator collaborator)
 			throws SQLException {
 		return collaboratorJdbc.updateCollaborator(collaborator);
 	}
 
-	@Override
 	public int deleteCollaborator(String idCollaborator) throws SQLException {
 		return collaboratorJdbc.deleteCollaborator(idCollaborator);
 	}

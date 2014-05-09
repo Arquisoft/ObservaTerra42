@@ -85,38 +85,18 @@ public class Global extends GlobalSettings {
 				}
 			}
 			if (Business.all().isEmpty()) {
-				new Business("pepe", "pepe", "pepe", "email", "business", true, "pepe", "",
+				new Business("labra", "labra", "labra", "labra@uniovi.es", "business", true, "", "",
 						"", "", "").save();
-				new Business("manolo", "", "manolo", "email", "business", true, "", "", "",
+				new Business("aquilino", "aquilino", "aquilino", "aquilino@uniovi.es", "business", true, "", "", "",
 						"", "").save();
-				new Business("luis", "", "luis", "email", "business", true, "", "", "", "",
+				new Business("crispe", "crispe", "crispe", "crispe@uniovi.es", "business", true, "", "", "", "",
 						"").save();
-				
-				List<Business> businesses = new ArrayList<Business>();
-				try {
-					businesses=businessDao.getAllBusinesses();
-				} catch (SQLException e) {
-					System.err.println("Error al iniciar la aplicación al cargar datos");
-				}
-				for (Business business : businesses) {
-					new Business(business.id, business.name,
-								business.password, business.email, business.type,
-								business.active, business.nif,business.description,
-								business.phone, business.address, business.webSite);
-				}
 			}
-			if (User.all().isEmpty()) {
-				List<User> users = new ArrayList<User>();
-				try {
-					users=userDao.getAllUsers();
-				} catch (SQLException e) {
-					System.err.println("Error al iniciar la aplicación al cargar datos");
-				}
-				for (User user : users) {
-					new User(user.id, user.name, user.password, user.email,
-							user.type, user.active).save();
-				}
+			if(User.all().isEmpty())
+			{
+				new User("admin","admin","admin","admin@observaterra.es","admin",true).save();
 			}
+			
 		}
 	}
 }
