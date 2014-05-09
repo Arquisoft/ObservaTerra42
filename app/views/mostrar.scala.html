@@ -1,0 +1,34 @@
+@(archivos: List[Data])
+@import play.i18n._
+@import helper._
+
+@main("") {
+<h2>@Messages.get("mostrarArchivos")</h2>
+@if(archivos.isEmpty()){
+	<p> No hay ningun archivo en este momento para descargar </p>
+}
+@if(!archivos.isEmpty()){
+	<table>
+	<tr>
+		<th>@{Messages.get("nameFile")}</th>
+		<th>@{Messages.get("deleteFile")}</th>
+	</tr>
+	@for(archivo <- archivos) { 
+	
+	
+	  <tr>
+	  <td><a href = "@routes.Application.docs(archivo.direccion)">@archivo.nombre</a></td>
+	  @if(session().get("type")=="admin"){
+	  <td>@helper.form(routes.Admin.deleteData(archivo.direccion)) {
+               <input type="image" 
+                      src="@{routes.Assets.at("images/delete.gif")}" 
+                      alt='@{Messages.get("delete.data")}'>
+         }
+      </td>
+      }
+	  </tr>
+	   
+	}</table>
+}
+
+}

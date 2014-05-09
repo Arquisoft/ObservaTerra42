@@ -1,0 +1,20 @@
+@()
+@import play.i18n._
+@import helper._
+@main("") {
+
+<h2>@Messages.get("subirArchivo")</h2>
+
+@helper.form(action = routes.Application.guardarArchivo(), 
+	  'enctype -> "multipart/form-data") {
+    <div class="formulario">
+    <div class="campo">
+    <label>Subir archivo</label>
+    <input type="file" name="archivo">
+    </div>
+    <div class="boton">
+        <input type="submit" value="@Messages.get("upload")">
+    </div>
+   </div>
+}
+}

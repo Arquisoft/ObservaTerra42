@@ -1,8 +1,8 @@
 @()
-
+@import play.i18n._
 <html>
     <head>
-        <title>Logout</title>
+        <title>@Messages.get("logout")</title>
     </head>
     <body>
       <a href=@{Login.logout()}></a>

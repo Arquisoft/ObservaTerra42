@@ -190,6 +190,7 @@ public class XMLParser {
 				if (ob.country.name.equals(name)) {
 					if (ob.obsValue != valorFinal) {
 						ob.obsValue = valorFinal;
+						ob.save();
 						//TODO JDBC update observation
 						return;
 					}

@@ -1,0 +1,80 @@
+@(users: List[User], business : List[Business], collaborators : List[Collaborator])
+
+@import play.i18n._
+@import helper._
+
+@main(Messages.get("")) {
+
+@if(session().get("type")=="admin"){
+<h2>@Messages.get("administer")</h2>
+
+<div>
+<center>
+<p>Usuarios</p>
+</center>
+	<table>
+		<tr>
+			<th>@Messages.get("id")</th>
+			<th>@Messages.get("name")</th>
+			<th>@Messages.get("password")</th>
+			<th>@Messages.get("email")</th>			
+		</tr>
+		@for(user <- users) { 
+			
+			<tr>
+  				<td>@user.id</td>
+				<td>@user.name</td>
+  				<td>@user.password</td>
+  				<td>@user.email</td>  				
+    		</tr>
+		}
+	</table>
+</div>
+<div>
+<center>
+<p>Colaboradores</p>
+</center>
+	<table>
+		<tr>
+			<th>@Messages.get("id")</th>
+			<th>@Messages.get("name")</th>
+			<th>@Messages.get("password")</th>
+			<th>@Messages.get("email")</th>			
+		</tr>
+		@for(user <- business) { 
+			
+			<tr>
+  				<td>@user.id</td>
+				<td>@user.name</td>
+  				<td>@user.password</td>
+  				<td>@user.email</td>  				
+    		</tr>
+		}
+	</table>
+</div>
+<div>
+<center>
+<p>Organizaciones</p>
+</center>
+	<table>
+		<tr>
+			<th>@Messages.get("id")</th>
+			<th>@Messages.get("name")</th>
+			<th>@Messages.get("password")</th>
+			<th>@Messages.get("email")</th>			
+		</tr>
+		@for(user <- collaborators) { 
+			
+			<tr>
+  				<td>@user.id</td>
+				<td>@user.name</td>
+  				<td>@user.password</td>
+  				<td>@user.email</td>  				
+    		</tr>
+		}
+	</table>
+</div>
+} else{
+	<p>@Messages.get("error_login")</p>
+}
+}

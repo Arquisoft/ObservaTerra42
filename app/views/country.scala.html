@@ -3,9 +3,8 @@
 @import play.i18n._
 @import helper._
 
-@main(Messages.get("list.countries")) {
-
-<h1>@Messages.get("countries")</h1>
+@main(Messages.get("")) {
+<h2>@Messages.get("list.countries")</h2>
 <table>
 @for(country <- countries) { 
   <tr><td>@country.name</td>

@@ -8,6 +8,13 @@ GET		/indicator					controllers.Application.showIndicators()
 GET		/observation				controllers.Application.showObservations()
 GET     /bars/:indicator   			controllers.Application.bars(indicator:String)
 
+
+GET		/language					controllers.Application.changeLanguage()
+GET		/admin						controllers.Admin.showUsers()
+
+GET		/about						controllers.Application.about()
+GET		/api/doc					controllers.Application.docs(code:String)
+
 GET		/logout						controllers.Login.logout()
 GET     /login                  	controllers.Login.login()
 POST    /login                      controllers.Login.authenticate()
@@ -20,6 +27,10 @@ POST	/register					controllers.Register.collaboratorRegister()
 GET		/url						controllers.Application.url()
 POST	/url						controllers.Application.analizeURL()
 GET     /actualizarPaginas          controllers.Application.actualizarPaginas()
+GET		/subirArchivo				controllers.Application.subirArchivo()
+POST	/subirArchivo				controllers.Application.guardarArchivo()
+POST	/deleteArchivo				controllers.Admin.deleteData(code: String)
+GET		/mostrarArchivos			controllers.Application.mostrarArchivos()
 
 POST	/country					controllers.Admin.newCountry()
 POST	/country/delete/:code         controllers.Admin.deleteCountry(code: String)
@@ -40,7 +51,6 @@ DELETE	/api/country/:code				controllers.API.delCountry(code: String)
 GET		/api/collaborator				controllers.API.collaborators()
 GET		/api/business					controllers.API.business()
 GET		/api/users						controllers.API.users()
-
 
 
 GET		/api/observation						controllers.API.observations()

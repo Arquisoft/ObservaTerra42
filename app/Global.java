@@ -1,3 +1,4 @@
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -10,6 +11,8 @@ import models.User;
 
 import org.joda.time.DateTime;
 
+import persistence.impl.BusinessJdbcDao;
+import persistence.impl.CollaboratorJdbcDao;
 import persistence.impl.UserJdbcDao;
 import play.Application;
 import play.GlobalSettings;
@@ -34,6 +37,8 @@ public class Global extends GlobalSettings {
 		public static void insert(Application app) {
 
 			UserJdbcDao userDao = new UserJdbcDao();
+			BusinessJdbcDao businessDao = new BusinessJdbcDao();
+			CollaboratorJdbcDao collaboratorDao = new CollaboratorJdbcDao();
 
 			DateTime dt = new DateTime(); // current time
 			int hours = dt.getHourOfDay(); // gets hour of day
@@ -58,26 +63,55 @@ public class Global extends GlobalSettings {
 
 			}
 			if (Collaborator.all().isEmpty()) {
-				//TODO coger colaboradores de la base de datos
-				new Collaborator("spolan", "name", "spolan", "email", true, "",
+				
+				new Collaborator("spolan", "name", "spolan", "email","collaborator", true, "",
 						"", "", "").save();
-				new Collaborator("sandoval", "name", "sandoval", "email", true,
+				new Collaborator("sandoval", "name", "sandoval", "email","collaborator", true,
 						"", "", "", "").save();
-				new Collaborator("hector", "name", "hector", "email", true, "",
+				new Collaborator("hector", "name", "hector", "email","collaborator", true, "",
 						"", "", "").save();
+				List<Collaborator> collaborators = new ArrayList<Collaborator>();
+				try {
+					collaborators=collaboratorDao.getAllCollaborators();
+				} catch (SQLException e) {
+					System.err.println("Error al iniciar la aplicación al cargar datos");
+				}
+				
+				for (Collaborator business : collaborators) {
+					new Collaborator(business.id, business.name,
+								business.password, business.email, business.type,
+								business.active, business.phone,business.address,
+								business.organization, business.specialization);
+				}
 			}
 			if (Business.all().isEmpty()) {
-				//TODO coger organizaciones de la base de datos
-				new Business("pepe", "pepe", "pepe", "email", true, "pepe", "",
+				new Business("pepe", "pepe", "pepe", "email", "business", true, "pepe", "",
 						"", "", "").save();
-				new Business("manolo", "", "manolo", "email", true, "", "", "",
+				new Business("manolo", "", "manolo", "email", "business", true, "", "", "",
 						"", "").save();
-				new Business("luis", "", "luis", "email", true, "", "", "", "",
+				new Business("luis", "", "luis", "email", "business", true, "", "", "", "",
 						"").save();
+				
+				List<Business> businesses = new ArrayList<Business>();
+				try {
+					businesses=businessDao.getAllBusinesses();
+				} catch (SQLException e) {
+					System.err.println("Error al iniciar la aplicación al cargar datos");
+				}
+				for (Business business : businesses) {
+					new Business(business.id, business.name,
+								business.password, business.email, business.type,
+								business.active, business.nif,business.description,
+								business.phone, business.address, business.webSite);
+				}
 			}
 			if (User.all().isEmpty()) {
 				List<User> users = new ArrayList<User>();
-				users=userDao.getAllUsers();
+				try {
+					users=userDao.getAllUsers();
+				} catch (SQLException e) {
+					System.err.println("Error al iniciar la aplicación al cargar datos");
+				}
 				for (User user : users) {
 					new User(user.id, user.name, user.password, user.email,
 							user.type, user.active).save();

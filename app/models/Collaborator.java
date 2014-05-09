@@ -18,10 +18,10 @@ public class Collaborator extends Users {
 	public String specialization;
 
 
-	public Collaborator(String id, String name, String password, String email,
+	public Collaborator(String id, String name, String password, String email, String type,
 			boolean active,String phone, String address, String organization,
 			String specialization) {
-		super(id, name, password, email, "collaborator", active);
+		super(id, name, password, email, type, active);
 		this.phone=phone;
 		this.address = address;
 		this.organization = organization;

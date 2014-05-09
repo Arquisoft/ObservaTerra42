@@ -30,7 +30,7 @@ public class API extends Controller {
     public static Result collaborators() {
     	return ok(Json.toJson(Collaborator.all()));
     }
-    
+
     public static Result business() {
     	return ok(Json.toJson(Business.all()));
     }
