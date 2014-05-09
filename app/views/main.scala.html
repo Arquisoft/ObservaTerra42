@@ -21,9 +21,9 @@
      </header>
      <nav>
     <ul>
-    <li><a href="@routes.Application.showCountries">Countries</a>
-	<li><a href="@routes.Application.showIndicators">Indicators</a>
-	<li><a href="@routes.Application.showObservations">Observations</a>
+    <li><a href="@routes.Application.showCountries">@Messages.get("countries")</a>
+	<li><a href="@routes.Application.showIndicators">@Messages.get("indicators")</a>
+	<li><a href="@routes.Application.showObservations">@Messages.get("observations")</a>
 	</ul>
     </nav>
     
@@ -44,15 +44,15 @@
 			<p>@Messages.get("Wellcome") </p>
 			<p>@{session().get("id")}</p>
 			<a href="/logout">Log out</a>
-			<a href=/url>Escanear pagina</a>
-			<a href="/actualizarPaginas ">Actualizar datos</a>
+			<a href=/url>@Messages.get("escanear")</a>
+			<a href="/actualizarPaginas ">@Messages.get("actualizar")</a>
 		}
 	</div>
      <h1>@title</h1>    
      @content
 
     <footer>
-    <p>All rights reserved</p>
+    <p>@Messages.get("reserva")</p>
     </footer>
     </body>
 </html>

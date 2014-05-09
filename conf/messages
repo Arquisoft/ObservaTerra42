@@ -34,3 +34,6 @@ typeBusiness		= Business
 name 				= Name
 email				= Email
 register			= Register
+escanear			= scan data
+actualizar			= Update
+reserva 			= All rights reserved

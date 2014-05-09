@@ -34,3 +34,6 @@ typeBusiness		= Organización
 name 				= Nombre
 email				= E-mail
 register			= Registro
+escanear			= Escanear datos
+actualizar			= Actualizar datos
+reserva 			= Reservados todos los derechos
