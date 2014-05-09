@@ -1,7 +1,5 @@
 package controllers;
 
-import java.sql.SQLException;
-
 import models.Business;
 import models.Collaborator;
 import models.User;
@@ -124,13 +122,13 @@ public class Register extends Controller {
 					return "Error, todos los campos son obligatorios";
 				// Aqui se añade el usuario
 				Collaborator collaborator = new Collaborator(username, name,
-						password, email, "collaborator", false, phone, address,
+						password, email, "collaborator", true, phone, address,
 						organization, specialization);
-				try {
-					collaboratorDao.insertCollaborator(collaborator);
-				} catch (SQLException e) {
-					return "Error interno de persistencia";
-				}
+//				try {
+//					collaboratorDao.insertCollaborator(collaborator);
+//				} catch (SQLException e) {
+//					return "Error interno de persistencia";
+//				}
 				collaborator.save();
 			}
 			return validado;
@@ -220,12 +218,12 @@ public class Register extends Controller {
 						|| name.compareTo("") == 0 || email.compareTo("") == 0)
 					return "Error, todos los campos son obligatorios";
 				User user = new User(username, name, password, email, "user",
-						false);
-				try {
-					userDao.insertUser(user);
-				} catch (SQLException e) {
-					return "Error interno de persistencia";
-				}
+						true);
+//				try {
+//					userDao.insertUser(user);
+//				} catch (SQLException e) {
+//					return "Error interno de persistencia";
+//				}
 				user.save();
 			}
 			return validado;
@@ -293,14 +291,14 @@ public class Register extends Controller {
 						|| webSite.compareTo("") == 0)
 					return "Error, todos los campos son obligatorios";
 				Business business = new Business(username, name, password,
-						email, "business", false, nif, description, phone,
+						email, "business", true, nif, description, phone,
 						address, webSite);
 
-				try {
-					businessDao.insertBusiness(business);
-				} catch (SQLException e) {
-					return "Error interno de persistencia";
-				}
+//				try {
+//					businessDao.insertBusiness(business);
+//				} catch (SQLException e) {
+//					return "Error interno de persistencia";
+//				}
 				business.save();
 			}
 			return validado;
