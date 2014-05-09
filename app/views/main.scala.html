@@ -9,7 +9,7 @@
 <html>
     <head>
         <title>@title</title>
-        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")"
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
         <link rel="stylesheet" media="screen" href='@routes.Assets.at("stylesheets/bars.css")' >
         <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
         <script src="@routes.Assets.at("javascripts/jquery-1.9.0.min.js")" type="text/javascript"></script>
@@ -25,11 +25,11 @@
      <nav class="main">
     <ul class="menu">
     
-    <li><a href="/">Home</a></li>
+    <li><a href="/">@Messages.get("home")</a></li>
     <li><a href="@routes.Application.showCountries">@Messages.get("countries")</a>
 	<li><a href="@routes.Application.showIndicators">@Messages.get("indicators")</a>
 	<li><a href="@routes.Application.showObservations">@Messages.get("observations")</a>
-    <li><a href="/about">About</a></li>
+    <li><a href="/about">@Messages.get("about")</a></li>
 	</ul>
     </nav>
     
@@ -52,7 +52,7 @@
 		
 			<p>@Messages.get("Wellcome") </p>
 			<p>@{session().get("id")}</p>
-			<a href="/logout">@Message.get("logout")</a>
+			<a href="/logout">@Messages.get("logout")</a>
 			<a href=/url>@Messages.get("escanear")</a>
 			<a href="/actualizarPaginas ">@Messages.get("actualizar")</a>
 			

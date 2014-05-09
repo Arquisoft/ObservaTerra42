@@ -11,10 +11,10 @@
 
 <table>
 <tr>
-<th>Id</th>
-<th>Country</th>
-<th>Indicator</th>
-<th>Value</th>
+<th>@Messages.get("Id")</th>
+<th>@Messages.get("countries")</th>
+<th>@Messages.get("indicators")</th>
+<th>@Messages.get("Value")</th>
 @if(session().get("type")=="admin"||session().get("type"=="collaborator")){
 	<th>Remove</th>
 }
