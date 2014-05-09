@@ -2,12 +2,20 @@
 @import play.i18n._
 @import helper._
 
-<h1>@Messages.get("mostrarArchivos")</h1>
+@main("") {
+<h2>@Messages.get("mostrarArchivos")</h2>
 @if(archivos.isEmpty()){
 	<p> No hay ningun archivo en este momento para descargar </p>
 }
 @if(!archivos.isEmpty()){
+	<table>
+	<tr>
+		<th>@{Messages.get("nameFile")}</th>
+		<th>@{Messages.get("deleteFile")}</th>
+	</tr>
 	@for(archivo <- archivos) { 
+	
+	
 	  <tr>
 	  <td><a href = "@routes.Application.docs(archivo.direccion)">@archivo.nombre</a></td>
 	  @if(session().get("type")=="admin"){
@@ -18,10 +26,9 @@
          }
       </td>
       }
-	  <br>
 	  </tr>
 	   
-	}
+	}</table>
 }
 
-<br>
+}
