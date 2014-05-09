@@ -129,7 +129,6 @@ public class Application extends Controller {
 		} else {
 			String url = r.get().urlF;
 			URLReader.readerFromWeb(url);
-			//URLReader.google();
 			return redirect(routes.Application.index());
 		}
 

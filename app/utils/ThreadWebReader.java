@@ -26,7 +26,8 @@ public class ThreadWebReader implements Runnable{
 	
 	public void run() {
 		String internet = conexionInternet();
-		if(internet.equals("Offline")){
+		System.out.println(internet);
+		if(internet != null && internet.equals("desactivado")){
 			System.out.println("Se encuentra sin conexion a internet en este momento");
 			return;
 		}
@@ -124,16 +125,19 @@ public class ThreadWebReader implements Runnable{
 	}
 	
 	private static String conexionInternet(){
-		String conStatus = null;
-        try {
-            int timeOut = 2000;
-            String host= "http://www.google.es/";
-            InetAddress address = InetAddress.getByName(host);
-            if (address.isReachable(timeOut))
-                conStatus = "Online";
-            else conStatus = "Offline";
-        } catch (Exception e) { }
-        return conStatus;
+		String estado; 
+        try { 
+
+            URL ruta=new URL("http://www.google.es"); 
+            URLConnection rutaC=ruta.openConnection(); 
+            rutaC.connect(); 
+            estado="activo"; 
+           }catch(Exception e){ 
+
+            estado="desactivado"; 
+        } 
+
+return estado; 
 	}
 
 }

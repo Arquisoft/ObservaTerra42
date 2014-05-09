@@ -3,10 +3,21 @@
 @import helper._
 
 <h1>@Messages.get("mostrarArchivos")</h1>
+@if(archivos.isEmpty()){
+	<p> No hay ningun archivo en este momento para descargar </p>
+}
 @if(!archivos.isEmpty()){
 	@for(archivo <- archivos) { 
 	  <tr>
 	  <td><a href = "@routes.Application.docs(archivo.direccion)">@archivo.nombre</a></td>
+	  @if(session().get("type")=="admin"){
+	  <td>@helper.form(routes.Admin.deleteData(archivo.direccion)) {
+               <input type="image" 
+                      src="@{routes.Assets.at("images/delete.gif")}" 
+                      alt='@{Messages.get("delete.data")}'>
+         }
+      </td>
+      }
 	  <br>
 	  </tr>
 	   
