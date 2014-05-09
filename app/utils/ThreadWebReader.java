@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.InetAddress;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
@@ -24,6 +25,11 @@ public class ThreadWebReader implements Runnable{
 	}
 	
 	public void run() {
+		String internet = conexionInternet();
+		if(internet.equals("Offline")){
+			System.out.println("Se encuentra sin conexion a internet en este momento");
+			return;
+		}
 		analizeURL(URL1, 1);
 		analizeURL(URL2, 2);
 		analizeURL(URL3, 3);
@@ -115,6 +121,19 @@ public class ThreadWebReader implements Runnable{
               e2.printStackTrace();
            }
         }
+	}
+	
+	private static String conexionInternet(){
+		String conStatus = null;
+        try {
+            int timeOut = 2000;
+            String host= "http://www.google.es/";
+            InetAddress address = InetAddress.getByName(host);
+            if (address.isReachable(timeOut))
+                conStatus = "Online";
+            else conStatus = "Offline";
+        } catch (Exception e) { }
+        return conStatus;
 	}
 
 }

@@ -3,12 +3,14 @@
 @import helper._
 
 <h1>@Messages.get("mostrarArchivos")</h1>
-
-@for(archivo <- archivos) { 
-  <tr>
-  <td><a href = "@routes.Application.docs(archivo.direccion)">@archivo.nombre</a></td>
-  </tr>
-   
+@if(!archivos.isEmpty()){
+	@for(archivo <- archivos) { 
+	  <tr>
+	  <td><a href = "@routes.Application.docs(archivo.direccion)">@archivo.nombre</a></td>
+	  <br>
+	  </tr>
+	   
+	}
 }
 
 <br>
