@@ -34,3 +34,4 @@ typeBusiness		= Organización
 name 				= Nombre
 email				= E-mail
 register			= Registro
+administer			= Administrar

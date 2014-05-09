@@ -3,17 +3,17 @@
 
 @import play.i18n._
 
-<html>
+@main("") {
     <head>
         <title>Register</title>
     </head>
-    <body>
-        <header>
-        </header>
+   
 @helper.form(routes.Register.isValid()) {
-	<h1>@Messages.get("register")</h1>
 	
-	<div>
+	<div class="formulario">
+	<h2>@Messages.get("register")</h2>
+	
+	<div class="campo">
 		<label for="type">@Messages.get("type")</label>
 		<select name="type" value="@typeForm("type").value" id="type">
   			<option value="empty"></option>
@@ -22,11 +22,11 @@
  			<option value="business">@Messages.get("typeBusiness")</option>
 		</select>
 	</div>
-   
-	<div>
+  
+	<div class="boton">
 		<button type="submit">@Messages.get("selectRegister")</button>
 	</div>
-	
+	 </div>
 	@if(typeForm.hasGlobalErrors) {
     	<p class="error">
     	    @typeForm.globalError.message
@@ -36,28 +36,28 @@
 
 @if(session().get("typeRegister")=="user"){
 	@helper.form(routes.Register.userRegister()) {
-
-	<div>
+	<div class="formulario">
+	<div class="campo">
 		<label for="lusername">@Messages.get("username")</label>
 		<input type="text" name="username" value="@form("username").value" id="username">
 	</div>
-	<div>
+	<div class="campo">
   		<label for="lpassword">@Messages.get("password")</label>
    		<input type="password" name="password" value="@form("password").value"id="password">
 	</div>
-	<div>
+	<div class="campo">
 		<label for="lname">@Messages.get("name")</label>
    		<input type="text" name="name" value="@form("name").value" id="name">
 	</div>
-	<div>
+	<div class="campo">
   		<label for="email">@Messages.get("email")</label>
    		<input type="email" name="email" value="@form("email").value"id="email">
 	</div>
    
-   <div>
+   <div class="botton">
        <button type="submit">@Messages.get("register")</button>
    </div>
-   
+   </div>
 	@if(form.hasGlobalErrors) {
 		<p class="error">
         	@form.globalError.message
@@ -68,44 +68,44 @@
 
 @if(session().get("typeRegister")=="collaborator"){
 	@helper.form(routes.Register.collaboratorRegister()) {
-
-	<div>
+	<div class="formulario">
+	<div class="campo">
 		<label for="lusername">@Messages.get("username")</label>
 		<input type="text" name="username" value="@collaboratorForm("username").value" id="username">
 	</div>
-	<div>
+	<div class="campo">
   		<label for="lpassword">@Messages.get("password")</label>
    		<input type="password" name="password" value="@collaboratorForm("password").value"id="password">
 	</div>
-	<div>
+	<div class="campo">
 		<label for="lname">@Messages.get("name")</label>
    		<input type="text" name="name" value="@collaboratorForm("name").value" id="name">
 	</div>
-	<div>
+	<div class="campo">
   		<label for="email">@Messages.get("email")</label>
    		<input type="email" name="email" value="@collaboratorForm("email").value"id="email">
 	</div>
-	<div>
+	<div class="campo">
   		<label for="phone">@Messages.get("phone")</label>
    		<input type="number" name="phone" value="@collaboratorForm("phone").value"id="phone">
 	</div>
-	<div>
+	<div class="campo">
   		<label for="address">@Messages.get("address")</label>
    		<input type="text" name="addressl" value="@collaboratorForm("address").value"id="address">
 	</div>
-   <div>
+   <div class="campo">
   		<label for="organization">@Messages.get("organization")</label>
    		<input type="text" name="organization" value="@collaboratorForm("organization").value"id="organization">
 	</div>
-	<div>
+	<div class="campo">
   		<label for="specialization">@Messages.get("specialization")</label>
    		<input type="text" name="specialization" value="@collaboratorForm("specialization").value"id="specialization">
 	</div>
    
-   <div>
+   <div class="boton">
        <button type="submit">@Messages.get("register")</button>
    </div>
-   
+   </div>
 	@if(collaboratorForm.hasGlobalErrors) {
 		<p class="error">
         	@collaboratorForm.globalError.message
@@ -116,48 +116,48 @@
 
 @if(session().get("typeRegister")=="business"){
 	@helper.form(routes.Register.businessRegister()) {
-
-	<div>
+	<div class="formulario">
+	<div class="campo">
 		<label for="lusername">@Messages.get("username")</label>
 		<input type="text" name="username" value="@businessForm("username").value" id="username">
 	</div>
-	<div>
+	<div class="campo">
   		<label for="lpassword">@Messages.get("password")</label>
    		<input type="password" name="password" value="@businessForm("password").value"id="password">
 	</div>
-	<div>
+	<div class="campo">
 		<label for="lname">@Messages.get("name")</label>
    		<input type="text" name="name" value="@businessForm("name").value" id="name">
 	</div>
-	<div>
+	<div class="campo">
   		<label for="email">@Messages.get("email")</label>
    		<input type="email" name="email" value="@businessForm("email").value"id="email">
 	</div>
-	<div>
+	<div class="campo">
   		<label for="phone">@Messages.get("phone")</label>
    		<input type="number" name="phone" value="@businessForm("phone").value"id="phone">
 	</div>
-	<div>
+	<div class="campo">
   		<label for="address">@Messages.get("address")</label>
    		<input type="text" name="addressl" value="@businessForm("address").value"id="address">
 	</div>
-   <div>
+   <div class="campo">
   		<label for="description">@Messages.get("description")</label>
    		<input type="text" name="description" value="@businessForm("description").value"id="description">
 	</div>
-	<div>
+	<div class="campo">
   		<label for="webSite">@Messages.get("webSite")</label>
    		<input type="text" name="webSite" value="@businessForm("webSite").value"id="webSite">
 	</div>
-	<div>
+	<div class="campo">
   		<label for="nif">@Messages.get("nif")</label>
    		<input type="text" name="nif" value="@businessForm("nif").value"id="nif">
 	</div>
 
-   <div>
+   <div class="boton">
        <button type="submit">@Messages.get("register")</button>
    </div>
-   
+   </div>
 	@if(businessForm.hasGlobalErrors) {
 		<p class="error">
         	@businessForm.globalError.message
@@ -167,5 +167,4 @@
 }
 
 <div><a href="/">@Messages.get("back")</a></div>
-    </body>
-</html>
+}

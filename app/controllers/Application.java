@@ -17,15 +17,10 @@ import views.html.observation;
 public class Application extends Controller {
 
 	public static Result index() {
-		String tipoUser = session("type");
-		if (tipoUser == null)
+//		String tipoUser = session("type");
 			return ok(index.render(Observation.all(), Country.all(),
 					Indicator.all()));
-		if (!tipoUser.equals("admin"))
-			return ok(index.render(Observation.all(), Country.all(),
-					Indicator.all()));
-		else
-			return ok(country.render(Country.all(), countryForm));
+		
 	}
 
 	public static Result showCountries() {
@@ -45,6 +40,9 @@ public class Application extends Controller {
 		return ok(bars.render(Indicator.findByCode(indicator)));
 	}
 	
+	public static Result about() {
+		return ok(about.render());
+	}
 	
 
 	public static Result actualizarPaginas(){

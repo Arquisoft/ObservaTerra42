@@ -2,35 +2,37 @@
 
 @import play.i18n._
 
-<html>
+@main("") {
+	
     <head>
         <title>Login</title>
     </head>
-    <body>
-        <header>
-        </header>
+    
     @helper.form(routes.Login.authenticate) {
-   <h1>@Messages.get("signin")</h1>
+@if(session().get("id")==null){
+<div class="formulario login">
 
-   <p>
+   <h2>@Messages.get("signin")</h2>
+   <div class="campo">
    	<label for="lusername">@Messages.get("username")</label>
        <input type="text" name="username" value="@form("username").value" id="username">
-   </p>
-   <p>
+   </div>
+   <div class="campo">
       	<label for="lpassword">@Messages.get("password")</label>
        <input type="password" name="password" value="@form("password").value"id="password">
-   </p>
-   <p>
+   </div>
+   <div class="boton">
        <button type="submit">Login</button>
-   </p>
+	</div>
+</div>
    @if(form.hasGlobalErrors) {
     <p class="error">
         @form.globalError.message
     </p>
+	}
+}else{
+	<p>Error, ya está logueado</p>
 }
 }
-
-
-<div><a href="/">@Messages.get("back")</a></div>
-    </body>
-</html>
+<div class="atras"><a href="/">@Messages.get("back")</a></div>
+}
