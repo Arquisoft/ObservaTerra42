@@ -81,17 +81,11 @@ public class Application extends Controller {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        
-
         return index();
-        
-
     }
 
-    public static Result docs() {
-    	final String dir = System.getProperty("user.dir");
-        String archivos = dir + "/public/data/Práctica2_Entorno_Exportacion.pdf";
-    	  return ok(new java.io.File(archivos));
+    public static Result docs(String dir) {
+    	  return ok(new java.io.File(dir));
     	}
     
     public static List<Data> verTodosArchivos(){
