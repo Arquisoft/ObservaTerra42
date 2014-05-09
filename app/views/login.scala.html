@@ -5,7 +5,7 @@
 @main("") {
 	
     <head>
-        <title>Login</title>
+        <title>@Messages.get("login")</title>
     </head>
     
     @helper.form(routes.Login.authenticate) {
@@ -22,7 +22,7 @@
        <input type="password" name="password" value="@form("password").value"id="password">
    </div>
    <div class="boton">
-       <button type="submit">Login</button>
+       <button type="submit">@Messages.get("login")</button>
 	</div>
 </div>
    @if(form.hasGlobalErrors) {
@@ -31,7 +31,7 @@
     </p>
 	}
 }else{
-	<p>Error, ya está logueado</p>
+	<p>@Messages.get("error_logout")</p>
 }
 }
 <div class="atras"><a href="/">@Messages.get("back")</a></div>

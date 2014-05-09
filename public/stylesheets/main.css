@@ -114,7 +114,12 @@ header a {
 }
 
 .content{
-	margin:1em 2em 1em;
+	margin:3em 2em 1em;
+}
+
+.idioma{
+	float: left;
+	margin-left: 2em;
 }
 
 .formulario{
